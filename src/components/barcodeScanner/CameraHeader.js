@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   iconSet: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    // padding: 10,
   },
 });
 export default CameraHeader;

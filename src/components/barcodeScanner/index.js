@@ -31,7 +31,8 @@ const BarcodeScanner = ({onBarCodeRead}) => {
             ? RNCamera.Constants.FlashMode.on
             : RNCamera.Constants.FlashMode.off
         }
-        onBarCodeRead={onBarCodeRead}
+        onBarCodeRead={({data}) => onBarCodeRead(data)}
+        // onBarCodeRead={onBarCodeRead}
         ref={camRef}
         // aspect={RNCamera.Constants.Aspect.fill}
         androidCameraPermissionOptions={{
@@ -41,12 +42,12 @@ const BarcodeScanner = ({onBarCodeRead}) => {
           buttonPositive: 'Ok',
           buttonNegative: 'Annuler',
         }}>
-        <Text
+        {/* <Text
           style={{
             backgroundColor: 'white',
           }}>
           BARCODE SCANNER
-        </Text>
+        </Text> */}
       </RNCamera>
 
       {permissionStatusReady ? (
