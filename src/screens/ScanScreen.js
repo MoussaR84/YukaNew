@@ -12,6 +12,7 @@ const ScanScreen = () => {
   const [productId, setProductId] = useState(null);
 
   const onBarCodeRead = async ({type, id}) => {
+    console.log('onBarCodeRead,id', id);
     //quand le product on va chercher les datas //
     // setScanned(true);
 
