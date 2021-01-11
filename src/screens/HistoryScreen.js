@@ -16,7 +16,6 @@ import HistoryList from '../components/History/HistoryList';
 const HistoryScreen = () => {
   const [savedHistory, setSavedHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getHistoryFromStorage = async () => {
