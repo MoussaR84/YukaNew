@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -36,27 +36,26 @@ import {
   ratingProduct,
   ratingProductComment,
 } from './productParser';
-import ProductHeader from './ProductHeader';
-import ProductDetails from './ProductDetails';
-export default function Product({product}) {
-  console.log('roduct.product_nam', product.product_name);
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <ProductHeader product={product} />
-        <ProductDetails product={product} />
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
 
+export default ProductQuality = ({product}) => {
+  return (
+    <View style={styles.qualityTitle}>
+      <Text style={styles.qualite}>Qualités</Text>
+      <Text style={styles.portion}>
+        Pour {product.nutrition_data_prepared_per}
+      </Text>
+    </View>
+  );
+};
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    backgroundColor: 'white',
-    height: '100%',
-    marginBottom: 0,
-    // alignItems: 'flex-end',
-    // justifyContent: 'flex-end',
+  qualityTitle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 15,
+  },
+  qualite: {
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });

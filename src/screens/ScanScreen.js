@@ -41,9 +41,9 @@ const ScanScreen = () => {
   };
   console.log('isProductScanned', isProductScanned);
 
-  // const renderHeader = () => {
-  //   <ProductHeader product={product} />;
-  // };
+  const renderHeader = () => {
+    <ProductHeader product={product} />;
+  };
 
   //   onPress={() => sheetRef.current.snapTo(0)}
 
@@ -55,12 +55,8 @@ const ScanScreen = () => {
           ref={sheetRef}
           snapPoints={[450, 300, 0]}
           borderRadius={10}
-          // renderHeader={renderHeader}
+          renderHeader={renderHeader}
           renderContent={renderContent}
-          onOpenEnd={() => console.log()}
-          onOpenStart={() => console.log()}
-          onCloseEnd={() => console.log()}
-          onCloseStart={() => console.log()}
         />
       ) : null}
     </SafeAreaView>
