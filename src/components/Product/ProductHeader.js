@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     padding: 40,
     borderBottomColor: 'grey',
     borderBottomWidth: 2,
-    height:10,
+    fontFamily: 'Roboto',
   },
   imagecontainer: {
     width: 80,

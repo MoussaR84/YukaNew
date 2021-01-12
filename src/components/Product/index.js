@@ -37,14 +37,27 @@ import {
   ratingProductComment,
 } from './productParser';
 import ProductHeader from './ProductHeader';
-import ProductDetails from './ProductDetails';
+import ProductQuality from './ProductQuality';
+import ProductBio from './ProductBio';
+import ProductProteine from './ProductProteine';
+import ProductFibre from './ProductFibre';
+import ProductCalorie from './ProductCalorie';
+import ProductFatSat from './ProductFatSat';
+import ProductSugar from './ProductSugar';
+
 export default function Product({product}) {
-  console.log('roduct.product_nam', product.product_name);
+  console.log('product.product_nam', product.product_name);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.container}>
         <ProductHeader product={product} />
-        <ProductDetails product={product} />
+        <ProductQuality product={product} />
+        <ProductBio product={product} />
+        <ProductProteine product={product} />
+        <ProductFibre product={product} />
+        <ProductCalorie product={product} />
+        <ProductFatSat product={product} />
+        <ProductSugar product={product} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -52,11 +65,8 @@ export default function Product({product}) {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     backgroundColor: 'white',
     height: '100%',
     marginBottom: 0,
-    // alignItems: 'flex-end',
-    // justifyContent: 'flex-end',
   },
 });

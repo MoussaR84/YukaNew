@@ -189,11 +189,10 @@ const ratingScoreText = (product) => {
   }
 };
 
-const nutriscoreproteinevalue = () => {
-  product.nutriscore_data.proteins_value === undefined
-    ? 'pas de protéines'
-    : 'g';
-};
+// const nutriscoreproteinevalue=()=>{
+//   (product.nutriscore_data.proteins_value=== undefined ?"pas de protéines":"g")
+
+// }
 export default {
   sugarComment,
   sugarCircle,
