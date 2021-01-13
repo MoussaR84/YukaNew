@@ -112,11 +112,11 @@ const satfatComment = (product) => {
   if (product.nutriments['saturated-fat'] >= 1) {
     return 'Peu de graisses saturées';
   } else if (product.nutriments['saturated-fat'] >= 10) {
-    return 'graisses saturées en quantité';
+    return 'Graisses saturées en quantité';
   } else if (product.nutriments['saturated-fat'] >= 20) {
-    return 'graisses saturées en quantité';
+    return 'Graisses saturées en quantité';
   } else {
-    return colors.grey;
+    return 'Graisses saturées non présentes';
   }
 };
 

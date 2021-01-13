@@ -59,7 +59,6 @@ const ProductHeader = ({product}) => {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -67,6 +66,8 @@ const styles = StyleSheet.create({
     borderBottomColor: 'grey',
     borderBottomWidth: 2,
     fontFamily: 'Roboto',
+    height: 180,
+    
   },
   imagecontainer: {
     width: 80,

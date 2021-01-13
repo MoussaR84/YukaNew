@@ -31,36 +31,38 @@ import {
 } from './productParser';
 
 export default ProductBio = ({product}) => {
-
-const isBioorNot = (product) => {
+  const isBioorNot = (product) => {
     if (product.labels_tags[0] === 'en:organic') {
-          return 'Produit Biologique';
-        } else {
-          return 'Produit non Biologique';
-        }
-      };
+      return 'Produit Biologique';
+    } else {
+      return 'Produit non Biologique';
+    }
+  };
+ 
+
   return (
     <View style={styles.biocontener}>
-
-              <View style={styles.bio}>
-                <View style={styles.biocomment}>
-                  <Text style={styles.textbio}>Bio</Text>
-                  <Text>{isBioorNot(product)}</Text>
-                </View>
-              </View>
-              </View>
-
+      <View style={styles.bio}>
+        <View style={styles.biocomment}>
+          <Text style={styles.textbio}>Bio</Text>
+          <Text style={styles.function}>{isBioorNot(product)}</Text>
+        </View>
+      </View>
+    </View>
   );
 };
 const styles = StyleSheet.create({
-    biocontener: {
-    flex: 1,
+  biocontener: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
   },
-  qualite: {
+  textbio: {
     fontWeight: 'bold',
     fontSize: 15,
   },
+  function:{
+    color:"grey",
+  }
+
 });

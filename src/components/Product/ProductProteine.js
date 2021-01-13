@@ -46,7 +46,7 @@ export default ProductProteine = ({product}) => {
     <View style={styles.containerproteine}>
       <View style={styles.commentproteine}>
         <Text style={styles.titleproteines}>Protéines</Text>
-        <Text>{textProteine(product)}</Text>
+        <Text style={styles.function}>{textProteine(product)}</Text>
       </View>
       <View style={styles.proteinevaluecircle}>
         <View style={styles.proteinesgrammeandvalue}>
@@ -59,14 +59,17 @@ export default ProductProteine = ({product}) => {
 };
 const styles = StyleSheet.create({
   containerproteine: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    backgroundColor: 'blue',
+    
   },
-  qualite: {
+  titleproteines: {
     fontWeight: 'bold',
     fontSize: 15,
+  },
+
+  function:{
+    color:"grey",
   },
 });
