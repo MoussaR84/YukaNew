@@ -38,14 +38,25 @@ export default ProductBio = ({product}) => {
       return 'Produit non Biologique';
     }
   };
- 
+
+  const isBioorNotColor=(product)=>{
+    if (product.labels_tags[0] === 'en:organic') {
+      return {require("../../assets/Icon/greencheck.png")};
+    } else {
+      return {require("../../assets/Icon/blackcross.png")};
+    }
+  };
 
   return (
     <View style={styles.biocontener}>
       <View style={styles.bio}>
+      <Image 
+          style={{height:40, width: 40, borderRadius: 20}}
+          source={require('../../assets/Icon/bioicon.png')}/>
         <View style={styles.biocomment}>
           <Text style={styles.textbio}>Bio</Text>
           <Text style={styles.function}>{isBioorNot(product)}</Text>
+          <Image style={style.isBioorNotColor} color={isBioorNotColor}/>
         </View>
       </View>
     </View>
@@ -56,13 +67,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   textbio: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 15,
   },
-  function:{
-    color:"grey",
+  function: {
+    color: 'grey',
+  },
+  bio:{
+    flexDirection:"row"
   }
-
 });

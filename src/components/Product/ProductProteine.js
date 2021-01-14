@@ -42,6 +42,17 @@ export default ProductProteine = ({product}) => {
       return 'Non renseigné';
     }
   };
+  const ratingProteineCircle = (product) => {
+    if (product.nutriscore_data.proteins_value >= 10) {
+      return colors.green;
+    } else if (product.nutriscore_data.proteins_value >= 5) {
+      return colors.orange;
+    } else if (product.nutriscore_data.proteins_value <= 3) {
+      return colors.red;
+    } else {
+      return colors.grey;
+    }
+  };
   return (
     <View style={styles.containerproteine}>
       <View style={styles.commentproteine}>
@@ -49,6 +60,7 @@ export default ProductProteine = ({product}) => {
         <Text style={styles.function}>{textProteine(product)}</Text>
       </View>
       <View style={styles.proteinevaluecircle}>
+        <myIcon />
         <View style={styles.proteinesgrammeandvalue}>
           <Text>{product.nutriscore_data.proteins_value}</Text>
           <Text>{product.nutriments.proteins_unit}</Text>
@@ -62,14 +74,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   titleproteines: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 15,
   },
 
-  function:{
-    color:"grey",
+  function: {
+    color: 'grey',
+  },
+  proteinesgrammeandvalue: {
+    flexDirection: 'row',
   },
 });

@@ -60,12 +60,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   sugartitle: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 15,
   },
-  function:{
-    color:"grey",
+  function: {
+    color: 'grey',
+  },
+  sugargramandvalue: {
+    flexDirection: 'row',
   },
 });

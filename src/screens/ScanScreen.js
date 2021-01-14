@@ -57,14 +57,14 @@ const ScanScreen = () => {
       {isProductScanned ? (
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[450, 300, 0]}
+          snapPoints={[500, 300, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
           renderContent={renderContent}
         />
       ) : null}
       {isProductScanned && (
-        <Button
+        <TouchableOpacity
           title={'Tap to Scan Again'}
           onPress={() => setIsProductScanned(false)}
         />

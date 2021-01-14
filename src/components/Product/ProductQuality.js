@@ -42,12 +42,10 @@ export default ProductQuality = ({product}) => {
 };
 const styles = StyleSheet.create({
   qualityTitle: {
-    
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
     fontFamily: 'Roboto',
-    
   },
   qualite: {
     fontWeight: 'bold',

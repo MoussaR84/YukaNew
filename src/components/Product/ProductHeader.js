@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
+import colors from '../../assets/colors';
 
 const ProductHeader = ({product}) => {
   const ratingProductComment = (product) => {
@@ -35,6 +36,22 @@ const ProductHeader = ({product}) => {
     }
   };
 
+  const ratingProduct = (product) => {
+    if (product.nutrition_grade_fr === 'a') {
+      return colors.green;
+    } else if (product.nutrition_grade_fr === 'b') {
+      return colors.orange;
+    } else if (product.nutrition_grade_fr === 'c') {
+      return colors.red;
+    } else if (product.nutrition_grade_fr === 'd') {
+      return colors.brown;
+    } else if (product.nutrition_grade_fr === 'e') {
+      return colors.black;
+    } else {
+      return colors.grey;
+    }
+  };
+
   return (
     <View style={styles.card}>
       <View style={styles.imagecontainer}>
@@ -46,7 +63,12 @@ const ProductHeader = ({product}) => {
       <View style={styles.presentation}>
         <Text style={styles.nameProduct}>{product.product_name}</Text>
         <Text style={styles.brand}>{product.brands}</Text>
-        <View>
+        <View style={styles.containerRatingProduct}>
+          <Image
+            style={{height: 20, width: 20, borderRadius: 30}}
+            source={require('../../assets/Icon/circle.png')}
+            color={ratingProduct(product)}
+          />
           <Text style={styles.ratingScore}>{ratingScoreText(product)}/100</Text>
           <Text style={styles.ratingProductComment}>
             {ratingProductComment(product)}
@@ -67,11 +89,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     fontFamily: 'Roboto',
     height: 180,
-    
   },
   imagecontainer: {
-    width: 80,
-    backgroundColor: 'yellow',
+    width: 90,
   },
   presentation: {
     marginBottom: 20,
@@ -83,6 +103,14 @@ const styles = StyleSheet.create({
   ratingScore: {
     fontWeight: 'bold',
     fontSize: 15,
+  },
+  containerRatingProduct: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 160,
+    marginBottom: 10,
+    marginTop: 10,
   },
 });
 export default ProductHeader;

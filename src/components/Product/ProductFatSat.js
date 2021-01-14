@@ -63,13 +63,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   titlefatsat: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 15,
   },
 
-  function:{
-    color:"grey",
+  function: {
+    color: 'grey',
+  },
+  fatsatgrammeandvalue: {
+    flexDirection: 'row',
   },
 });
