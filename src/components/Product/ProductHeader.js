@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import colors from '../../assets/colors';
 
+
+
 const ProductHeader = ({product}) => {
   const ratingProductComment = (product) => {
     if (product.nutrition_grade_fr === 'a') {
@@ -64,11 +66,6 @@ const ProductHeader = ({product}) => {
         <Text style={styles.nameProduct}>{product.product_name}</Text>
         <Text style={styles.brand}>{product.brands}</Text>
         <View style={styles.containerRatingProduct}>
-          <Image
-            style={{height: 20, width: 20, borderRadius: 30}}
-            source={require('../../assets/Icon/circle.png')}
-            color={ratingProduct(product)}
-          />
           <Text style={styles.ratingScore}>{ratingScoreText(product)}/100</Text>
           <Text style={styles.ratingProductComment}>
             {ratingProductComment(product)}
