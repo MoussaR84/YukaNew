@@ -21,9 +21,11 @@ const HistoryScreen = () => {
       const rawSavedHistory = await AsyncStorage.getItem('productHistory');
       const savedHistoryinStorage = JSON.parse(rawSavedHistory);
       setSavedHistory(savedHistoryinStorage);
+      // setIsLoading(false);
     };
   }, []);
 
-  return isLoading ? <Text>HistoryScreen</Text> : <HistoryList />;
+  return isLoading ? <Text>suhasuhashauh</Text> : <HistoryList />;
 };
+
 export default HistoryScreen;

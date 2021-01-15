@@ -46,6 +46,12 @@ export default ProductCalorie = ({product}) => {
   };
   return (
     <View style={styles.caloriecontainer}>
+      <View style={styles.imagecatcalorie}>
+        <Image
+          style={{height: 30, width: 40}}
+          source={require('../../assets/Icon/iconcatogorie/caloricon.png')}
+        />
+      </View>
       <View style={styles.commentcalories}>
         <Text style={styles.titlecalorie}>Calories</Text>
         <Text style={styles.function}>{calorieComment(product)}</Text>
@@ -88,24 +94,28 @@ export default ProductCalorie = ({product}) => {
 const styles = StyleSheet.create({
   caloriecontainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 15,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
   },
   titlecalorie: {
     fontWeight: '600',
-
     fontSize: 15,
   },
-  diagramcalorie: {
-    paddingTop: 10,
-    flexDirection: 'row',
-  },
+
   function: {
     color: 'grey',
   },
   caloriegramandvalue: {
     flexDirection: 'row',
+    width: 80,
+    justifyContent: 'flex-end',
+  },
+  commentcalories: {
+    marginLeft: 10,
+  },
+  diagramcalorie: {
+    flexDirection: 'row',
+    marginTop: 10,
   },
 });

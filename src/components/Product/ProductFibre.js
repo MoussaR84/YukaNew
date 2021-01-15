@@ -16,6 +16,13 @@ export default function ProductFibre({product}) {
 
   return (
     <View style={styles.containerfibre}>
+      <View style={styles.imagefiber}>
+        <Image
+          style={{height: 30, width: 40}}
+          source={require('../../assets/Icon/iconcatogorie/fiber.png')}
+        />
+      </View>
+
       <View style={styles.commentfibre}>
         <Text style={styles.titlefibre}>Fibre</Text>
         <Text style={styles.function}>{fiberComment(product)}</Text>
@@ -33,20 +40,24 @@ export default function ProductFibre({product}) {
 const styles = StyleSheet.create({
   containerfibre: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 15,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
   },
   titlefibre: {
     fontWeight: '600',
-
     fontSize: 15,
   },
+
   function: {
     color: 'grey',
   },
   fibregramandvalue: {
     flexDirection: 'row',
+    width: 143,
+    justifyContent: 'flex-end',
+  },
+  commentfibre: {
+    marginLeft: 10,
   },
 });

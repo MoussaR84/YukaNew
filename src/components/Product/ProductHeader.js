@@ -1,8 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import colors from '../../assets/colors';
-
-
+// import colors from '../../assets/colors';
+import greencircle from '../../assets/Icon/circle/greencircle.png';
+import redcircle from '../../assets/Icon/circle/redcircle.png';
+import greycircle from '../../assets/Icon/circle/greycircle.png';
+import orangecircle from '../../assets/Icon/circle/orangecircle.png';
+import blackcircle from '../../assets/Icon/circle/blackcircle.png';
+import browncircle from '../../assets/Icon/circle/browncircle.png';
 
 const ProductHeader = ({product}) => {
   const ratingProductComment = (product) => {
@@ -40,17 +44,17 @@ const ProductHeader = ({product}) => {
 
   const ratingProduct = (product) => {
     if (product.nutrition_grade_fr === 'a') {
-      return colors.green;
+      return greencircle;
     } else if (product.nutrition_grade_fr === 'b') {
-      return colors.orange;
+      return orangecircle;
     } else if (product.nutrition_grade_fr === 'c') {
-      return colors.red;
+      return redcircle;
     } else if (product.nutrition_grade_fr === 'd') {
-      return colors.brown;
+      return browncircle;
     } else if (product.nutrition_grade_fr === 'e') {
-      return colors.black;
+      return blackcircle;
     } else {
-      return colors.grey;
+      return greycircle;
     }
   };
 
@@ -70,6 +74,8 @@ const ProductHeader = ({product}) => {
           <Text style={styles.ratingProductComment}>
             {ratingProductComment(product)}
           </Text>
+          {/* <View style={styles.ratingProduct}>{ratingProduct(product)}</View> */}
+          {/* {product.nutrition_grade_fr === 'a'? greencircle && product.nutrition_grade_fr === 'b'? orangecircle && product.nutrition_grade_fr === 'c'? redcircle && product.nutrition_grade_fr ==='d'? browncircle && product.nutrition_grade_fr === 'e' : greycircle } */}
         </View>
       </View>
     </View>

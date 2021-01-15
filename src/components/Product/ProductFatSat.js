@@ -45,6 +45,12 @@ export default ProductFatSat = ({product}) => {
 
   return (
     <View style={styles.containersatfat}>
+      <View style={styles.imagecatfatsat}>
+        <Image
+          style={{height: 30, width: 40}}
+          source={require('../../assets/Icon/iconcatogorie/fatsaticon.png')}
+        />
+      </View>
       <View style={styles.satfatcomment}>
         <Text style={styles.titlefatsat}>Graisses Saturées</Text>
         <Text style={styles.function}>{satfatComment(product)}</Text>
@@ -61,7 +67,6 @@ export default ProductFatSat = ({product}) => {
 const styles = StyleSheet.create({
   containersatfat: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 15,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
@@ -76,5 +81,10 @@ const styles = StyleSheet.create({
   },
   fatsatgrammeandvalue: {
     flexDirection: 'row',
+    width: 123,
+    justifyContent: 'flex-end',
+  },
+  satfatcomment: {
+    marginLeft: 10,
   },
 });

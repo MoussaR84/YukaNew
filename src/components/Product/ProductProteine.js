@@ -55,12 +55,19 @@ export default ProductProteine = ({product}) => {
   };
   return (
     <View style={styles.containerproteine}>
+      <View style={styles.imagecatbio}>
+        <View style={styles.imagecatproteine}>
+          <Image
+            style={{height: 30, width: 40}}
+            source={require('../../assets/Icon/iconcatogorie/proteinicon.png')}
+          />
+        </View>
+      </View>
       <View style={styles.commentproteine}>
         <Text style={styles.titleproteines}>Protéines</Text>
         <Text style={styles.function}>{textProteine(product)}</Text>
       </View>
       <View style={styles.proteinevaluecircle}>
-        <myIcon />
         <View style={styles.proteinesgrammeandvalue}>
           <Text>{product.nutriscore_data.proteins_value}</Text>
           <Text>{product.nutriments.proteins_unit}</Text>
@@ -72,7 +79,6 @@ export default ProductProteine = ({product}) => {
 const styles = StyleSheet.create({
   containerproteine: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 15,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
@@ -87,5 +93,10 @@ const styles = StyleSheet.create({
   },
   proteinesgrammeandvalue: {
     flexDirection: 'row',
+    width: 123,
+    justifyContent: 'flex-end',
+  },
+  commentproteine: {
+    marginLeft: 10,
   },
 });

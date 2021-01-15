@@ -29,6 +29,7 @@ import {
   ratingProduct,
   ratingProductComment,
 } from './productParser';
+import Imagebiocontainer from '../../assets/Icon/iconcatogorie/bioicon.png';
 
 export default ProductBio = ({product}) => {
   const isBioorNot = (product) => {
@@ -50,10 +51,18 @@ export default ProductBio = ({product}) => {
   return (
     <View style={styles.biocontener}>
       <View style={styles.bio}>
-        <View style={styles.biocomment}>
-          <Text style={styles.textbio}>Bio</Text>
-          <Text style={styles.function}>{isBioorNot(product)}</Text>
-          <Image style={style.isBioorNotColor} color={isBioorNotColor}/>
+        <View style={styles.imagecatbio}>
+          <Image
+            style={{height: 30, width: 40}}
+            source={require('../../assets/Icon/iconcatogorie/bioicon.png')}
+          />
+        </View>
+        <View style={styles.biocontainerinfo}>
+          <View style={styles.biocomment}>
+            <Text style={styles.textbio}>Bio</Text>
+            <Text style={styles.function}>{isBioorNot(product)}</Text>
+            <Image style={styles.isBioorNotColor} color={isBioorNotColor} />
+          </View>
         </View>
       </View>
     </View>
@@ -64,8 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
   },
   textbio: {
     fontWeight: '600',
@@ -74,7 +81,11 @@ const styles = StyleSheet.create({
   function: {
     color: 'grey',
   },
-  bio:{
-    flexDirection:"row"
-  }
+  bio: {
+    flexDirection: 'row',
+    marginRight: 10,
+  },
+  biocomment: {
+    marginLeft: 10,
+  },
 });

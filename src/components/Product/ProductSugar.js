@@ -41,9 +41,15 @@ export default ProductSugar = ({product}) => {
     }
   };
   return (
-    <View style={styles.sugarcontainer}>
+    <View style={styles.containersugar}>
+      <View style={styles.imagecatcalorie}>
+        <Image
+          style={{height: 30, width: 40}}
+          source={require('../../assets/Icon/iconcatogorie/sugaricon.png')}
+        />
+      </View>
       <View style={styles.commentsugar}>
-        <Text style={styles.sugartitle}>Sucre</Text>
+        <Text style={styles.titlesugar}>Sucre</Text>
         <Text style={styles.function}>{sugarComment(product)}</Text>
       </View>
       <View style={styles.sugarvalueandcircle}>
@@ -56,21 +62,29 @@ export default ProductSugar = ({product}) => {
   );
 };
 const styles = StyleSheet.create({
-  sugarcontainer: {
+  containersugar: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 15,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
   },
-  sugartitle: {
+  titlesugar: {
     fontWeight: '600',
     fontSize: 15,
+    width: 50,
+    backgroundColor: 'pink',
   },
+
   function: {
     color: 'grey',
   },
   sugargramandvalue: {
     flexDirection: 'row',
+    justifyContent: 'flex-end',
+    backgroundColor: 'green',
+    marginLeft: -70,
+  },
+  commentsugar: {
+    marginLeft: 10,
   },
 });
