@@ -56,8 +56,12 @@ export default ProductFatSat = ({product}) => {
           <View style={styles.unitgramfatsat}>
             <Text style={styles.titlefatsat}>Graisses Saturées</Text>
             <View style={styles.fatsatgrammeandvalue}>
-              <Text>{product.nutriments['saturated-fat']}</Text>
-              <Text>{product.nutriments['saturated-fat_unit']}</Text>
+              <Text style={styles.textfatsat}>
+                {product.nutriments['saturated-fat']}
+              </Text>
+              <Text style={styles.textfatsat}>
+                {product.nutriments['saturated-fat_unit']}
+              </Text>
             </View>
           </View>
 
@@ -85,16 +89,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 123,
     justifyContent: 'flex-end',
-    paddingRight:16,
-
+    paddingRight: 15,
   },
 
   fatsat: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    paddingLeft:10,
+    paddingBottom: 10,
+    marginLeft: 10,
   },
-  unitgramfatsat:{
-    flexDirection:"row", 
+  unitgramfatsat: {
+    flexDirection: 'row',
+  },
+  textfatsat: {
+    color: 'grey',
   },
 });

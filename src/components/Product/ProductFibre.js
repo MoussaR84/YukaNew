@@ -28,8 +28,10 @@ export default function ProductFibre({product}) {
             <View style={styles.fibregramandvalue}>
               <Text style={styles.titlefibre}>Fibre</Text>
               <View style={styles.unitandgramfiber}>
-                <Text>{product.nutriments.fiber}</Text>
-                <Text>{product.nutriments.fiber_unit}</Text>
+                <Text style={styles.textfibre}>{product.nutriments.fiber}</Text>
+                <Text style={styles.textfibre}>
+                  {product.nutriments.fiber_unit}
+                </Text>
               </View>
             </View>
           </View>
@@ -74,5 +76,8 @@ const styles = StyleSheet.create({
   },
   commentfibre: {
     flexDirection: 'row',
+  },
+  textfibre: {
+    color: 'grey',
   },
 });

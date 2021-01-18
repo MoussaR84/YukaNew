@@ -57,8 +57,12 @@ export default ProductCalorie = ({product}) => {
           <View style={styles.caloriegramandvalue}>
             <Text style={styles.titlecalorie}>Calories</Text>
             <View style={styles.unitgramcalorie}>
-              <Text>{product.nutriments['energy-kcal_value']}</Text>
-              <Text>{product.nutriments['energy-kcal_unit']}</Text>
+              <Text style={styles.textcalorie}>
+                {product.nutriments['energy-kcal_value']}
+              </Text>
+              <Text style={styles.textcalorie}>
+                {product.nutriments['energy-kcal_unit']}
+              </Text>
             </View>
           </View>
         </View>
@@ -124,5 +128,8 @@ const styles = StyleSheet.create({
   unitgramcalorie: {
     flexDirection: 'row',
     marginRight: 12,
+  },
+  textcalorie: {
+    color: 'grey',
   },
 });

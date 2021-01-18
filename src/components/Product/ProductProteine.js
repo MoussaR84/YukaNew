@@ -66,8 +66,12 @@ export default ProductProteine = ({product}) => {
           <View style={styles.proteinecomment}>
             <Text style={styles.titleproteines}>Protéines</Text>
             <View style={styles.proteinesgrammeandvalue}>
-              <Text>{product.nutriscore_data.proteins_value}</Text>
-              <Text>{product.nutriments.proteins_unit}</Text>
+              <Text style={styles.textprotein}>
+                {product.nutriscore_data.proteins_value}
+              </Text>
+              <Text style={styles.textprotein}>
+                {product.nutriments.proteins_unit}
+              </Text>
             </View>
           </View>
           <Text style={styles.function}>{textProteine(product)}</Text>
@@ -108,5 +112,8 @@ const styles = StyleSheet.create({
   },
   proteinecomment: {
     flexDirection: 'row',
+  },
+  textprotein: {
+    color: 'grey',
   },
 });

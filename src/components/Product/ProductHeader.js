@@ -88,9 +88,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 40,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 2,
-    fontFamily: 'Roboto',
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: 10,
     height: 180,
   },
   imagecontainer: {
