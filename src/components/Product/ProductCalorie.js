@@ -48,12 +48,20 @@ export default ProductCalorie = ({product}) => {
     <View style={styles.caloriecontainer}>
       <View style={styles.imagecatcalorie}>
         <Image
-          style={{height: 30, width: 40}}
+          style={{height: 40, width: 40}}
           source={require('../../assets/Icon/iconcatogorie/caloricon.png')}
         />
       </View>
       <View style={styles.commentcalories}>
-        <Text style={styles.titlecalorie}>Calories</Text>
+        <View style={styles.calorievaluecircle}>
+          <View style={styles.caloriegramandvalue}>
+            <Text style={styles.titlecalorie}>Calories</Text>
+            <View style={styles.unitgramcalorie}>
+              <Text>{product.nutriments['energy-kcal_value']}</Text>
+              <Text>{product.nutriments['energy-kcal_unit']}</Text>
+            </View>
+          </View>
+        </View>
         <Text style={styles.function}>{calorieComment(product)}</Text>
         <View style={styles.diagramcalorie}>
           <View
@@ -82,12 +90,6 @@ export default ProductCalorie = ({product}) => {
             }}></View>
         </View>
       </View>
-      <View style={styles.calorievaluecircle}>
-        <View style={styles.caloriegramandvalue}>
-          <Text>{product.nutriments['energy-kcal_value']}</Text>
-          <Text>{product.nutriments['energy-kcal_unit']}</Text>
-        </View>
-      </View>
     </View>
   );
 };
@@ -95,8 +97,6 @@ const styles = StyleSheet.create({
   caloriecontainer: {
     flexDirection: 'row',
     padding: 15,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
   },
   titlecalorie: {
     fontWeight: '600',
@@ -108,14 +108,21 @@ const styles = StyleSheet.create({
   },
   caloriegramandvalue: {
     flexDirection: 'row',
-    width: 80,
-    justifyContent: 'flex-end',
+    width: 250,
+    justifyContent: 'space-between',
   },
   commentcalories: {
     marginLeft: 10,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   diagramcalorie: {
     flexDirection: 'row',
     marginTop: 10,
+    paddingBottom: 10,
+  },
+  unitgramcalorie: {
+    flexDirection: 'row',
+    marginRight: 12,
   },
 });

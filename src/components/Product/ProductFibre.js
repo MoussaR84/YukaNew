@@ -16,21 +16,24 @@ export default function ProductFibre({product}) {
 
   return (
     <View style={styles.containerfibre}>
-      <View style={styles.imagefiber}>
-        <Image
-          style={{height: 30, width: 40}}
-          source={require('../../assets/Icon/iconcatogorie/fiber.png')}
-        />
-      </View>
-
-      <View style={styles.commentfibre}>
-        <Text style={styles.titlefibre}>Fibre</Text>
-        <Text style={styles.function}>{fiberComment(product)}</Text>
-      </View>
-      <View style={styles.fibrevaluecircle}>
-        <View style={styles.fibregramandvalue}>
-          <Text>{product.nutriments.fiber}</Text>
-          <Text>{product.nutriments.fiber_unit}</Text>
+      <View style={styles.fibres}>
+        <View style={styles.imagefiber}>
+          <Image
+            style={{height: 40, width: 40}}
+            source={require('../../assets/Icon/iconcatogorie/fiber.png')}
+          />
+        </View>
+        <View style={styles.fibrecontenerrinfo}>
+          <View style={styles.fibercomment}>
+            <View style={styles.fibregramandvalue}>
+              <Text style={styles.titlefibre}>Fibre</Text>
+              <View style={styles.unitandgramfiber}>
+                <Text>{product.nutriments.fiber}</Text>
+                <Text>{product.nutriments.fiber_unit}</Text>
+              </View>
+            </View>
+          </View>
+          <Text style={styles.function}>{fiberComment(product)}</Text>
         </View>
       </View>
     </View>
@@ -40,24 +43,36 @@ export default function ProductFibre({product}) {
 const styles = StyleSheet.create({
   containerfibre: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 15,
+  },
+  fibrecontenerrinfo: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
+    width: 300,
+    paddingBottom: 10,
+    marginLeft: 10,
   },
   titlefibre: {
     fontWeight: '600',
     fontSize: 15,
   },
-
   function: {
     color: 'grey',
   },
+  fibres: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
   fibregramandvalue: {
     flexDirection: 'row',
-    width: 143,
-    justifyContent: 'flex-end',
+    width: 237,
+    justifyContent: 'space-between',
+  },
+  unitandgramfiber: {
+    flexDirection: 'row',
   },
   commentfibre: {
-    marginLeft: 10,
+    flexDirection: 'row',
   },
 });

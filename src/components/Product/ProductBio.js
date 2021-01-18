@@ -53,7 +53,7 @@ export default ProductBio = ({product}) => {
       <View style={styles.bio}>
         <View style={styles.imagecatbio}>
           <Image
-            style={{height: 30, width: 40}}
+            style={{height: 40, width: 45}}
             source={require('../../assets/Icon/iconcatogorie/bioicon.png')}
           />
         </View>
@@ -74,6 +74,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 15,
   },
+
+  biocontainerinfo: {
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    width: 300,
+    paddingBottom: 10,
+    marginLeft: 10,
+  },
   textbio: {
     fontWeight: '600',
     fontSize: 15,
@@ -83,9 +91,6 @@ const styles = StyleSheet.create({
   },
   bio: {
     flexDirection: 'row',
-    marginRight: 10,
-  },
-  biocomment: {
-    marginLeft: 10,
+    justifyContent: 'flex-start',
   },
 });

@@ -55,22 +55,22 @@ export default ProductProteine = ({product}) => {
   };
   return (
     <View style={styles.containerproteine}>
-      <View style={styles.imagecatbio}>
+      <View style={styles.proteines}>
         <View style={styles.imagecatproteine}>
           <Image
-            style={{height: 30, width: 40}}
+            style={{height: 40, width: 40}}
             source={require('../../assets/Icon/iconcatogorie/proteinicon.png')}
           />
         </View>
-      </View>
-      <View style={styles.commentproteine}>
-        <Text style={styles.titleproteines}>Protéines</Text>
-        <Text style={styles.function}>{textProteine(product)}</Text>
-      </View>
-      <View style={styles.proteinevaluecircle}>
-        <View style={styles.proteinesgrammeandvalue}>
-          <Text>{product.nutriscore_data.proteins_value}</Text>
-          <Text>{product.nutriments.proteins_unit}</Text>
+        <View style={styles.proteinecontainerinfo}>
+          <View style={styles.proteinecomment}>
+            <Text style={styles.titleproteines}>Protéines</Text>
+            <View style={styles.proteinesgrammeandvalue}>
+              <Text>{product.nutriscore_data.proteins_value}</Text>
+              <Text>{product.nutriments.proteins_unit}</Text>
+            </View>
+          </View>
+          <Text style={styles.function}>{textProteine(product)}</Text>
         </View>
       </View>
     </View>
@@ -79,24 +79,34 @@ export default ProductProteine = ({product}) => {
 const styles = StyleSheet.create({
   containerproteine: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 15,
+  },
+
+  proteinecontainerinfo: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
+    width: 300,
+    paddingBottom: 10,
+    marginLeft: 10,
   },
   titleproteines: {
     fontWeight: '600',
     fontSize: 15,
   },
-
   function: {
     color: 'grey',
   },
+  proteines: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
   proteinesgrammeandvalue: {
     flexDirection: 'row',
-    width: 123,
+    width: 170,
     justifyContent: 'flex-end',
   },
-  commentproteine: {
-    marginLeft: 10,
+  proteinecomment: {
+    flexDirection: 'row',
   },
 });

@@ -47,19 +47,23 @@ export default ProductFatSat = ({product}) => {
     <View style={styles.containersatfat}>
       <View style={styles.imagecatfatsat}>
         <Image
-          style={{height: 30, width: 40}}
+          style={{height: 40, width: 40}}
           source={require('../../assets/Icon/iconcatogorie/fatsaticon.png')}
         />
       </View>
-      <View style={styles.satfatcomment}>
-        <Text style={styles.titlefatsat}>Graisses Saturées</Text>
-        <Text style={styles.function}>{satfatComment(product)}</Text>
-      </View>
-      <View style={styles.fatsatvalueandcircle}>
-        <View style={styles.fatsatgrammeandvalue}>
-          <Text>{product.nutriments['saturated-fat']}</Text>
-          <Text>{product.nutriments['saturated-fat_unit']}</Text>
+      <View style={styles.fatsat}>
+        <View style={styles.satfatcomment}>
+          <View style={styles.unitgramfatsat}>
+            <Text style={styles.titlefatsat}>Graisses Saturées</Text>
+            <View style={styles.fatsatgrammeandvalue}>
+              <Text>{product.nutriments['saturated-fat']}</Text>
+              <Text>{product.nutriments['saturated-fat_unit']}</Text>
+            </View>
+          </View>
+
+          <Text style={styles.function}>{satfatComment(product)}</Text>
         </View>
+        <View style={styles.fatsatvalueandcircle}></View>
       </View>
     </View>
   );
@@ -68,8 +72,6 @@ const styles = StyleSheet.create({
   containersatfat: {
     flexDirection: 'row',
     padding: 15,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
   },
   titlefatsat: {
     fontWeight: '600',
@@ -83,8 +85,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 123,
     justifyContent: 'flex-end',
+    paddingRight:16,
+
   },
-  satfatcomment: {
-    marginLeft: 10,
+
+  fatsat: {
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    paddingLeft:10,
+  },
+  unitgramfatsat:{
+    flexDirection:"row", 
   },
 });
