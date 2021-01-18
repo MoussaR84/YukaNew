@@ -57,20 +57,21 @@ const TabNavigator = () => {
           },
         }}
       />
-      <Tab.Screen name="FavoritesScreen" 
-      component={FavoritesScreen}
-      options={{
-        tabBarLabel: 'Scan',
-        tabBarIcon: () => {
-        return (
-          <Image
-            style={{width: 20, height: 20}}
-            source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
-          />
-        );
-      },
-    }}
-    />
+      <Tab.Screen
+        name="FavoritesScreen"
+        component={FavoritesScreen}
+        options={{
+          tabBarLabel: 'Scan',
+          tabBarIcon: () => {
+            return (
+              <Image
+                style={{width: 20, height: 20}}
+                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
+              />
+            );
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 };
