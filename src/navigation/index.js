@@ -4,6 +4,18 @@ import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
 import {MaterialCommunityIcons} from 'react-native-vector-icons';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ProgressBarAndroidBase,
+  Dimensions,
+  ScrollView,
+  SafeAreaView,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -19,27 +31,46 @@ const TabNavigator = () => {
         component={HistoryScreen}
         options={{
           tabBarLabel: 'Home',
-          // tabBarIcon: ({color, size}) => (
-          //   <FontAwesome5 name="carrot" size={24} color={color} />
-          // ),
+          tabBarIcon: () => {
+            return (
+              <Image
+                style={{width: 20, height: 20}}
+                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
+              />
+            );
+          },
         }}
       />
 
       <Tab.Screen
         name="ScanScreen"
         component={ScanScreen}
-        // options={{
-        //   tabBarLabel: 'Scan',
-        //   tabBarIcon: ({color, size}) => (
-        //     <MaterialCommunityIcons
-        //       name="barcode-scan"
-        //       size={24}
-        //       color={color}
-        //     />
-        //   ),
-        // }}
+        options={{
+          tabBarLabel: 'Scan',
+          tabBarIcon: () => {
+            return (
+              <Image
+                style={{width: 20, height: 20}}
+                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
+              />
+            );
+          },
+        }}
       />
-      <Tab.Screen name="FavoritesScreen" component={FavoritesScreen} />
+      <Tab.Screen name="FavoritesScreen" 
+      component={FavoritesScreen}
+      options={{
+        tabBarLabel: 'Scan',
+        tabBarIcon: () => {
+        return (
+          <Image
+            style={{width: 20, height: 20}}
+            source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
+          />
+        );
+      },
+    }}
+    />
     </Tab.Navigator>
   );
 };
