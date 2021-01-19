@@ -12,23 +12,16 @@ import {
   Modal,
 } from 'react-native';
 import {TouchableHighlight} from 'react-native-gesture-handler';
-const HistoryList = (props) => {
-  //ajouter les props pour HistoryItem;
-  // return (<HistoryItem/>);
-  console.log('bdxzabdgdzaaddagdggd', props);
+const HistoryList = (item) => {
+  console.log(item, 'rtrtrtrtrtrtrt');
+
   return (
     <View>
-      {productHistory.map((item) => {
-        return <HistoryItem />;
-      })}
+      <Text>{item.product_name}</Text>
+      <Text>{item.brands}</Text>
+      <Text>salut</Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  containerScanScreen: {
-    flex: 1,
-  },
-});
 
 export default HistoryList;

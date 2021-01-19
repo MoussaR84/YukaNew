@@ -10,24 +10,21 @@ import {
   SafeAreaView,
   Modal,
 } from 'react-native';
-const HistoryItem = (props) => {
+const HistoryItem = (item) => {
+  console.log('bdxzabdgdzaaddagdgtftftyfftftfgd', productHistory);
+
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.contenaireProduct}>
-        <View style={styles.card}>
-          <View style={styles.product}>
-            <Image
-              style={{height: 100, width: 80, borderRadius: 10}}
-              source={{uri: item.image_url}}
-            />
-          </View>
-          <View style={styles.presentation}>
-            <Text style={styles.nameProduct}>{item.product_name}</Text>
-            <Text style={styles.brand}>{item.brands}</Text>
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
+    // <View>
+    //   <Text>produititem</Text>
+    // </View>
+    <>
+      <Image
+        style={{height: 100, width: 80, borderRadius: 10}}
+        source={{uri: item.image_url}}
+      />
+      <Text style={styles.nameProduct}>{item.product_name}</Text>
+      <Text style={styles.brand}>{item.brands}</Text>
+    </>
   );
 };
 

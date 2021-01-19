@@ -12,13 +12,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../assets/colors';
-// import { Entypo } from "@expo/vector-icons";
-// import { FontAwesome5 } from "@expo/vector-icons";
-// import { MaterialCommunityIcons } from "@expo/vector-icons";
-// import { SimpleLineIcons } from "@expo/vector-icons";
-// import { Ionicons } from "@expo/vector-icons";
-// import { FontAwesome } from "@expo/vector-icons";
-// import { AntDesign } from "@expo/vector-icons";
 import {
   sugarComment,
   sugarCircle,
@@ -46,7 +39,7 @@ import ProductFatSat from './ProductFatSat';
 import ProductSugar from './ProductSugar';
 
 export default function Product({product}) {
-  console.log('product.product_nam', product.product_name);
+  // console.log('product.product_nam', product.product_name);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.container}>

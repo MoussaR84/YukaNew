@@ -61,7 +61,7 @@ const TabNavigator = () => {
         name="FavoritesScreen"
         component={FavoritesScreen}
         options={{
-          tabBarLabel: 'Scan',
+          tabBarLabel: 'Favorite',
           tabBarIcon: () => {
             return (
               <Image

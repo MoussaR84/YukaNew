@@ -34,6 +34,7 @@ const ScanScreen = () => {
       updateProductHistoryinStorage(data.product);
       setIsProductScanned(true);
       () => sheetRef.current.snapTo(0);
+      // navigation.navigate("Product", { itemId: data })
     } catch (error) {
       console.log('error api', error);
     }
