@@ -11,17 +11,11 @@ import {
   SafeAreaView,
   Modal,
 } from 'react-native';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-const HistoryList = (item) => {
-  console.log(item, 'rtrtrtrtrtrtrt');
 
-  return (
-    <View>
-      <Text>{item.product_name}</Text>
-      <Text>{item.brands}</Text>
-      <Text>salut</Text>
-    </View>
-  );
+const HistoryList = ({history}) => {
+  return history.map((product) => {
+    console.log('product', product);
+    return <HistoryItem product={product} />;
+  });
 };
-
 export default HistoryList;

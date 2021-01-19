@@ -17,17 +17,18 @@ import ProductHeader from '../components/Product/ProductHeader';
 const ScanScreen = () => {
   const [product, setProduct] = useState({});
   const [isProductScanned, setIsProductScanned] = useState(false);
-  const [productId, setProductId] = useState(null);
+  const [idCurrentProductScanned, setIdCurrentProductScanned] = useState(null);
 
   const onBarCodeRead = async (id) => {
-    if (isProductScanned) {
+    if (id === idCurrentProductScanned) {
       return;
     }
+
     console.log('onBarCodeRead,id', id);
 
     //quand le product on va chercher les datas //
     // setScanned(true);
-
+    setIdCurrentProductScanned(id);
     try {
       const {data} = await fetchProductData(id);
       setProduct(data.product);
@@ -46,7 +47,7 @@ const ScanScreen = () => {
   const renderContent = () => {
     return <Product product={product} />;
   };
-  console.log('isProductScanned', isProductScanned);
+  // console.log('isProductScanned', isProductScanned);
 
   const renderHeader = () => {
     <ProductHeader product={product} />;

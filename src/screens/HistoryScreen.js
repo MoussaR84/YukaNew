@@ -16,52 +16,33 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
 import Yukahome from '../assets/Icon/iconcatogorie/yukahomepage.jpg';
-import {SwipeListView} from 'react-native-swipe-list-view';
 import Product from '../components/Product';
 import {
   ratingProduct,
   ratingProductComment,
 } from '../components/Product/productParser';
 
-const HistoryScreen = (product) => {
+const HistoryScreen = () => {
   const [savedHistory, setSavedHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getHistoryFromStorage = async () => {
+      let formattedHistoryfromStorage = [];
       const rawSavedHistory = await AsyncStorage.getItem('productHistory');
-      const savedHistoryinStorage = JSON.parse(rawSavedHistory);
-      setSavedHistory(savedHistoryinStorage);
-      // setIsLoading(false);
+      if (rawSavedHistory !== null) {
+        formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
+      }
+      setSavedHistory(formattedHistoryfromStorage);
+      setIsLoading(false);
     };
     getHistoryFromStorage();
   }, []);
-  console.log(savedHistory, 'savedHisttttttfffftttttory');
-
+  console.log('savedHisttttttfffftttttory', savedHistory);
   return (
     <ScrollView>
       <SafeAreaView>
-        <View style={styles.container}>
-          {savedHistory.map((item, index) => {
-            return (
-              <View style={styles.card}>
-                <Image
-                  style={{height: 100, width: 80, borderRadius: 10}}
-                  source={{uri: item.image_url}}
-                />
-                <View style={styles.nameandbrandcontainer}>
-                  <View style={styles.nameandbrand}>
-                    <Text style={styles.nameProduct}>{item.product_name}</Text>
-                    <Text style={styles.brands}>{item.brands}</Text>
-                    {/* <View style={styles.ratingproduct}>{ratingProduct(product)}</View>
-                    <View style={styles.ratingproductcomment}>
-                      {ratingProductComment(product)}
-                    </View> */}
-                  </View>
-                </View>
-              </View>
-            );
-          })}
-        </View>
+        <HistoryList history={savedHistory} />
       </SafeAreaView>
     </ScrollView>
   );
