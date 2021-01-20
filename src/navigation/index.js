@@ -5,6 +5,7 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import colors from '../assets/colors';
 
 import {
   StyleSheet,
@@ -20,8 +21,7 @@ import {
 } from 'react-native';
 
 const Tab = createBottomTabNavigator();
-
-const TabNavigator = () => {
+const TabNavigator = ({tintColor}) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -36,10 +36,7 @@ const TabNavigator = () => {
           tabBarLabel: 'Home',
           tabBarIcon: () => {
             return (
-              <Image
-                style={{width: 20, height: 20}}
-                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
-              />
+              <MaterialCommunityIcons name="carrot" size={25} color={orange} />
             );
           },
         }}
@@ -51,7 +48,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: () => {
-            return <MaterialCommunityIcons name="scan" size={20} />;
+            return <MaterialCommunityIcons name="barcode-scan" size={25} />;
           },
         }}
       />
@@ -61,7 +58,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Favorite',
           tabBarIcon: () => {
-            return <Entypo name="star" size={20} />;
+            return <Entypo name="star" size={25} />;
           },
         }}
       />

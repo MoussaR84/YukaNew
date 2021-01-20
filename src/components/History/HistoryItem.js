@@ -24,13 +24,13 @@ const HistoryItem = ({product}) => {
     if (product.nutrition_grade_fr === 'a') {
       return colors.green;
     } else if (product.nutrition_grade_fr === 'b') {
-      return colors.orange;
+      return colors.jaune;
     } else if (product.nutrition_grade_fr === 'c') {
-      return colors.red;
+      return colors.orange;
     } else if (product.nutrition_grade_fr === 'd') {
       return colors.brown;
     } else if (product.nutrition_grade_fr === 'e') {
-      return colors.black;
+      return colors.rouge;
     } else {
       return colors.grey;
     }

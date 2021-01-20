@@ -39,6 +39,7 @@ const HistoryScreen = () => {
     getHistoryFromStorage();
   }, []);
   console.log('savedHisttttttfffftttttory', savedHistory);
+
   return (
     <ScrollView>
       <SafeAreaView>
