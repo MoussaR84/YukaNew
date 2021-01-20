@@ -29,6 +29,9 @@ import {
   ratingProduct,
   ratingProductComment,
 } from './productParser';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ProductProteine = ({product}) => {
   const textProteine = (product) => {
@@ -57,21 +60,37 @@ export default ProductProteine = ({product}) => {
     <View style={styles.containerproteine}>
       <View style={styles.proteines}>
         <View style={styles.imagecatproteine}>
-          <Image
-            style={{height: 40, width: 40}}
-            source={require('../../assets/Icon/iconcatogorie/proteinicon.png')}
+          <MaterialCommunityIcons
+            name="fish"
+            size={40}
+            style={styles.circle}
+            color="lightgrey"
           />
         </View>
         <View style={styles.proteinecontainerinfo}>
           <View style={styles.proteinecomment}>
             <Text style={styles.titleproteines}>Protéines</Text>
             <View style={styles.proteinesgrammeandvalue}>
-              <Text style={styles.textprotein}>
-                {product.nutriscore_data.proteins_value}
-              </Text>
-              <Text style={styles.textprotein}>
-                {product.nutriments.proteins_unit}
-              </Text>
+              <View style={styles.textproteins}>
+                <Text style={styles.textprotein}>
+                  {product.nutriscore_data.proteins_value}
+                </Text>
+              </View>
+              <View style={styles.valueproteins}>
+                <Text style={styles.textproteins}>
+                  {product.nutriments.proteins_unit}
+                </Text>
+              </View>
+              <View style={styles.circleprotein}>
+                <FontAwesome
+                  name="circle"
+                  size={20}
+                  style={styles.circle}
+                  color={ratingProteineCircle(product, colors)}
+                />
+              </View>
+
+              <AntDesign name="down" size={20} color="grey" />
             </View>
           </View>
           <Text style={styles.function}>{textProteine(product)}</Text>
@@ -115,5 +134,16 @@ const styles = StyleSheet.create({
   },
   textprotein: {
     color: 'grey',
+  },
+  textproteins: {
+    marginRight: 2,
+    color: 'grey',
+  },
+  valueproteins: {
+    marginRight: 10,
+    color: 'grey',
+  },
+  circleprotein: {
+    marginRight: 10,
   },
 });

@@ -30,6 +30,10 @@ import {
   ratingProductComment,
 } from './productParser';
 import Imagebiocontainer from '../../assets/Icon/iconcatogorie/bioicon.png';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+import {max} from 'react-native-reanimated';
 
 export default ProductBio = ({product}) => {
   const isBioorNot = (product) => {
@@ -40,29 +44,33 @@ export default ProductBio = ({product}) => {
     }
   };
 
-  // const isBioorNotColor=(product)=>{
-  //   if (product.labels_tags[0] === 'en:organic') {
-  //     return {require("../../assets/Icon/greencheck.png")};
-  //   } else {
-  //     return {require("../../assets/Icon/blackcross.png")};
-  //   }
-  // };
+  const isBioorNotColor = (product) => {
+    if (product.labels_tags[0] === 'en:organic') {
+      return colors.green;
+    } else {
+      return colors.grey;
+    }
+  };
 
   return (
     <View style={styles.biocontener}>
       <View style={styles.bio}>
         <View style={styles.imagecatbio}>
-          <Image
-            style={{height: 40, width: 45}}
-            source={require('../../assets/Icon/iconcatogorie/bioicon.png')}
+          <MaterialCommunityIcons
+            name="bio"
+            size={40}
+            style={styles.circle}
+            color="lightgrey"
           />
         </View>
         <View style={styles.biocontainerinfo}>
           <View style={styles.biocomment}>
             <Text style={styles.textbio}>Bio</Text>
             <Text style={styles.function}>{isBioorNot(product)}</Text>
-            <Image style={styles.isBioorNotColor} color={isBioorNotColor} />
           </View>
+        </View>
+        <View style={styles.entypoBioorNot}>
+          <Entypo name="check" size={20} color={isBioorNotColor(product)} />
         </View>
       </View>
     </View>
@@ -78,7 +86,7 @@ const styles = StyleSheet.create({
   biocontainerinfo: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    width: 300,
+    width: 220,
     paddingBottom: 10,
     marginLeft: 10,
   },
@@ -92,5 +100,11 @@ const styles = StyleSheet.create({
   bio: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  entypoBioorNot: {
+    justifyContent: 'center',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    width: 33,
   },
 });

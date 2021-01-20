@@ -18,7 +18,6 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -51,7 +50,12 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: () => {
-            return <Icon name="scan1" size={24} color="#900" />;
+            return (
+              <Image
+                style={{width: 20, height: 20}}
+                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
+              />
+            );
           },
         }}
       />

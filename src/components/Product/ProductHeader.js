@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     width: 160,
     marginBottom: 10,
     marginTop: 10,
-    
   },
   containerRatAndCircProduct: {
     flexDirection: 'row',
