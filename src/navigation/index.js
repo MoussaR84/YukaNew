@@ -4,6 +4,8 @@ import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
 import {MaterialCommunityIcons} from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import {
   StyleSheet,
   Text,
@@ -16,6 +18,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -48,12 +51,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: () => {
-            return (
-              <Image
-                style={{width: 20, height: 20}}
-                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
-              />
-            );
+            return <Icon name="scan1" size={24} color="#900" />;
           },
         }}
       />

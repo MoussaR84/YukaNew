@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import BarcodeScanner from '../components/barcodeScanner';
 import {fetchProductData} from '../api/index';
