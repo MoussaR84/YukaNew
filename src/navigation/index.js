@@ -3,8 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
-import {MaterialCommunityIcons} from 'react-native-vector-icons';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import {
   StyleSheet,
@@ -18,6 +18,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -50,12 +51,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: () => {
-            return (
-              <Image
-                style={{width: 20, height: 20}}
-                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
-              />
-            );
+            return <MaterialCommunityIcons name="scan" size={20} />;
           },
         }}
       />
@@ -65,12 +61,7 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: 'Favorite',
           tabBarIcon: () => {
-            return (
-              <Image
-                style={{width: 20, height: 20}}
-                source={require('../assets/Icon/iconcatogorie/carotticon.jpg')}
-              />
-            );
+            return <Entypo name="star" size={20} />;
           },
         }}
       />

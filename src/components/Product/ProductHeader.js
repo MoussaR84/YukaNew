@@ -1,12 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import colors from '../../assets/colors';
-import greencircle from '../../assets/Icon/circle/greencircle.png';
-import redcircle from '../../assets/Icon/circle/redcircle.png';
-import greycircle from '../../assets/Icon/circle/greycircle.png';
-import orangecircle from '../../assets/Icon/circle/orangecircle.png';
-import blackcircle from '../../assets/Icon/circle/blackcircle.png';
-import browncircle from '../../assets/Icon/circle/browncircle.png';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ProductHeader = ({product}) => {
@@ -137,6 +131,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 20,
     paddingRight: 5,
+  },
+  ratingProductComment: {
+    color: 'grey',
   },
 });
 

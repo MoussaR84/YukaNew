@@ -3,33 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
   ScrollView,
   SafeAreaView,
   Button,
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
-import Imagebiocontainer from '../../assets/Icon/iconcatogorie/bioicon.png';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
