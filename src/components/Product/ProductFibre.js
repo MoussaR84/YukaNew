@@ -1,5 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import colors from '../../assets/colors';
 
 export default function ProductFibre({product}) {
   const fiberComment = (product) => {
@@ -13,14 +17,27 @@ export default function ProductFibre({product}) {
       return 'Fibres non présentes';
     }
   };
+  const ratingFibreCircle = (product) => {
+    if (product.fiber_value >= 1) {
+      return colors.green;
+    } else if (product.fiber_value >= 0.5) {
+      return colors.orange;
+    } else if (product.proteins_value <= 0.5) {
+      return colors.red;
+    } else {
+      return colors.grey;
+    }
+  };
 
   return (
     <View style={styles.containerfibre}>
       <View style={styles.fibres}>
         <View style={styles.imagefiber}>
-          <Image
-            style={{height: 40, width: 40}}
-            source={require('../../assets/Icon/iconcatogorie/fiber.png')}
+          <MaterialCommunityIcons
+            name="corn"
+            size={40}
+            style={styles.circle}
+            color="lightgrey"
           />
         </View>
         <View style={styles.fibrecontenerrinfo}>
@@ -28,14 +45,30 @@ export default function ProductFibre({product}) {
             <View style={styles.fibregramandvalue}>
               <Text style={styles.titlefibre}>Fibre</Text>
               <View style={styles.unitandgramfiber}>
-                <Text style={styles.textfibre}>{product.nutriments.fiber}</Text>
-                <Text style={styles.textfibre}>
-                  {product.nutriments.fiber_unit}
-                </Text>
+                <View style={styles.unitandvaluefiber}>
+                  <Text style={styles.textfibre}>
+                    {product.nutriments.fiber}
+                  </Text>
+                  <Text style={styles.textfibre}>
+                    {product.nutriments.fiber_unit}
+                  </Text>
+                </View>
+
+                <View style={styles.circlefiber}>
+                  <FontAwesome
+                    name="circle"
+                    size={20}
+                    style={styles.circle}
+                    color={ratingFibreCircle(product)}
+                  />
+                </View>
               </View>
             </View>
           </View>
           <Text style={styles.function}>{fiberComment(product)}</Text>
+        </View>
+        <View style={styles.antdesignicon}>
+          <AntDesign name="down" size={20} color="grey" />
         </View>
       </View>
     </View>
@@ -51,7 +84,7 @@ const styles = StyleSheet.create({
   fibrecontenerrinfo: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    width: 300,
+    width: 220,
     paddingBottom: 10,
     marginLeft: 10,
   },
@@ -74,10 +107,22 @@ const styles = StyleSheet.create({
   unitandgramfiber: {
     flexDirection: 'row',
   },
+  unitandvaluefiber: {
+    flexDirection: 'row',
+    marginRight: 15,
+  },
   commentfibre: {
     flexDirection: 'row',
   },
   textfibre: {
     color: 'grey',
+  },
+  circlefiber: {
+    marginRight: 28,
+  },
+  antdesignicon: {
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    width: 33,
   },
 });

@@ -33,8 +33,6 @@ import Imagebiocontainer from '../../assets/Icon/iconcatogorie/bioicon.png';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import {max} from 'react-native-reanimated';
-
 export default ProductBio = ({product}) => {
   const isBioorNot = (product) => {
     if (product.labels_tags[0] === 'en:organic') {
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
   biocontainerinfo: {
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    width: 220,
+    width: 188,
     paddingBottom: 10,
     marginLeft: 10,
   },
@@ -105,6 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    width: 33,
+    width: 66,
+    marginRight: 10,
   },
 });

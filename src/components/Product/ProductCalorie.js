@@ -29,6 +29,9 @@ import {
   ratingProduct,
   ratingProductComment,
 } from './productParser';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ProductCalorie = ({product}) => {
   const calorieComment = (product) => {
@@ -44,25 +47,53 @@ export default ProductCalorie = ({product}) => {
       return 'Produit non enrregistré';
     }
   };
+  const caloriecirclecolor = (product) => {
+    if (product.nutriments['energy-kcal_value'] <= 800) {
+      return colors.red;
+    } else if (product.nutriments['energy-kcal_value'] <= 560) {
+      return colors.orange;
+    } else if (product.nutriments['energy-kcal_value'] <= 360) {
+      return colors.greenLight;
+    } else if (product.nutriments['energy-kcal_value'] <= 160) {
+      return colors.green;
+    } else {
+      return 'Produit non enrregistré', colors.grey;
+    }
+  };
+
   return (
     <View style={styles.caloriecontainer}>
       <View style={styles.imagecatcalorie}>
-        <Image
-          style={{height: 40, width: 40}}
-          source={require('../../assets/Icon/iconcatogorie/caloricon.png')}
+        <MaterialCommunityIcons
+          name="fire"
+          size={40}
+          style={styles.circle}
+          color="lightgrey"
         />
       </View>
       <View style={styles.commentcalories}>
         <View style={styles.calorievaluecircle}>
           <View style={styles.caloriegramandvalue}>
             <Text style={styles.titlecalorie}>Calories</Text>
-            <View style={styles.unitgramcalorie}>
-              <Text style={styles.textcalorie}>
-                {product.nutriments['energy-kcal_value']}
-              </Text>
-              <Text style={styles.textcalorie}>
-                {product.nutriments['energy-kcal_unit']}
-              </Text>
+            <View style={styles.unitgramcaloriecontainaer}>
+              <View View style={styles.unitgramcalorie}>
+                <Text style={styles.textcalorie}>
+                  {product.nutriments['energy-kcal_value']}
+                </Text>
+                <Text style={styles.textcalorie}>
+                  {product.nutriments['energy-kcal_unit']}
+                </Text>
+              </View>
+
+              <View style={styles.circlecalorie}>
+                <FontAwesome
+                  name="circle"
+                  size={20}
+                  style={styles.circle}
+                  color={caloriecirclecolor(product, colors)}
+                />
+              </View>
+              <AntDesign name="down" size={20} color="grey" />
             </View>
           </View>
         </View>
@@ -125,11 +156,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingBottom: 10,
   },
-  unitgramcalorie: {
+  unitgramcaloriecontainaer: {
     flexDirection: 'row',
     marginRight: 12,
   },
   textcalorie: {
     color: 'grey',
+  },
+  unitgramcalorie: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginRight: 15,
+  },
+  circlecalorie: {
+    marginRight: 10,
   },
 });
