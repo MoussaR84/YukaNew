@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -15,10 +22,13 @@ const HistoryItem = ({product}) => {
       return 'Mauvais';
     } else if (product.nutrition_grade_fr === 'e') {
       return 'Médiocre';
+    } else if (product.nutrition_grade_fr === undefined) {
+      return 'Non noté';
     } else {
       return 'Non noté';
     }
   };
+  console.log(product.nutrition_grade_fr, 'product.nutrition_grade_fr');
 
   const ratingProduct = (product, colors) => {
     if (product.nutrition_grade_fr === 'a') {
@@ -36,33 +46,35 @@ const HistoryItem = ({product}) => {
     }
   };
   return (
-    <TouchableOpacity style={styles.card}>
-      <Image
-        style={{height: 100, width: 80, borderRadius: 10}}
-        source={{uri: product.image_url}}
-      />
-      <View style={styles.nameandbrandcontainer}>
-        <View style={styles.nameandbrand}>
-          <Text style={styles.nameProduct}>{product.product_name}</Text>
-          <Text style={styles.brands}>{product.brands}</Text>
-          <View style={styles.containerRatAndCircProduct}>
-            <View style={styles.circleFont}>
-              <FontAwesome
-                name="circle"
-                size={20}
-                style={styles.circle}
-                color={ratingProduct(product, colors)}
-              />
-            </View>
-            <View style={styles.containerRatingProduct}>
-              <Text style={styles.ratingProductComment}>
-                {ratingProductComment(product)}
-              </Text>
+    <SafeAreaView>
+      <TouchableOpacity style={styles.card}>
+        <Image
+          style={{height: 100, width: 80, borderRadius: 10}}
+          source={{uri: product.image_url}}
+        />
+        <View style={styles.nameandbrandcontainer}>
+          <View style={styles.nameandbrand}>
+            <Text style={styles.nameProduct}>{product.product_name}</Text>
+            <Text style={styles.brands}>{product.brands}</Text>
+            <View style={styles.containerRatAndCircProduct}>
+              <View style={styles.circleFont}>
+                <FontAwesome
+                  name="circle"
+                  size={20}
+                  style={styles.circle}
+                  color={ratingProduct(product, colors)}
+                />
+              </View>
+              <View style={styles.containerRatingProduct}>
+                <Text style={styles.ratingProductComment}>
+                  {ratingProductComment(product)}
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 

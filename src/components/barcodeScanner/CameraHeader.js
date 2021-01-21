@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   bottomOverlay: {
     position: 'absolute',
     width: '100%',
-    flex: 20,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

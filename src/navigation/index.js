@@ -35,9 +35,7 @@ const TabNavigator = ({tintColor}) => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: () => {
-            return (
-              <MaterialCommunityIcons name="carrot" size={25} color={orange} />
-            );
+            return <MaterialCommunityIcons name="carrot" size={25} />;
           },
         }}
       />

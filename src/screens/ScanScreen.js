@@ -6,6 +6,7 @@ import {fetchProductData} from '../api/index';
 import updateProductHistoryinStorage from '../asyncStorage/index';
 import Product from '../components/Product/index';
 import ProductHeader from '../components/Product/ProductHeader';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ScanScreen = () => {
   const [product, setProduct] = useState({});
@@ -63,7 +64,9 @@ const ScanScreen = () => {
           style={styles.button}
           title={'Tap to Scan Again'}
           onPress={() => setIsProductScanned(false)}>
-          <Text style={styles.text}>Scan again</Text>
+          <Text>
+            <MaterialCommunityIcons name="barcode-scan" size={20} />
+          </Text>
         </TouchableOpacity>
       )}
     </SafeAreaView>
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    width: 150,
+    width: 50,
     backgroundColor: 'lightgreen',
     justifyContent: 'center',
     alignItems: 'center',

@@ -16,6 +16,8 @@ export default ProductBio = ({product}) => {
   const isBioorNot = (product) => {
     if (product.labels_tags[0] === 'en:organic') {
       return 'Produit Biologique';
+    } else if (product.labels_tags[0] === undefined) {
+      return 'Non noté';
     } else {
       return 'Produit non Biologique';
     }

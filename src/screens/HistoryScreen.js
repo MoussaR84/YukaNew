@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
-import Yukahome from '../assets/Icon/iconcatogorie/yukahomepage.jpg';
 import Product from '../components/Product';
 import {
   ratingProduct,

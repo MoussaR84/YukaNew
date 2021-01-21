@@ -3,32 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
 } from 'react-native';
 import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
 
 export default ProductQuality = ({product}) => {
   return (
@@ -45,10 +21,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    fontFamily: 'Roboto',
-  },
+    },
   qualite: {
-    fontWeight: 'bold',
+    fontWeight: "600",
     fontSize: 15,
+
   },
 });
