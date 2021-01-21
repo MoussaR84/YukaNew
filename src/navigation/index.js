@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
@@ -6,19 +7,10 @@ import ScanScreen from '../screens/ScanScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../assets/colors';
-
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+// import active_history from '../assets/TabBar/active_history.png';
+// import active_yuka from '../assets/TabBar/active_yuka.png';
+// import inactive_history from '../assets/TabBar/inactive_history.png';
+// import inactive_yuka from '../assets/TabBar/inactive_yuka.png';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
@@ -33,9 +25,18 @@ const TabNavigator = ({tintColor}) => {
         name="HistoryScreen"
         component={HistoryScreen}
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: () => {
-            return <MaterialCommunityIcons name="carrot" size={25} />;
+          tabBarIcon: ({focused}) => {
+            return focused ? (
+              <Image
+                source={require('../assets/TabBar/active_history.png')}
+                style={{width: 25, height: 25}}
+              />
+            ) : (
+              <Image
+                source={require('../assets/TabBar/inactive_history.png')}
+                style={{width: 30, height: 30}}
+              />
+            );
           },
         }}
       />
@@ -45,8 +46,20 @@ const TabNavigator = ({tintColor}) => {
         component={ScanScreen}
         options={{
           tabBarLabel: 'Scan',
-          tabBarIcon: () => {
-            return <MaterialCommunityIcons name="barcode-scan" size={25} />;
+          tabBarIcon: ({focused}) => {
+            return focused ? (
+              <MaterialCommunityIcons
+                name="barcode-scan"
+                size={30}
+                color="white"
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name="barcode-scan"
+                size={25}
+                color="white"
+              />
+            );
           },
         }}
       />
@@ -55,8 +68,12 @@ const TabNavigator = ({tintColor}) => {
         component={FavoritesScreen}
         options={{
           tabBarLabel: 'Favorite',
-          tabBarIcon: () => {
-            return <Entypo name="star" size={25} />;
+          tabBarIcon: ({focused}) => {
+            return focused ? (
+              <Entypo name="star" size={30} color="white" />
+            ) : (
+              <Entypo name="star" size={25} color="white" />
+            );
           },
         }}
       />

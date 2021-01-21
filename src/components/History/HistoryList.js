@@ -14,7 +14,6 @@ import {
 
 const HistoryList = ({history}) => {
   return history.map((product) => {
-    console.log('product', product);
     return <HistoryItem product={product} />;
   });
 };

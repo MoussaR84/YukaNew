@@ -1,6 +1,6 @@
 import colors from '../../assets/colors';
 
-const isBioorNot = (product) => {
+export const isBioorNot = (product) => {
   if (product.labels_tags[0] === 'en:organic') {
     return 'Produit Biologique';
   } else {
@@ -8,7 +8,7 @@ const isBioorNot = (product) => {
   }
 };
 
-const isBioorNotColor = (product) => {
+export const isBioorNotColor = (product) => {
   if (product.labels_tags[0] === 'en:organic') {
     return colors.green;
   } else {
@@ -16,7 +16,7 @@ const isBioorNotColor = (product) => {
   }
 };
 
-const textProteine = (product) => {
+export const textProteine = (product) => {
   if (product.nutriscore_data.proteins_value >= 10) {
     return 'Excellente quantité';
   } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -28,7 +28,7 @@ const textProteine = (product) => {
   }
 };
 
-const ratingProteineCircle = (product) => {
+export const ratingProteineCircle = (product) => {
   if (product.nutriscore_data.proteins_value >= 10) {
     return colors.green;
   } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -40,7 +40,7 @@ const ratingProteineCircle = (product) => {
   }
 };
 
-const ratingFibreCircle = (product) => {
+export const ratingFibreCircle = (product) => {
   if (product.fiber_value >= 1) {
     return colors.green;
   } else if (product.fiber_value >= 0.5) {
@@ -52,7 +52,7 @@ const ratingFibreCircle = (product) => {
   }
 };
 
-const fiberComment = (product) => {
+export const fiberComment = (product) => {
   if (product.nutriments.fiber >= 5) {
     return 'Riche en fibres';
   } else if (product.nutriments.fiber >= 3) {
@@ -64,7 +64,7 @@ const fiberComment = (product) => {
   }
 };
 
-const calorieComment = (product) => {
+export const calorieComment = (product) => {
   // O 160 360 560 800
 
   if (product.nutriments['energy-kcal_value'] <= 800) {
@@ -80,7 +80,7 @@ const calorieComment = (product) => {
   }
 };
 
-const caloriecirclecolor = (product) => {
+export const caloriecirclecolor = (product) => {
   // O 160 360 560 800
 
   if (product.nutriments['energy-kcal_value'] <= 800) {
@@ -96,7 +96,7 @@ const caloriecirclecolor = (product) => {
   }
 };
 
-const satfatCircle = (product) => {
+export const satfatCircle = (product) => {
   if (product.nutriments['saturated-fat'] >= 1) {
     return colors.green;
   } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -108,7 +108,7 @@ const satfatCircle = (product) => {
   }
 };
 
-const satfatComment = (product) => {
+export const satfatComment = (product) => {
   if (product.nutriments['saturated-fat'] >= 1) {
     return 'Peu de graisses saturées';
   } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -120,7 +120,7 @@ const satfatComment = (product) => {
   }
 };
 
-const sugarCircle = (product) => {
+export const sugarCircle = (product) => {
   if (product.nutrient_levels === 'low') {
     return colors.green;
   } else if (product.nutrient_levels === 'high') {
@@ -130,7 +130,7 @@ const sugarCircle = (product) => {
   }
 };
 
-const sugarComment = (product) => {
+export const sugarComment = (product) => {
   if (product.nutrient_levels === 'low') {
     return 'Faible quantité';
   } else if (product.nutrient_levels === 'high') {
@@ -140,39 +140,41 @@ const sugarComment = (product) => {
   }
 };
 
-const ratingProduct = (product) => {
-  if (product.nutrition_grade_fr === 'a') {
-    return colors.green;
-  } else if (product.nutrition_grade_fr === 'b') {
-    return colors.orange;
-  } else if (product.nutrition_grade_fr === 'c') {
-    return colors.red;
-  } else if (product.nutrition_grade_fr === 'd') {
-    return colors.brown;
-  } else if (product.nutrition_grade_fr === 'e') {
-    return colors.black;
-  } else {
-    return colors.grey;
+export const ratingIconColor = (nutrition_grade_fr) => {
+  switch (nutrition_grade_fr) {
+    case 'a':
+      return colors.green;
+    case 'b':
+      return colors.orange;
+    case 'c':
+      return colors.red;
+    case 'd':
+      return colors.brown;
+    case 'e':
+      return colors.black;
+    default:
+      return colors.grey;
   }
 };
 
-const ratingProductComment = (product) => {
-  if (product.nutrition_grade_fr === 'a') {
-    return 'Excellent';
-  } else if (product.nutrition_grade_fr === 'b') {
-    return 'Satisfaisant';
-  } else if (product.nutrition_grade_fr === 'c') {
-    return 'Bon';
-  } else if (product.nutrition_grade_fr === 'd') {
-    return 'Mauvais';
-  } else if (product.nutrition_grade_fr === 'e') {
-    return 'Médiocre';
-  } else {
-    return 'pas enregistré';
+export const ratingProductComment = (nutrition_grade_fr) => {
+  switch (nutrition_grade_fr) {
+    case 'a':
+      return 'Excellent';
+    case 'b':
+      return 'Satisfaisant';
+    case 'c':
+      return 'Bon';
+    case 'd':
+      return 'Mauvais';
+    case 'e':
+      return 'Médiocre';
+    default:
+      return 'Non noté';
   }
 };
 
-const ratingScoreText = (product) => {
+export const ratingScoreText = (product) => {
   if (product.nutrition_grade_fr === 'a') {
     return '100';
   } else if (product.nutrition_grade_fr === 'b') {
@@ -187,26 +189,4 @@ const ratingScoreText = (product) => {
     //   ("Données non disponible");
     //   // alert("not registred");
   }
-};
-
-// const nutriscoreproteinevalue=()=>{
-//   (product.nutriscore_data.proteins_value=== undefined ?"pas de protéines":"g")
-
-// }
-export default {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingProduct,
-  ratingProductComment,
-  ratingScoreText,
 };
