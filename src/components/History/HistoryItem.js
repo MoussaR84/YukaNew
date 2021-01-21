@@ -25,17 +25,17 @@ const HistoryItem = ({product}) => {
             <Text style={styles.productItem}>{product.brands}</Text>
           </View>
           <View style={styles.whatandwhen}>
-          <Ratings nutrition_grade_fr={product.nutrition_grade_fr} />
-          <View style={styles.horizontalLine}>
-            <FontAwesome
-              name="clock-o"
-              size={14}
-              style={styles.productIcon}
-              color={colors.greyText}
-            />
+            <Ratings nutrition_grade_fr={product.nutrition_grade_fr} />
+            <View style={styles.horizontalLine}>
+              <FontAwesome
+                name="clock-o"
+                size={14}
+                style={styles.productIcon}
+                color={colors.greyText}
+              />
 
-            <Text style={styles.productItem}>Il y a quelques jours</Text>
-          </View>
+              <Text style={styles.productItem}>Il y a quelques jours</Text>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 15,
     height: 80,
-    // backgroundColor: 'yellow',
   },
   horizontalLine: {
     flexDirection: 'row',
@@ -84,10 +83,9 @@ const styles = StyleSheet.create({
   productIcon: {
     paddingRight: 5,
   },
-  whatandwhen:{
-    backgroundColor:"green",
-    justifyContent:"space-around",
-    marginBottom:3,
+  whatandwhen: {
+    paddingBottom: 3,
+    height:40,
   },
 });
 export default HistoryItem;
