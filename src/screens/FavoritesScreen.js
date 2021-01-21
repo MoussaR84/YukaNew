@@ -18,6 +18,7 @@ import {
 const FavoritesScreen = () => {
   return (
     <View style={styles.container}>
+      {/* <Text style={{fontFamily: "Roboto-Light"}}>My awesome font</Text>; */}
       <Text style={styles.text}>FavoritesScreen</Text>
       {/* <Icon name="scan1" size={24} color="#900" />
       <Entypo name="circle" size={24} color="#900" />
@@ -33,6 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text:{
+    fontFamily: "Roboto-Light",
+  }
 });
 
 export default FavoritesScreen;

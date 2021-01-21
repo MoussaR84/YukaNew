@@ -6,7 +6,7 @@ import TabNavigator from './src/navigation/index';
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator/>
+      <TabNavigator />
     </NavigationContainer>
   );
 }
