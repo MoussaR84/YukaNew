@@ -21,11 +21,7 @@ const FavoritesScreen = () => {
       {/* <Text style={{fontFamily: "Roboto-Light"}}>My awesome font</Text>; */}
       <Text style={styles.text}>Favorites Pont Familhy Screen</Text>
       <Text style={styles.text2}>Favorites Pont Familhy Screen</Text>
-
-      {/* <Icon name="scan1" size={24} color="#900" />
-      <Entypo name="circle" size={24} color="#900" />
-      <FontAwesome5 name="circle" size={24} color="#600" />
-      <FontAwesome name="circle" size={24} color="#600" /> */}
+      <Text style={styles.text3}>Favorites Pont Famlhy Screen</Text>
     </View>
   );
 };
@@ -36,8 +32,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
+  text2: {
     fontFamily: 'Roboto-Light',
+  },
+  text3: {
+    fontFamily: 'Poppins-Regular',
   },
 });
 

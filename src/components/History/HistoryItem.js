@@ -85,7 +85,11 @@ const styles = StyleSheet.create({
   },
   whatandwhen: {
     paddingBottom: 3,
-    height:40,
+    height: 40,
   },
 });
 export default HistoryItem;
+
+// //  <Text style={styles.ratingScore}>
+// {ratingScoreText(product)}/100
+// </Text>

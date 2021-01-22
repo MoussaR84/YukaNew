@@ -21,5 +21,11 @@ const styles = StyleSheet.create({
   qualite: {
     fontWeight: '600',
     fontSize: 15,
+    fontFamily: 'Roboto-Light',
+    fontWeight: '900',
+  },
+  portion: {
+    color: '#B7B7B9',
+    fontFamily: 'Roboto-Light',
   },
 });

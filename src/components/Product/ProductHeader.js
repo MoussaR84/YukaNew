@@ -3,6 +3,8 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import Ratings from '../Product/Rating';
+
 const ProductHeader = ({product}) => {
   const ratingProductComment = (product) => {
     if (product.nutrition_grade_fr === 'a') {
@@ -53,87 +55,95 @@ const ProductHeader = ({product}) => {
   };
 
   return (
-    <View style={styles.card}>
-      <View style={styles.imagecontainer}>
-        <Image
-          style={{height: 100, width: 80, borderRadius: 10}}
-          source={{uri: product.image_url}}
-        />
-      </View>
-      <View style={styles.presentation}>
-        <Text style={styles.nameProduct}>{product.product_name}</Text>
-        <Text style={styles.brand}>{product.brands}</Text>
-        <View style={styles.containerRatAndCircProduct}>
-          <View style={styles.circleFont}>
+    <>
+      <View style={styles.card}>
+        <View style={styles.imagecontainer}>
+          <Image
+            style={{height: 100, width: 80, borderRadius: 10}}
+            source={{uri: product.image_url}}
+          />
+        </View>
+        <View style={styles.cardRightBlock}>
+          <View style={styles.titleAndBrand}>
+            <Text style={styles.productTitle}>{product.product_name}</Text>
+            <Text style={styles.brand}>{product.brands}</Text>
+          </View>
+          <View style={styles.whatandwhen}>
             <FontAwesome
               name="circle"
-              size={20}
+              size={15}
               style={styles.circle}
               color={ratingProduct(product, colors)}
             />
-          </View>
-
-          <View style={styles.containerRatingProduct}>
-            <Text style={styles.ratingScore}>
-              {ratingScoreText(product)}/100
-            </Text>
-            <Text style={styles.ratingProductComment}>
-              {ratingProductComment(product)}
-            </Text>
-
-            {/* <View style={styles.ratingProduct}>{ratingProduct(product)}</View> */}
-            {/* {product.nutrition_grade_fr === 'a'? greencircle && product.nutrition_grade_fr === 'b'? orangecircle && product.nutrition_grade_fr === 'c'? redcircle && product.nutrition_grade_fr ==='d'? browncircle && product.nutrition_grade_fr === 'e' : greycircle } */}
+            <View style={styles.ratandComment}>
+              <Text style={styles.ratingScore}>
+                {ratingScoreText(product)}/100
+              </Text>
+              <Text style={styles.ratingProductComment}>
+                {ratingProductComment(product)}
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+      <View style={styles.lineHeader}></View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
-    borderBottomColor: 'lightgrey',
-    borderBottomWidth: 10,
-    height: 180,
-    paddingBottom: 25,
+    justifyContent: 'space-between',
+    height: 150,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    paddingTop: 30,
   },
+  lineHeader: {
+    borderTopColor: '#DEDEDC',
+    borderBottomColor: '#F7F7F7',
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    height: 10,
+    // shadowColor:"#999",
+    // shadowOffset:{width:0,height:4},
+    // shadowOpacity:0.5,
+    backgroundColor: '#EFEFEF',
+  },
+
   imagecontainer: {
-    width: 90,
+    width: 80,
   },
-  presentation: {
-    marginBottom: 20,
-    paddingTop: 10,
+  cardRightBlock: {
+    justifyContent: 'space-between',
+    flex: 1,
+    marginLeft: 15,
   },
-  nameProduct: {
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  ratingScore: {
+  productTitle: {
     fontWeight: '600',
-    fontSize: 15,
+    fontSize: 17,
   },
-  containerRatingProduct: {
-    justifyContent: 'center',
-    width: 160,
-    marginBottom: 10,
-    marginTop: 10,
+  ratandComment: {
+    paddingLeft: 5,
   },
-  containerRatAndCircProduct: {
+  whatandwhen: {
     flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 5,
     paddingTop: 5,
   },
-  circleFont: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 20,
-    paddingRight: 5,
+  ratingScore: {
+    fontFamily: 'Roboto-light',
   },
   ratingProductComment: {
-    color: 'grey',
+    color: colors.greyText,
+    fontFamily: 'Roboto-light',
+  },
+  brand: {
+    color: colors.greyText,
   },
 });
 
