@@ -37,7 +37,7 @@ export default ProductBio = ({product}) => {
         <View style={styles.imagecatbio}>
           <MaterialCommunityIcons
             name="bio"
-            size={40}
+            size={30}
             style={styles.circle}
             color="lightgrey"
           />
@@ -47,9 +47,10 @@ export default ProductBio = ({product}) => {
             <Text style={styles.textbio}>Bio</Text>
             <Text style={styles.function}>{isBioorNot(product)}</Text>
           </View>
-        </View>
+  
         <View style={styles.entypoBioorNot}>
-          <Entypo name="check" size={20} color={isBioorNotColor(product)} />
+          <Entypo name="check" size={15} color={isBioorNotColor(product)} />
+        </View>
         </View>
       </View>
     </View>
@@ -60,18 +61,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
+    
   },
 
   biocontainerinfo: {
-    borderBottomColor: 'grey',
+    borderBottomColor: "#DEDEDC",
     borderBottomWidth: 1,
-    width: 188,
+    width: "100%",
     paddingBottom: 10,
     marginLeft: 10,
+    height:50,
+    flexDirection:"row"
   },
   textbio: {
-    fontWeight: '600',
-    fontSize: 15,
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily:"Roboto-Light",
   },
   function: {
     color: 'grey',
@@ -82,9 +87,9 @@ const styles = StyleSheet.create({
   },
   entypoBioorNot: {
     justifyContent: 'center',
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
     width: 66,
     marginRight: 10,
+    alignItems:"flex-end",
+    width:120,
   },
 });

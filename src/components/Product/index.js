@@ -45,12 +45,12 @@ export default function Product({product}) {
       <ScrollView contentContainerStyle={styles.container}>
         <ProductHeader product={product} />
         <ProductQuality product={product} />
-        {/* <ProductBio product={product} />
-        <ProductProteine product={product} />
+         <ProductBio product={product} />
+        {/* <ProductProteine product={product} />
         <ProductFibre product={product} />
         <ProductCalorie product={product} />
         <ProductFatSat product={product} />
-        <ProductSugar product={product} />  */}
+        <ProductSugar product={product} />   */}
       </ScrollView>
     </SafeAreaView>
   );
