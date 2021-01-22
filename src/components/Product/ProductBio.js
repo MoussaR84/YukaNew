@@ -23,6 +23,7 @@ export default ProductBio = ({product}) => {
     }
   };
 
+
   const isBioorNotColor = (product) => {
     if (product.labels_tags[0] === 'en:organic') {
       return colors.green;
@@ -39,7 +40,7 @@ export default ProductBio = ({product}) => {
             name="bio"
             size={30}
             style={styles.circle}
-            color="lightgrey"
+            color="grey"
           />
         </View>
         <View style={styles.biocontainerinfo}>
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    
   },
 
   biocontainerinfo: {
