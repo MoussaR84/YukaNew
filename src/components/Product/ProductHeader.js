@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
 import Ratings from '../Product/Rating';
 
 const ProductHeader = ({product}) => {
@@ -108,9 +107,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderTopWidth: 1,
     height: 10,
-    // shadowColor:"#999",
-    // shadowOffset:{width:0,height:4},
-    // shadowOpacity:0.5,
     backgroundColor: '#EFEFEF',
   },
 
@@ -123,8 +119,9 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   productTitle: {
-    fontWeight: '600',
-    fontSize: 17,
+    fontWeight: '300',
+    fontSize: 15,
+    fontFamily: 'Roboto-light',
   },
   ratandComment: {
     paddingLeft: 5,
@@ -141,9 +138,11 @@ const styles = StyleSheet.create({
   ratingProductComment: {
     color: colors.greyText,
     fontFamily: 'Roboto-light',
+    fontSize: 12,
   },
   brand: {
     color: colors.greyText,
+    fontSize: 12,
   },
 });
 

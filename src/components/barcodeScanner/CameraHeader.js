@@ -9,10 +9,10 @@ const CameraHeader = ({handleFlash, flashOn}) => {
       <TouchableOpacity onPress={() => handleFlash}>
         <View style={styles.iconSet}>
           <View style={styles.flashlight}>
-            <Entypo name="flashlight" size={30} color="black" />
+            <Entypo name="flashlight" size={20} color="#FFFFFF" />
           </View>
           <View style={styles.sound}>
-            <AntDesign name="sound" size={30} color="black" />
+            <AntDesign name="sound" size={20} color="#FFFFFF" />
           </View>
         </View>
       </TouchableOpacity>
@@ -37,16 +37,17 @@ const styles = StyleSheet.create({
   },
 
   flashlight: {
-    borderRadius: 30,
-    backgroundColor: '#fffb',
+    borderRadius: 25,
+    backgroundColor: '#363D49',
     height: 35,
     width: 35,
     alignItems: 'center',
+    justifyContent:"center",
   },
 
   sound: {
     borderRadius: 25,
-    backgroundColor: '#fffb',
+    backgroundColor: '#363D49',
     height: 35,
     width: 35,
     alignItems: 'center',
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   square: {
     height: 180,
     width: 250,
-    borderColor: 'white',
+    borderColor: '#FFFFFF',
     borderWidth: 3,
     position: 'absolute',
     justifyContent: 'center',

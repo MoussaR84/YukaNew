@@ -56,8 +56,16 @@ const ScanScreen = () => {
           snapPoints={[500, 300, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
-          renderContent={renderContent}
-        />
+          renderContent={renderContent}>
+          <TouchableOpacity
+            style={styles.button}
+            title={'Tap to Scan Again'}
+            onPress={() => setIsProductScanned(false)}>
+            <Text>
+              <MaterialCommunityIcons name="barcode-scan" size={15} />
+            </Text>
+          </TouchableOpacity>
+        </BottomSheet>
       ) : null}
       {isProductScanned && (
         <TouchableOpacity
@@ -65,7 +73,11 @@ const ScanScreen = () => {
           title={'Tap to Scan Again'}
           onPress={() => setIsProductScanned(false)}>
           <Text>
-            <MaterialCommunityIcons name="barcode-scan" size={20} />
+            <MaterialCommunityIcons
+              name="barcode-scan"
+              size={20}
+              color="white"
+            />
           </Text>
         </TouchableOpacity>
       )}
@@ -80,6 +92,9 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: 50,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
     backgroundColor: 'lightgreen',
     justifyContent: 'center',
     alignItems: 'center',

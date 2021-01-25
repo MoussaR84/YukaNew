@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
 import {
   sugarComment,
@@ -51,7 +40,7 @@ export default ProductProteine = ({product}) => {
     } else if (product.nutriscore_data.proteins_value >= 5) {
       return colors.orange;
     } else if (product.nutriscore_data.proteins_value <= 3) {
-      return colors.red;
+      return colors.grey;
     } else {
       return colors.grey;
     }
@@ -76,7 +65,7 @@ export default ProductProteine = ({product}) => {
                 <View View style={styles.unitgram}>
                   <Text style={styles.text}>
                     {product.nutriscore_data.proteins_value === undefined
-                      ? '0'
+                      ? ''
                       : product.nutriscore_data.proteins_value}
                   </Text>
                   <Text style={styles.text}>
@@ -95,7 +84,7 @@ export default ProductProteine = ({product}) => {
                   />
                 </View>
                 <View style={styles.entypoDown}>
-                  <AntDesign name="down" size={15} color="grey" />
+                  <AntDesign name="right" size={15} color="grey" />
                 </View>
               </View>
             </View>
@@ -121,6 +110,7 @@ const styles = StyleSheet.create({
 
   function: {
     color: 'grey',
+    fontSize: 12,
   },
   gramandvalue: {
     flexDirection: 'row',

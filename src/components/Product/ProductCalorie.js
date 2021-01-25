@@ -36,7 +36,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default ProductCalorie = ({product}) => {
   const calorieComment = (product) => {
     if (product.nutriments['energy-kcal_value'] <= 800) {
-      return 'Extremement Calorique';
+      return 'Extrêmement Calorique';
     } else if (product.nutriments['energy-kcal_value'] <= 560) {
       return 'Très calorique';
     } else if (product.nutriments['energy-kcal_value'] <= 360) {
@@ -44,7 +44,7 @@ export default ProductCalorie = ({product}) => {
     } else if (product.nutriments['energy-kcal_value'] <= 160) {
       return 'Peu calorique';
     } else {
-      return 'Produit non enrregistré';
+      return 'Produit non enregistré';
     }
   };
   const caloriecirclecolor = (product) => {
@@ -57,7 +57,7 @@ export default ProductCalorie = ({product}) => {
     } else if (product.nutriments['energy-kcal_value'] <= 160) {
       return colors.green;
     } else {
-      return 'Produit non enrregistré', colors.grey;
+      return colors.grey;
     }
   };
 
@@ -80,55 +80,28 @@ export default ProductCalorie = ({product}) => {
                 <View View style={styles.unitgramcalorie}>
                   <Text style={styles.textcalorie}>
                     {product.nutriments['energy-kcal_value'] === undefined
-                      ? '0'
+                      ? ''
                       : product.nutriments['energy-kcal_value']}
                   </Text>
                   <Text style={styles.textcalorie}>
                     {product.nutriments['energy-kcal_unit'] === undefined
-                      ? 'kcal'
+                      ? ''
                       : product.nutriments['energy-kcal_unit']}
                   </Text>
+                  <View style={styles.circlecalorie}>
+                    <FontAwesome
+                      name="circle"
+                      size={15}
+                      style={styles.circle}
+                      color={caloriecirclecolor(product, colors)}
+                    />
+                  </View>
+                  <AntDesign name="right" size={15} color="grey" />
                 </View>
-
-                <View style={styles.circlecalorie}>
-                  <FontAwesome
-                    name="circle"
-                    size={15}
-                    style={styles.circle}
-                    color={caloriecirclecolor(product, colors)}
-                  />
-                </View>
-                <AntDesign name="down" size={15} color="grey" />
               </View>
             </View>
           </View>
           <Text style={styles.function}>{calorieComment(product)}</Text>
-          <View style={styles.diagramcalorie}>
-            <View
-              style={{
-                height: 3,
-                width: 32,
-                backgroundColor: colors.green,
-              }}></View>
-            <View
-              style={{
-                height: 3,
-                width: 40,
-                backgroundColor: colors.greenLight,
-              }}></View>
-            <View
-              style={{
-                height: 3,
-                width: 40,
-                backgroundColor: colors.orange,
-              }}></View>
-            <View
-              style={{
-                height: 3,
-                width: 48,
-                backgroundColor: colors.red,
-              }}></View>
-          </View>
         </View>
       </View>
       <View style={styles.dividedcontainer}></View>
@@ -149,6 +122,7 @@ const styles = StyleSheet.create({
 
   function: {
     color: 'grey',
+    fontSize: 12,
   },
   caloriegramandvalue: {
     flexDirection: 'row',
@@ -172,7 +146,6 @@ const styles = StyleSheet.create({
   unitgramcalorie: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginRight: 13,
   },
   circlecalorie: {
     marginRight: 15,

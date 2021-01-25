@@ -72,12 +72,12 @@ export default ProductFatSat = ({product}) => {
                 <View View style={styles.unitgram}>
                   <Text style={styles.text}>
                     {product.nutriments.sugars_value === undefined
-                      ? '0'
+                      ? ''
                       : product.nutriments.sugars_value}
                   </Text>
                   <Text style={styles.text}>
                     {product.nutriments.sugars_unit === undefined
-                      ? 'g'
+                      ? ''
                       : product.nutriments.sugars_unit}
                   </Text>
                 </View>
@@ -91,7 +91,7 @@ export default ProductFatSat = ({product}) => {
                   />
                 </View>
                 <View style={styles.entypoDown}>
-                  <AntDesign name="down" size={15} color="grey" />
+                  <AntDesign name="right" size={15} color="grey" />
                 </View>
               </View>
             </View>
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
 
   function: {
     color: 'grey',
+    fontSize: 12,
   },
   gramandvalue: {
     flexDirection: 'row',
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   },
   unitgram: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     marginRight: 13,
   },
   circlecalorie: {

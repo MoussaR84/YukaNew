@@ -37,6 +37,8 @@ export default ProductBio = ({product}) => {
   const isBioorNot = () => {
     if (product.labels_tags[0] === 'en:organic') {
       return 'Produit Biologique';
+    } else if (product.nutrient_levels === undefined) {
+      return 'Pas de données ';
     } else {
       return 'Produit non Biologique';
     }
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
 
   function: {
     color: 'grey',
+    fontSize: 12,
   },
   gramandvalue: {
     flexDirection: 'row',
@@ -118,7 +121,6 @@ const styles = StyleSheet.create({
   dividedcontainer: {
     borderColor: '#F7F7F7',
     backgroundColor: '#F7F7F7',
-
     borderWidth: 1,
     marginLeft: 55,
   },

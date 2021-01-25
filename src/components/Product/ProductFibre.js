@@ -76,12 +76,12 @@ export default ProductFibre = ({product}) => {
                 <View View style={styles.unitgram}>
                   <Text style={styles.text}>
                     {product.nutriments.fiber === undefined
-                      ? '0'
+                      ? ''
                       : product.nutriments.fiber}
                   </Text>
                   <Text style={styles.text}>
                     {product.nutriments.fiber_unit === undefined
-                      ? 'g'
+                      ? ''
                       : product.nutriments.fiber_unit}
                   </Text>
                 </View>
@@ -95,7 +95,7 @@ export default ProductFibre = ({product}) => {
                   />
                 </View>
                 <View style={styles.entypoDown}>
-                  <AntDesign name="down" size={15} color="grey" />
+                  <AntDesign name="right" size={15} color="grey" />
                 </View>
               </View>
             </View>

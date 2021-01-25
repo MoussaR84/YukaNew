@@ -7,6 +7,8 @@ import ScanScreen from '../screens/ScanScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../assets/colors';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 // import active_history from '../assets/TabBar/active_history.png';
 // import active_yuka from '../assets/TabBar/active_yuka.png';
 // import inactive_history from '../assets/TabBar/inactive_history.png';
@@ -19,7 +21,12 @@ const TabNavigator = ({tintColor}) => {
       tabBarOptions={{
         activeTintColor: 'orange',
         inactiveTintColor: 'white',
-        style: {backgroundColor: '#5DCC71'},
+        style: {
+          backgroundColor: '#5DCC71',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: 5,
+        },
       }}>
       <Tab.Screen
         name="HistoryScreen"
@@ -28,15 +35,9 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <Image
-                source={require('../assets/TabBar/active_history.png')}
-                style={{width: 25, height: 25}}
-              />
+              <FontAwesome name="history" size={30} color="white" />
             ) : (
-              <Image
-                source={require('../assets/TabBar/inactive_history.png')}
-                style={{width: 30, height: 30}}
-              />
+              <FontAwesome name="history" size={25} color="white" />
             );
           },
         }}
