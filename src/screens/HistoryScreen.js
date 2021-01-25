@@ -41,7 +41,7 @@ const HistoryScreen = () => {
 
   return (
     <ScrollView>
-      <SafeAreaView>
+      <SafeAreaView style={styles.containersafe}>
         <HistoryList history={savedHistory} />
       </SafeAreaView>
     </ScrollView>
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
+    marginTop:20,
   },
   card: {
     alignItems: 'flex-start',

@@ -62,80 +62,89 @@ export default ProductCalorie = ({product}) => {
   };
 
   return (
-    <View style={styles.caloriecontainer}>
-      <View style={styles.imagecatcalorie}>
-        <MaterialCommunityIcons
-          name="fire"
-          size={40}
-          style={styles.circle}
-          color="lightgrey"
-        />
-      </View>
-      <View style={styles.commentcalories}>
-        <View style={styles.calorievaluecircle}>
-          <View style={styles.caloriegramandvalue}>
-            <Text style={styles.titlecalorie}>Calories</Text>
-            <View style={styles.unitgramcaloriecontainaer}>
-              <View View style={styles.unitgramcalorie}>
-                <Text style={styles.textcalorie}>
-                  {product.nutriments['energy-kcal_value']}
-                </Text>
-                <Text style={styles.textcalorie}>
-                  {product.nutriments['energy-kcal_unit']}
-                </Text>
-              </View>
+    <>
+      <View style={styles.caloriecontainer}>
+        <View style={styles.imagecatcalorie}>
+          <MaterialCommunityIcons
+            name="fire"
+            size={30}
+            style={styles.circle}
+            color="grey"
+          />
+        </View>
+        <View style={styles.commentcalories}>
+          <View style={styles.calorievaluecircle}>
+            <View style={styles.caloriegramandvalue}>
+              <Text style={styles.titlecalorie}>Calories</Text>
+              <View style={styles.unitgramcaloriecontainaer}>
+                <View View style={styles.unitgramcalorie}>
+                  <Text style={styles.textcalorie}>
+                    {product.nutriments['energy-kcal_value'] === undefined
+                      ? '0'
+                      : product.nutriments['energy-kcal_value']}
+                  </Text>
+                  <Text style={styles.textcalorie}>
+                    {product.nutriments['energy-kcal_unit'] === undefined
+                      ? 'kcal'
+                      : product.nutriments['energy-kcal_unit']}
+                  </Text>
+                </View>
 
-              <View style={styles.circlecalorie}>
-                <FontAwesome
-                  name="circle"
-                  size={20}
-                  style={styles.circle}
-                  color={caloriecirclecolor(product, colors)}
-                />
+                <View style={styles.circlecalorie}>
+                  <FontAwesome
+                    name="circle"
+                    size={15}
+                    style={styles.circle}
+                    color={caloriecirclecolor(product, colors)}
+                  />
+                </View>
+                <AntDesign name="down" size={15} color="grey" />
               </View>
-              <AntDesign name="down" size={20} color="grey" />
             </View>
           </View>
-        </View>
-        <Text style={styles.function}>{calorieComment(product)}</Text>
-        <View style={styles.diagramcalorie}>
-          <View
-            style={{
-              height: 3,
-              width: 32,
-              backgroundColor: colors.green,
-            }}></View>
-          <View
-            style={{
-              height: 3,
-              width: 40,
-              backgroundColor: colors.greenLight,
-            }}></View>
-          <View
-            style={{
-              height: 3,
-              width: 40,
-              backgroundColor: colors.orange,
-            }}></View>
-          <View
-            style={{
-              height: 3,
-              width: 48,
-              backgroundColor: colors.red,
-            }}></View>
+          <Text style={styles.function}>{calorieComment(product)}</Text>
+          <View style={styles.diagramcalorie}>
+            <View
+              style={{
+                height: 3,
+                width: 32,
+                backgroundColor: colors.green,
+              }}></View>
+            <View
+              style={{
+                height: 3,
+                width: 40,
+                backgroundColor: colors.greenLight,
+              }}></View>
+            <View
+              style={{
+                height: 3,
+                width: 40,
+                backgroundColor: colors.orange,
+              }}></View>
+            <View
+              style={{
+                height: 3,
+                width: 48,
+                backgroundColor: colors.red,
+              }}></View>
+          </View>
         </View>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
 };
 const styles = StyleSheet.create({
   caloriecontainer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 15,
   },
   titlecalorie: {
-    fontWeight: '600',
-    fontSize: 15,
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily: 'Roboto-Light',
   },
 
   function: {
@@ -143,13 +152,11 @@ const styles = StyleSheet.create({
   },
   caloriegramandvalue: {
     flexDirection: 'row',
-    width: 250,
+    width: 260,
     justifyContent: 'space-between',
   },
   commentcalories: {
     marginLeft: 10,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
   },
   diagramcalorie: {
     flexDirection: 'row',
@@ -158,7 +165,6 @@ const styles = StyleSheet.create({
   },
   unitgramcaloriecontainaer: {
     flexDirection: 'row',
-    marginRight: 12,
   },
   textcalorie: {
     color: 'grey',
@@ -166,9 +172,15 @@ const styles = StyleSheet.create({
   unitgramcalorie: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginRight: 15,
+    marginRight: 13,
   },
   circlecalorie: {
-    marginRight: 10,
+    marginRight: 15,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    marginLeft: 55,
   },
 });

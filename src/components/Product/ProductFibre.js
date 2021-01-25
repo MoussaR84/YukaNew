@@ -1,12 +1,40 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ProgressBarAndroidBase,
+  Dimensions,
+  ScrollView,
+  SafeAreaView,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import colors from '../../assets/colors';
+import {
+  sugarComment,
+  sugarCircle,
+  satfatComment,
+  satfatCircle,
+  caloriecirclecolor,
+  isBioorNot,
+  isBioorNotColor,
+  textProteine,
+  ratingProteineCircle,
+  ratingFibreCircle,
+  fiberComment,
+  calorieComment,
+  ratingScoreText,
+  ratingProduct,
+  ratingProductComment,
+} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from '../../assets/colors';
 
-export default function ProductFibre({product}) {
-  const fiberComment = (product) => {
+export default ProductFibre = ({product}) => {
+  const FiberComment = (product) => {
     if (product.nutriments.fiber >= 5) {
       return 'Riche en fibres';
     } else if (product.nutriments.fiber >= 3) {
@@ -17,7 +45,7 @@ export default function ProductFibre({product}) {
       return 'Fibres non présentes';
     }
   };
-  const ratingFibreCircle = (product) => {
+  const RatingFiberCircle = (product) => {
     if (product.fiber_value >= 1) {
       return colors.green;
     } else if (product.fiber_value >= 0.5) {
@@ -30,99 +58,97 @@ export default function ProductFibre({product}) {
   };
 
   return (
-    <View style={styles.containerfibre}>
-      <View style={styles.fibres}>
-        <View style={styles.imagefiber}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.image}>
           <MaterialCommunityIcons
             name="corn"
-            size={40}
+            size={30}
             style={styles.circle}
-            color="lightgrey"
+            color="grey"
           />
         </View>
-        <View style={styles.fibrecontenerrinfo}>
-          <View style={styles.fibercomment}>
-            <View style={styles.fibregramandvalue}>
-              <Text style={styles.titlefibre}>Fibre</Text>
-              <View style={styles.unitandgramfiber}>
-                <View style={styles.unitandvaluefiber}>
-                  <Text style={styles.textfibre}>
-                    {product.nutriments.fiber}
+        <View style={styles.comment}>
+          <View>
+            <View style={styles.gramandvalue}>
+              <Text style={styles.title}>Fibres</Text>
+              <View style={styles.unitgramcontainaer}>
+                <View View style={styles.unitgram}>
+                  <Text style={styles.text}>
+                    {product.nutriments.fiber === undefined
+                      ? '0'
+                      : product.nutriments.fiber}
                   </Text>
-                  <Text style={styles.textfibre}>
-                    {product.nutriments.fiber_unit}
+                  <Text style={styles.text}>
+                    {product.nutriments.fiber_unit === undefined
+                      ? 'g'
+                      : product.nutriments.fiber_unit}
                   </Text>
                 </View>
 
-                <View style={styles.circlefiber}>
+                <View style={styles.circlecalorie}>
                   <FontAwesome
                     name="circle"
-                    size={20}
+                    size={15}
                     style={styles.circle}
-                    color={ratingFibreCircle(product)}
+                    color={RatingFiberCircle(product, colors)}
                   />
+                </View>
+                <View style={styles.entypoDown}>
+                  <AntDesign name="down" size={15} color="grey" />
                 </View>
               </View>
             </View>
           </View>
-          <Text style={styles.function}>{fiberComment(product)}</Text>
-        </View>
-        <View style={styles.antdesignicon}>
-          <AntDesign name="down" size={20} color="grey" />
+          <Text style={styles.function}>{FiberComment(product)}</Text>
         </View>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
-}
-
+};
 const styles = StyleSheet.create({
-  containerfibre: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
   },
-  fibrecontenerrinfo: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    width: 220,
-    paddingBottom: 10,
-    marginLeft: 10,
+  title: {
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily: 'Roboto-Light',
   },
-  titlefibre: {
-    fontWeight: '600',
-    fontSize: 15,
-  },
+
   function: {
     color: 'grey',
   },
-  fibres: {
+  gramandvalue: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  fibregramandvalue: {
-    flexDirection: 'row',
-    width: 237,
+    width: 260,
     justifyContent: 'space-between',
   },
-  unitandgramfiber: {
+  comment: {
+    marginLeft: 10,
+  },
+
+  unitgramcontainaer: {
     flexDirection: 'row',
   },
-  unitandvaluefiber: {
-    flexDirection: 'row',
-    marginRight: 15,
-  },
-  commentfibre: {
-    flexDirection: 'row',
-  },
-  textfibre: {
+  text: {
     color: 'grey',
   },
-  circlefiber: {
-    marginRight: 28,
+  unitgram: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginRight: 13,
   },
-  antdesignicon: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    width: 33,
+  circlecalorie: {
+    marginRight: 15,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    marginLeft: 55,
   },
 });

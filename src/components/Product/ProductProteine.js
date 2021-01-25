@@ -34,7 +34,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ProductProteine = ({product}) => {
-  const textProteine = (product) => {
+  const TextProteine = (product) => {
     if (product.nutriscore_data.proteins_value >= 10) {
       return 'Excellente quantité';
     } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -45,7 +45,7 @@ export default ProductProteine = ({product}) => {
       return 'Non renseigné';
     }
   };
-  const ratingProteineCircle = (product) => {
+  const RatingProteineCircle = (product) => {
     if (product.nutriscore_data.proteins_value >= 10) {
       return colors.green;
     } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -56,94 +56,105 @@ export default ProductProteine = ({product}) => {
       return colors.grey;
     }
   };
+
   return (
-    <View style={styles.containerproteine}>
-      <View style={styles.proteines}>
-        <View style={styles.imagecatproteine}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.image}>
           <MaterialCommunityIcons
-            name="fish"
-            size={40}
+            name="fire"
+            size={30}
             style={styles.circle}
-            color="lightgrey"
+            color="grey"
           />
         </View>
-        <View style={styles.proteinecontainerinfo}>
-          <View style={styles.proteinecomment}>
-            <Text style={styles.titleproteines}>Protéines</Text>
-            <View style={styles.proteinesgrammeandvalue}>
-              <View style={styles.textproteins}>
-                <Text style={styles.textprotein}>
-                  {product.nutriscore_data.proteins_value}
-                </Text>
-              </View>
-              <View style={styles.valueproteins}>
-                <Text style={styles.textproteins}>
-                  {product.nutriments.proteins_unit}
-                </Text>
-              </View>
-              <View style={styles.circleprotein}>
-                <FontAwesome
-                  name="circle"
-                  size={20}
-                  style={styles.circle}
-                  color={ratingProteineCircle(product, colors)}
-                />
-              </View>
+        <View style={styles.comment}>
+          <View>
+            <View style={styles.gramandvalue}>
+              <Text style={styles.title}>Protéines</Text>
+              <View style={styles.unitgramcontainaer}>
+                <View View style={styles.unitgram}>
+                  <Text style={styles.text}>
+                    {product.nutriscore_data.proteins_value === undefined
+                      ? '0'
+                      : product.nutriscore_data.proteins_value}
+                  </Text>
+                  <Text style={styles.text}>
+                    {product.nutriments.proteins_unit === undefined
+                      ? 'g'
+                      : product.nutriments.proteins_unit}
+                  </Text>
+                </View>
 
-              <AntDesign name="down" size={20} color="grey" />
+                <View style={styles.circlecalorie}>
+                  <FontAwesome
+                    name="circle"
+                    size={15}
+                    style={styles.circle}
+                    color={RatingProteineCircle(product, colors)}
+                  />
+                </View>
+                <View style={styles.entypoDown}>
+                  <AntDesign name="down" size={15} color="grey" />
+                </View>
+              </View>
             </View>
           </View>
-          <Text style={styles.function}>{textProteine(product)}</Text>
+          <Text style={styles.function}>{TextProteine(product)}</Text>
         </View>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
 };
 const styles = StyleSheet.create({
-  containerproteine: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
   },
+  title: {
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily: 'Roboto-Light',
+  },
 
-  proteinecontainerinfo: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    width: 300,
-    paddingBottom: 10,
-    marginLeft: 10,
-  },
-  titleproteines: {
-    fontWeight: '600',
-    fontSize: 15,
-  },
   function: {
     color: 'grey',
   },
-  proteines: {
+  gramandvalue: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    width: 260,
+    justifyContent: 'space-between',
   },
-  proteinesgrammeandvalue: {
+  comment: {
+    marginLeft: 10,
+  },
+
+  unitgramcontainaer: {
     flexDirection: 'row',
-    width: 170,
-    justifyContent: 'flex-end',
   },
-  proteinecomment: {
-    flexDirection: 'row',
-  },
-  textprotein: {
+  text: {
     color: 'grey',
   },
-  textproteins: {
-    marginRight: 2,
-    color: 'grey',
+  unitgram: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginRight: 13,
   },
-  valueproteins: {
-    marginRight: 10,
-    color: 'grey',
+  circlecalorie: {
+    marginRight: 15,
   },
-  circleprotein: {
-    marginRight: 10,
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    marginLeft: 55,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    marginLeft: 55,
   },
 });

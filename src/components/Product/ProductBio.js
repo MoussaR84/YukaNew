@@ -3,28 +3,45 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  ProgressBarAndroidBase,
+  Dimensions,
   ScrollView,
   SafeAreaView,
   Button,
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../assets/colors';
+import {
+  sugarComment,
+  sugarCircle,
+  satfatComment,
+  satfatCircle,
+  caloriecirclecolor,
+  isBioorNot,
+  isBioorNotColor,
+  textProteine,
+  ratingProteineCircle,
+  ratingFibreCircle,
+  fiberComment,
+  calorieComment,
+  ratingScoreText,
+  ratingProduct,
+  ratingProductComment,
+} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 export default ProductBio = ({product}) => {
-  const isBioorNot = (product) => {
+  const isBioorNot = () => {
     if (product.labels_tags[0] === 'en:organic') {
       return 'Produit Biologique';
-    } else if (product.labels_tags[0] === undefined) {
-      return 'Non noté';
     } else {
       return 'Produit non Biologique';
     }
   };
-
-
-  const isBioorNotColor = (product) => {
+  const isBioorNotColor = () => {
     if (product.labels_tags[0] === 'en:organic') {
       return colors.green;
     } else {
@@ -33,9 +50,9 @@ export default ProductBio = ({product}) => {
   };
 
   return (
-    <View style={styles.biocontener}>
-      <View style={styles.bio}>
-        <View style={styles.imagecatbio}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.image}>
           <MaterialCommunityIcons
             name="bio"
             size={30}
@@ -43,53 +60,66 @@ export default ProductBio = ({product}) => {
             color="grey"
           />
         </View>
-        <View style={styles.biocontainerinfo}>
-          <View style={styles.biocomment}>
-            <Text style={styles.textbio}>Bio</Text>
-            <Text style={styles.function}>{isBioorNot(product)}</Text>
+        <View style={styles.comment}>
+          <View>
+            <View style={styles.gramandvalue}>
+              <Text style={styles.title}>Bio</Text>
+              <View style={styles.unitgramcontainaer}>
+                <View style={styles.circlecalorie}>
+                  <Entypo name="check" size={15} color={isBioorNotColor()} />
+                </View>
+              </View>
+            </View>
           </View>
-  
-        <View style={styles.entypoBioorNot}>
-          <Entypo name="check" size={15} color={isBioorNotColor(product)} />
-        </View>
+          <Text style={styles.function}>{isBioorNot(product)}</Text>
         </View>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
 };
 const styles = StyleSheet.create({
-  biocontener: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
   },
-
-  biocontainerinfo: {
-    borderBottomColor: "#DEDEDC",
-    borderBottomWidth: 1,
-    width: "100%",
-    paddingBottom: 10,
-    marginLeft: 10,
-    height:50,
-    flexDirection:"row"
-  },
-  textbio: {
+  title: {
     fontWeight: '800',
     fontSize: 17,
-    fontFamily:"Roboto-Light",
+    fontFamily: 'Roboto-Light',
   },
+
   function: {
     color: 'grey',
   },
-  bio: {
+  gramandvalue: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    width: 250,
+    justifyContent: 'space-between',
   },
-  entypoBioorNot: {
-    justifyContent: 'center',
-    width: 66,
-    marginRight: 10,
-    alignItems:"flex-end",
-    width:120,
+  comment: {
+    marginLeft: 10,
+  },
+  unitgramcontainaer: {
+    flexDirection: 'row',
+  },
+  text: {
+    color: 'grey',
+  },
+  unitgramcalorie: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginRight: 13,
+  },
+  circlecalorie: {
+    marginRight: 19,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+
+    borderWidth: 1,
+    marginLeft: 55,
   },
 });

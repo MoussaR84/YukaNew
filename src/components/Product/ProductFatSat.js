@@ -30,11 +30,11 @@ import {
   ratingProductComment,
 } from './productParser';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ProductFatSat = ({product}) => {
-  const satfatComment = (product) => {
+  const FatSatComment = (product) => {
     if (product.nutriments['saturated-fat'] >= 1) {
       return 'Peu de graisses saturées';
     } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -45,8 +45,7 @@ export default ProductFatSat = ({product}) => {
       return 'Graisses saturées non présentes';
     }
   };
-
-  const satfatCircle = (product) => {
+  const FatSatCircle = (product) => {
     if (product.nutriments['saturated-fat'] >= 1) {
       return colors.green;
     } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -59,85 +58,96 @@ export default ProductFatSat = ({product}) => {
   };
 
   return (
-    <View style={styles.containersatfat}>
-      <View style={styles.imagecatfatsat}>
-        <Ionicons
-          name="ios-water-outline"
-          size={40}
-          style={styles.circle}
-          color="lightgrey"
-        />
-      </View>
-      <View style={styles.fatsat}>
-        <View style={styles.satfatcomment}>
-          <View style={styles.unitgramfatsat}>
-            <Text style={styles.titlefatsat}>Graisses Saturées</Text>
-            <View style={styles.fatsatgrammeandvaluecontainer}>
-              <View style={styles.fatsatgrammeandvalue}>
-                <Text style={styles.textfatsat}>
-                  {product.nutriments['saturated-fat']}
-                </Text>
-                <Text style={styles.textfatsat}>
-                  {product.nutriments['saturated-fat_unit']}
-                </Text>
-              </View>
+    <>
+      <View style={styles.container}>
+        <View style={styles.image}>
+          <Ionicons
+            name="ios-water-outline"
+            size={30}
+            style={styles.circle}
+            color="lightgrey"
+          />
+        </View>
+        <View style={styles.comment}>
+          <View>
+            <View style={styles.gramandvalue}>
+              <Text style={styles.title}>Graisses Saturées</Text>
+              <View style={styles.unitgramcontainaer}>
+                <View View style={styles.unitgram}>
+                  <Text style={styles.text}>
+                    {product.nutriments['saturated-fat'] === undefined
+                      ? '0'
+                      : product.nutriments['saturated-fat']}
+                  </Text>
+                  <Text style={styles.text}>
+                    {product.nutriments['saturated-fat_unit'] === undefined
+                      ? 'g'
+                      : product.nutriments['saturated-fat_unit']}
+                  </Text>
+                </View>
 
-              <View style={styles.circlefiber}>
-                <FontAwesome
-                  name="circle"
-                  size={20}
-                  style={styles.circle}
-                  color={satfatCircle(product)}
-                />
+                <View style={styles.circlecalorie}>
+                  <FontAwesome
+                    name="circle"
+                    size={15}
+                    style={styles.circle}
+                    color={FatSatCircle(product, colors)}
+                  />
+                </View>
+                <View style={styles.entypoDown}>
+                  <AntDesign name="down" size={15} color="grey" />
+                </View>
               </View>
-              <AntDesign name="down" size={20} color="grey" />
             </View>
           </View>
-
-          <Text style={styles.function}>{satfatComment(product)}</Text>
+          <Text style={styles.function}>{FatSatComment(product)}</Text>
         </View>
-        <View style={styles.fatsatvalueandcircle}></View>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
 };
 const styles = StyleSheet.create({
-  containersatfat: {
+  container: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 15,
   },
-  titlefatsat: {
-    fontWeight: '600',
-    fontSize: 15,
+  title: {
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily: 'Roboto-Light',
   },
 
   function: {
     color: 'grey',
   },
-  fatsatgrammeandvaluecontainer: {
+  gramandvalue: {
     flexDirection: 'row',
-    width: 123,
-    justifyContent: 'flex-end',
-    paddingRight: 15,
+    width: 260,
+    justifyContent: 'space-between',
   },
-
-  fatsat: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    paddingBottom: 10,
+  comment: {
     marginLeft: 10,
   },
-  unitgramfatsat: {
+
+  unitgramcontainaer: {
     flexDirection: 'row',
   },
-  textfatsat: {
+  text: {
     color: 'grey',
   },
-  circlefiber: {
-    marginRight: 10,
-  },
-  fatsatgrammeandvalue: {
-    marginRight: 10,
+  unitgram: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginRight: 13,
+  },
+  circlecalorie: {
+    marginRight: 15,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
   },
 });

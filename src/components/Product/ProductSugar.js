@@ -33,8 +33,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default ProductSugar = ({product}) => {
-  const sugarComment = (product) => {
+export default ProductFatSat = ({product}) => {
+  const SugarComment = (product) => {
     if (product.nutrient_levels === 'low') {
       return 'Faible quantité';
     } else if (product.nutrient_levels === 'high') {
@@ -43,8 +43,7 @@ export default ProductSugar = ({product}) => {
       return 'Données inaccessibles ou inexistantes';
     }
   };
-
-  const sugarCircle = (product) => {
+  const SugarCircle = (product) => {
     if (product.nutrient_levels === 'low') {
       return colors.green;
     } else if (product.nutrient_levels === 'high') {
@@ -53,88 +52,99 @@ export default ProductSugar = ({product}) => {
       return colors.grey;
     }
   };
-  return (
-    <View style={styles.containersugar}>
-      <View style={styles.imagecatcalorie}>
-        <MaterialCommunityIcons
-          name="candycane"
-          size={40}
-          style={styles.circle}
-          color="lightgrey"
-        />
-      </View>
-      <View style={styles.sugar}>
-        <View style={styles.commentsugar}>
-          <Text style={styles.titlesugar}>Sucre</Text>
-          <View style={styles.sugarvalueandcircle}>
-            <View style={styles.sugargramandvaluecontainer}>
-              <View style={styles.sugargramandvalue}>
-                <Text style={styles.textsugar}>
-                  {product.nutriments.sugars_value}
-                </Text>
-                <Text style={styles.textsugar}>
-                  {product.nutriments.sugars_unit}
-                </Text>
-              </View>
 
-              <View style={styles.circlesugar}>
-                <FontAwesome
-                  name="circle"
-                  size={20}
-                  style={styles.circle}
-                  color={sugarCircle(product)}
-                />
-              </View>
-              <View style={styles.antDesign}>
-                <AntDesign name="down" size={20} color="grey" />
+  return (
+    <>
+      <View style={styles.container}>
+        <View style={styles.image}>
+          <MaterialCommunityIcons
+            name="candycane"
+            size={30}
+            style={styles.circle}
+            color="lightgrey"
+          />
+        </View>
+        <View style={styles.comment}>
+          <View>
+            <View style={styles.gramandvalue}>
+              <Text style={styles.title}>Sucres</Text>
+              <View style={styles.unitgramcontainaer}>
+                <View View style={styles.unitgram}>
+                  <Text style={styles.text}>
+                    {product.nutriments.sugars_value === undefined
+                      ? '0'
+                      : product.nutriments.sugars_value}
+                  </Text>
+                  <Text style={styles.text}>
+                    {product.nutriments.sugars_unit === undefined
+                      ? 'g'
+                      : product.nutriments.sugars_unit}
+                  </Text>
+                </View>
+
+                <View style={styles.circlecalorie}>
+                  <FontAwesome
+                    name="circle"
+                    size={15}
+                    style={styles.circle}
+                    color={SugarCircle(product, colors)}
+                  />
+                </View>
+                <View style={styles.entypoDown}>
+                  <AntDesign name="down" size={15} color="grey" />
+                </View>
               </View>
             </View>
           </View>
+          <Text style={styles.function}>{SugarComment(product)}</Text>
         </View>
-        <Text style={styles.function}>{sugarComment(product)}</Text>
       </View>
-    </View>
+      <View style={styles.dividedcontainer}></View>
+    </>
   );
 };
 const styles = StyleSheet.create({
-  containersugar: {
-    flexDirection: 'row',
-    padding: 15,
-  },
-  titlesugar: {
-    fontWeight: '600',
-    fontSize: 15,
-    width: 50,
-  },
-  commentsugar: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    padding: 15,
   },
+  title: {
+    fontWeight: '800',
+    fontSize: 17,
+    fontFamily: 'Roboto-Light',
+  },
+
   function: {
     color: 'grey',
   },
-  sugargramandvaluecontainer: {
+  gramandvalue: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    marginRight: 30,
+    width: 260,
+    justifyContent: 'space-between',
   },
-  sugar: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
+  comment: {
     marginLeft: 10,
-    width: 270,
   },
-  textsugar: {
+
+  unitgramcontainaer: {
+    flexDirection: 'row',
+  },
+  text: {
     color: 'grey',
   },
-  circlesugar: {
-    marginRight: 10,
-  },
-  sugargramandvalue: {
+  unitgram: {
     flexDirection: 'row',
-    marginRight: 10,
+    justifyContent: 'space-around',
+    marginRight: 13,
   },
-  antDesign: {
-    marginRight: 5,
+  circlecalorie: {
+    marginRight: 15,
+  },
+  dividedcontainer: {
+    borderColor: '#F7F7F7',
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    marginLeft: 55,
   },
 });

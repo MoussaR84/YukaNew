@@ -25,6 +25,7 @@ const TabNavigator = ({tintColor}) => {
         name="HistoryScreen"
         component={HistoryScreen}
         options={{
+          tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
               <Image
@@ -45,7 +46,7 @@ const TabNavigator = ({tintColor}) => {
         name="ScanScreen"
         component={ScanScreen}
         options={{
-          tabBarLabel: 'Scan',
+          tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
               <MaterialCommunityIcons
@@ -67,7 +68,7 @@ const TabNavigator = ({tintColor}) => {
         name="FavoritesScreen"
         component={FavoritesScreen}
         options={{
-          tabBarLabel: 'Favorite',
+          tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
               <Entypo name="star" size={30} color="white" />
