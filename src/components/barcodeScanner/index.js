@@ -16,11 +16,12 @@ const BarcodeScanner = ({onBarCodeRead}) => {
   const camRef = useRef(null);
 
   const handleFlash = () => {
-    setFlashOn(!flashOn);
+    setFlashOn(true);
   };
+  console.log(handleFlash, 'handleFlash');
 
   const permissionStatusReady = RNCamera.Constants.CameraStatus.READY;
-  // console.log('permissionStatus', permissionStatusReady);
+  console.log('permissionStatus', permissionStatusReady);
 
   return (
     <View style={styles.container}>
@@ -41,14 +42,7 @@ const BarcodeScanner = ({onBarCodeRead}) => {
             'Yuka souhaite accéder à votre caméra pour scanner un produit',
           buttonPositive: 'Ok',
           buttonNegative: 'Annuler',
-        }}>
-        {/* <Text
-          style={{
-            backgroundColor: 'white',
-          }}>
-          BARCODE SCANNER
-        </Text> */}
-      </RNCamera>
+        }}></RNCamera>
 
       {permissionStatusReady ? (
         <CameraHeader handleFlash={handleFlash} flashOn={flashOn} />

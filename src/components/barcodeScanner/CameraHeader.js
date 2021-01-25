@@ -2,17 +2,18 @@ import React from 'react';
 import {View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import colors from '../../assets/colors';
 
 const CameraHeader = ({handleFlash, flashOn}) => {
   return (
     <View style={styles.bottomOverlay}>
       <TouchableOpacity onPress={() => handleFlash}>
         <View style={styles.iconSet}>
-          <View style={styles.flashlight}>
-            <Entypo name="flashlight" size={20} color="#FFFFFF" />
+          <View style={styles.icons}>
+            <Entypo name="flashlight" size={18} color={colors.greyText} />
           </View>
-          <View style={styles.sound}>
-            <AntDesign name="sound" size={20} color="#FFFFFF" />
+          <View style={styles.icons}>
+            <AntDesign name="sound" size={18} color={colors.greyText} />
           </View>
         </View>
       </TouchableOpacity>
@@ -36,28 +37,21 @@ const styles = StyleSheet.create({
     marginRight: 1200,
   },
 
-  flashlight: {
-    borderRadius: 25,
-    backgroundColor: '#363D49',
-    height: 35,
-    width: 35,
-    alignItems: 'center',
-    justifyContent:"center",
-  },
-
-  sound: {
-    borderRadius: 25,
-    backgroundColor: '#363D49',
+  icons: {
+    borderRadius: 35,
+    backgroundColor: colors.greyLightLine,
     height: 35,
     width: 35,
     alignItems: 'center',
     justifyContent: 'center',
+    opacity: 0.7,
   },
   square: {
     height: 180,
     width: 250,
     borderColor: '#FFFFFF',
-    borderWidth: 3,
+    borderRadius: 10,
+    borderWidth: 2,
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',

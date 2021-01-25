@@ -32,27 +32,26 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+const SugarComment = (nutrient_levels) => {
+  if (nutrient_levels === 'low') {
+    return 'Faible quantité';
+  } else if (nutrient_levels === 'high') {
+    return 'Forte quantité';
+  } else {
+    return 'Données inaccessibles ou inexistantes';
+  }
+};
+const SugarCircle = (nutrient_levels) => {
+  if (nutrient_levels === 'low') {
+    return colors.green;
+  } else if (nutrient_levels === 'high') {
+    return colors.red;
+  } else {
+    return colors.grey;
+  }
+};
 
-export default ProductFatSat = ({product}) => {
-  const SugarComment = (product) => {
-    if (product.nutrient_levels === 'low') {
-      return 'Faible quantité';
-    } else if (product.nutrient_levels === 'high') {
-      return 'Forte quantité';
-    } else {
-      return 'Données inaccessibles ou inexistantes';
-    }
-  };
-  const SugarCircle = (product) => {
-    if (product.nutrient_levels === 'low') {
-      return colors.green;
-    } else if (product.nutrient_levels === 'high') {
-      return colors.red;
-    } else {
-      return colors.grey;
-    }
-  };
-
+const ProductSugar = ({nutriments, nutrient_levels}) => {
   return (
     <>
       <View style={styles.container}>
@@ -71,14 +70,14 @@ export default ProductFatSat = ({product}) => {
               <View style={styles.unitgramcontainaer}>
                 <View View style={styles.unitgram}>
                   <Text style={styles.text}>
-                    {product.nutriments.sugars_value === undefined
+                    {nutriments.sugars_value === undefined
                       ? ''
-                      : product.nutriments.sugars_value}
+                      : nutriments.sugars_value}
                   </Text>
                   <Text style={styles.text}>
-                    {product.nutriments.sugars_unit === undefined
+                    {nutriments.sugars_unit === undefined
                       ? ''
-                      : product.nutriments.sugars_unit}
+                      : nutriments.sugars_unit}
                   </Text>
                 </View>
 
@@ -87,7 +86,7 @@ export default ProductFatSat = ({product}) => {
                     name="circle"
                     size={15}
                     style={styles.circle}
-                    color={SugarCircle(product, colors)}
+                    color={SugarCircle(nutrient_levels, colors)}
                   />
                 </View>
                 <View style={styles.entypoDown}>
@@ -96,7 +95,7 @@ export default ProductFatSat = ({product}) => {
               </View>
             </View>
           </View>
-          <Text style={styles.function}>{SugarComment(product)}</Text>
+          <Text style={styles.function}>{SugarComment(nutrient_levels)}</Text>
         </View>
       </View>
       <View style={styles.dividedcontainer}></View>
@@ -149,3 +148,4 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
 });
+export default ProductSugar;

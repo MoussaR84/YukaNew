@@ -39,6 +39,7 @@ import ProductFatSat from './ProductFatSat';
 import ProductSugar from './ProductSugar';
 
 export default function Product({product}) {
+  const {nutriments} = product;
   // console.log('product.product_nam', product.product_name);
   return (
     <SafeAreaView style={styles.container}>
@@ -49,7 +50,7 @@ export default function Product({product}) {
         <ProductProteine product={product} />
         <ProductFibre product={product} />
         <ProductCalorie product={product} />
-        <ProductSugar product={product} />
+        {!!nutriments && <ProductSugar nutriments={nutriments} />}
         <ProductFatSat product={product} />
       </ScrollView>
     </SafeAreaView>

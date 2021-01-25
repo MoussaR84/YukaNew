@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
@@ -21,23 +21,25 @@ const TabNavigator = ({tintColor}) => {
       tabBarOptions={{
         activeTintColor: 'orange',
         inactiveTintColor: 'white',
-        style: {
-          backgroundColor: '#5DCC71',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingTop: 5,
-        },
+        style: styles.container,
       }}>
       <Tab.Screen
         name="HistoryScreen"
         component={HistoryScreen}
         options={{
+          style: styles.icons,
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <FontAwesome name="history" size={30} color="white" />
+              <Image
+                source={require('../assets/TabBar/active_history.png')}
+                style={{width: 25, height: 25}}
+              />
             ) : (
-              <FontAwesome name="history" size={25} color="white" />
+              <Image
+                source={require('../assets/TabBar/inactive_history.png')}
+                style={{width: 30, height: 30}}
+              />
             );
           },
         }}
@@ -50,16 +52,14 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <MaterialCommunityIcons
-                name="barcode-scan"
-                size={30}
-                color="white"
+              <Image
+                source={require('../assets/TabBar/active_yuka.png')}
+                style={{width: 25, height: 25}}
               />
             ) : (
-              <MaterialCommunityIcons
-                name="barcode-scan"
-                size={25}
-                color="white"
+              <Image
+                source={require('../assets/TabBar/inactive_yuka.png')}
+                style={{width: 30, height: 30}}
               />
             );
           },
@@ -82,5 +82,17 @@ const TabNavigator = ({tintColor}) => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#5DCC71',
+    paddingVertical: 'auto',
+  },
+  icons: {
+    justifyContent: 'center',
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
 
 export default TabNavigator;

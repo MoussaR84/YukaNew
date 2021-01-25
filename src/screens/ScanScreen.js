@@ -18,10 +18,6 @@ const ScanScreen = () => {
       return;
     }
 
-    console.log('onBarCodeRead,id', id);
-
-    //quand le product on va chercher les datas //
-    // setScanned(true);
     setIdCurrentProductScanned(id);
     try {
       const {data} = await fetchProductData(id);
@@ -29,19 +25,15 @@ const ScanScreen = () => {
       updateProductHistoryinStorage(data.product);
       setIsProductScanned(true);
       () => sheetRef.current.snapTo(0);
-      // navigation.navigate("Product", { itemId: data })
     } catch (error) {
       console.log('error api', error);
     }
-    // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    // navigation.navigate(product) (data)
   };
 
   const sheetRef = React.useRef(null);
   const renderContent = () => {
     return <Product product={product} />;
   };
-  // console.log('isProductScanned', isProductScanned);
 
   const renderHeader = () => {
     <ProductHeader product={product} />;
