@@ -1,91 +1,260 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  Animated,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import colors from '../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ratings from '../components/Product/Rating';
 import ImageCard from '../components/Product/ImageCard';
+import Product from '../components/Product';
+import {
+  ratingProduct,
+  ratingProductComment,
+} from '../components/Product/productParser';
+import AsyncStorage from '@react-native-community/async-storage';
+import {SwipeListView} from 'react-native-swipe-list-view';
+import {TouchableHighlight} from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const FavoriteScreen = ({product}) => {
-  // supprimer de l asyncstorage
-  // afficher asyncstorage
-  // ajouter produit
-  // setitem
-  // retirer produit
-  // set item
+  const [savedHistory, setSavedHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [listData, setListData] = useState(
+    savedHistory.map((product, index) => ({
+      key: `${index}`,
+      product_name: product.product_name,
+      brands: product.brands,
+      image_url: product.image_url,
+      nutrition_grade_fr: product.nutrition_grade_fr,
+    })),
+  );
+  useEffect(() => {
+    const getHistoryFromStorage = async () => {
+      let formattedHistoryfromStorage = [];
+      const rawSavedHistory = await AsyncStorage.getItem('productHistory');
+      if (rawSavedHistory !== null) {
+        formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
+      }
+      setSavedHistory(formattedHistoryfromStorage);
+      setIsLoading(false);
+      setListData(formattedHistoryfromStorage);
+    };
+    getHistoryFromStorage();
+  }, []);
+  const closeRow = (rowMap, rowKey) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
+  const deleteRow = (rowMap, rowKey) => {
+    closeRow(rowMap, rowKey);
+    const newData = [...savedHistory];
+    const prevIndex = newData.findIndex((item) => item.key === rowKey);
+    newData.splice(prevIndex, 1);
+    setListData(newData);
+    console.log(rowMap,"rowMap");
+    console.log(rowKey,"rowKey");
+  };
 
-  console.log({product}, 'productfavorite');
-  return (
-    <SafeAreaView>
-      <View style={styles.card}>
-        <View style={styles.cardRightBlock}>
-          <View style={styles.titleAndBrand}>
-            <Text numberOfLines={1} style={styles.productTitle}>
-              {product.product_name}
-            </Text>
-            <Text style={styles.productItem}>{product.brands}</Text>
-          </View>
-          <View style={styles.whatandwhen}>
-            <Ratings nutrition_grade_fr={product.nutrition_grade_fr} />
-            <View style={styles.horizontalLine}>
-              <FontAwesome
-                name="clock-o"
-                size={14}
-                style={styles.productIcon}
-                color={colors.greyText}
-              />
+  console.log(savedHistory, 'savedHistorhuhhuhuhhhuhytttuuuutttgtgtgtgtgt');
 
-              <Text style={styles.productItem}>Il y a quelques jours</Text>
+  const VisibleItem = (props) => {
+    const {data} = props;
+    console.log(props, 'props');
+
+    return (
+      <SafeAreaView>
+        <View style={styles.card}>
+          <TouchableOpacity style={styles.rowFrontVisible}>
+            <ImageCard image_url={data.item.image_url} />
+            {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
+            <View style={styles.cardRightBlock}>
+              <View style={styles.titleAndBrand}>
+                <Text numberOfLines={1} style={styles.productTitle}>
+                  {data.item.product_name}
+                </Text>
+                <Text style={styles.productItem}>{data.item.brands}</Text>
+              </View>
+              <View style={styles.whatandwhen}>
+                <Ratings nutrition_grade_fr={data.item.nutrition_grade_fr} />
+                <View style={styles.horizontalLine}>
+                  <FontAwesome
+                    name="clock-o"
+                    size={14}
+                    style={styles.productIcon}
+                    color={colors.greyText}
+                  />
+
+                  <Text style={styles.productItem}>Il y a quelques jours</Text>
+                </View>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    );
+  };
+
+  const renderItem = (data, rowMap) => {
+    return <VisibleItem data={data} />;
+  };
+
+  const HiddenItemWithActions = (props) => {
+    const {onClose, onDelete, swipeAnimatedValue} = props;
+    return (
+      <>
+        <StatusBar view={styles.statusbar}/>
+        <View style={styles.rowBack}>
+          <Text>Left</Text>
+          <TouchableOpacity
+            style={[styles.backRightBtn, styles.backRightBtnLeft]}
+            onPress={onClose}>
+            <MaterialCommunityIcons
+              name="close-circle-outline"
+              size={25}
+              style={styles.trash}
+              color="grey"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.backRightBtn, styles.backRightBtnRight]}
+            onPress={onDelete}>
+            <Animated.View
+              style={[
+                styles.trash,
+                {
+                  transform: [
+                    {
+                      scale: swipeAnimatedValue.interpolate({
+                        inputRange: [-90, -45],
+                        outputRange: [1, 0],
+                        extrapolate: 'clamp',
+                      }),
+                    },
+                  ],
+                },
+              ]}>
+              <MaterialCommunityIcons
+                name="trash-can-outline"
+                size={25}
+                color="grey"
+              />
+            </Animated.View>
+          </TouchableOpacity>
+        </View>
+      </>
+    );
+  };
+  const renderHiddenItem = (data, rowMap) => {
+    return (
+      <HiddenItemWithActions
+        data={data}
+        rowMap={rowMap}
+        onClose={() => closeRow(rowMap, data.item.key)}
+        onDeleteRow={() => deleteRow(rowMap, data.item.key)}
+      />
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <SwipeListView
+        data={listData}
+        renderItem={renderItem}
+        renderHiddenItem={renderHiddenItem}
+        leftOpenValue={75}
+        rightOpenValue={-150}
+        disableRightSwipe
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    flexDirection: 'row',
+  container: {
+    backgroundColor: '#f4f4f4',
+    flex: 1,
+  },
+  backTextWhite: {
+    color: '#FFF',
+  },
+  rowFrontVisible: {
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    height: 90,
+    margin: 5,
+    marginBottom: 15,
+    shadowColor: '#999',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  rowBack: {
     alignItems: 'center',
+    backgroundColor: '#DDD',
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 100,
-    borderBottomColor: colors.greyLightLine,
-    borderBottomWidth: 1,
-    // fontFamily: 'Roboto-Light',
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    // backgroundColor: 'green',
+    paddingLeft: 15,
+    margin: 5,
+    marginBottom: 15,
+    borderRadius: 5,
+  },
+  backRightBtn: {
+    alignItems: 'flex-end',
+    bottom: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    width: 75,
+    paddingRight: 17,
+  },
+  backRightBtnLeft: {
+    backgroundColor: '#fff',
+    right: 75,
+    height: 90,
+  },
+  backRightBtnRight: {
+    backgroundColor: '#fff',
+    right: 0,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    height: 90,
+  },
+  trash: {
+    height: 25,
+    width: 25,
+    marginRight: 7,
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: '#666',
+  },
+  details: {
+    fontSize: 12,
+    color: '#999',
   },
   cardRightBlock: {
-    justifyContent: 'space-between',
-    flex: 1,
-    marginLeft: 15,
+    justifyContent: 'space-around',
+    marginLeft: 65,
     height: 80,
+    position: 'absolute',
   },
   horizontalLine: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-
-  productTitle: {
-    fontFamily: 'Roboto-Light',
-    color: colors.greyProductTitle,
-    fontWeight: '900',
-    fontSize: 15,
-  },
-
-  productItem: {
-    fontFamily: 'Roboto-Light',
-    color: colors.greyText,
-    fontWeight: '900',
-    fontSize: 12,
-  },
-  productIcon: {
-    paddingRight: 5,
-  },
-  whatandwhen: {
-    paddingBottom: 3,
-    height: 40,
-  },
 });
+
 export default FavoriteScreen;
