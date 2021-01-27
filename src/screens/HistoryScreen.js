@@ -37,8 +37,7 @@ const HistoryScreen = () => {
     };
     getHistoryFromStorage();
   }, []);
-  console.log('savedHisttttttfffftttttory', savedHistory);
-  console.log('HistoryList', savedHistory);
+  // console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
 
   return (
     <ScrollView>

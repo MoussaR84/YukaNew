@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HistoryItem from './HistoryItem';
 import {
   StyleSheet,
@@ -11,10 +11,26 @@ import {
   SafeAreaView,
   Modal,
 } from 'react-native';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 
 const HistoryList = ({history}) => {
-  return history.map((product) => {
-    return <HistoryItem product={product} />;
-  });
+  const [listData, setListData] = useState([]);
+
+  const handlefavorite = (product) => {
+    console.log(product, 'product');
+    listData.push(product);
+    console.log(listData, 'listData');
+  };
+  return (
+    history &&
+    history.map((product) => {
+      return (
+        <HistoryItem
+          product={product}
+          onPress={() => handlefavorite(product)}
+        />
+      );
+    })
+  );
 };
 export default HistoryList;
