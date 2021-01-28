@@ -37,9 +37,11 @@ const HistoryScreen = () => {
     };
     getHistoryFromStorage();
   }, []);
-  // console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
+  console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
 
-  return (
+  return isLoading ? (
+    <Text>encours de chargement</Text>
+  ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
         <HistoryList history={savedHistory} />

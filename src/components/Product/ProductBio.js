@@ -29,6 +29,7 @@ import {
   ratingProduct,
   ratingProductComment,
 } from './productParser';
+import {color} from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -63,20 +64,22 @@ export default ProductBio = ({product}) => {
           />
         </View>
         <View style={styles.comment}>
-          <View>
-            <View style={styles.gramandvalue}>
-              <Text style={styles.title}>Bio</Text>
-              <View style={styles.unitgramcontainaer}>
-                <View style={styles.circlecalorie}>
-                  <Entypo name="check" size={15} color={isBioorNotColor()} />
-                </View>
-              </View>
-            </View>
+          <View style={styles.gramandvalue}>
+            <Text style={styles.title}>Bio</Text>
           </View>
           <Text style={styles.function}>{isBioorNot(product)}</Text>
         </View>
+        <View style={styles.unitgramcontainaer}>
+          <View View style={styles.unitgram}></View>
+          <View style={styles.circlecalorie}>
+            <Entypo name="check" size={15} color={isBioorNotColor()} />
+          </View>
+          <View style={styles.entypoDown}>
+            <AntDesign name="right" size={15} color="grey" />
+          </View>
+        </View>
       </View>
-      <View style={styles.dividedcontainer}></View>
+      <View style={styles.dividedcontainer} />
     </>
   );
 };
@@ -84,7 +87,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 5,
   },
   title: {
     fontWeight: '800',
@@ -98,30 +104,37 @@ const styles = StyleSheet.create({
   },
   gramandvalue: {
     flexDirection: 'row',
-    width: 250,
+    width: 150,
     justifyContent: 'space-between',
   },
   comment: {
-    marginLeft: 10,
+    width: 170,
   },
+
   unitgramcontainaer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    alignItems: 'center',
+    width: 80,
   },
   text: {
     color: 'grey',
+    fontFamily: 'Roboto-Light',
+    fontSize: 13,
   },
-  unitgramcalorie: {
+
+  unitgram: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginRight: 13,
+    width: 40,
+    justifyContent: 'flex-end',
   },
   circlecalorie: {
-    marginRight: 19,
+    marginRight: 5,
   },
   dividedcontainer: {
     borderColor: '#F7F7F7',
     backgroundColor: '#F7F7F7',
     borderWidth: 1,
-    marginLeft: 55,
   },
 });

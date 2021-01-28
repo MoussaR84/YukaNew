@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
 import {
   sugarComment,
@@ -47,7 +36,7 @@ export default ProductCalorie = ({product}) => {
       return 'Produit non enregistré';
     }
   };
-  const caloriecirclecolor = (product) => {
+  const calorieCirclecolor = (product) => {
     if (product.nutriments['energy-kcal_value'] <= 800) {
       return colors.red;
     } else if (product.nutriments['energy-kcal_value'] <= 560) {
@@ -63,8 +52,8 @@ export default ProductCalorie = ({product}) => {
 
   return (
     <>
-      <View style={styles.caloriecontainer}>
-        <View style={styles.imagecatcalorie}>
+      <View style={styles.container}>
+        <View style={styles.image}>
           <MaterialCommunityIcons
             name="fire"
             size={30}
@@ -72,49 +61,53 @@ export default ProductCalorie = ({product}) => {
             color="grey"
           />
         </View>
-        <View style={styles.commentcalories}>
-          <View style={styles.calorievaluecircle}>
-            <View style={styles.caloriegramandvalue}>
-              <Text style={styles.titlecalorie}>Calories</Text>
-              <View style={styles.unitgramcaloriecontainaer}>
-                <View View style={styles.unitgramcalorie}>
-                  <Text style={styles.textcalorie}>
-                    {product.nutriments['energy-kcal_value'] === undefined
-                      ? ''
-                      : product.nutriments['energy-kcal_value']}
-                  </Text>
-                  <Text style={styles.textcalorie}>
-                    {product.nutriments['energy-kcal_unit'] === undefined
-                      ? ''
-                      : product.nutriments['energy-kcal_unit']}
-                  </Text>
-                  <View style={styles.circlecalorie}>
-                    <FontAwesome
-                      name="circle"
-                      size={15}
-                      style={styles.circle}
-                      color={caloriecirclecolor(product, colors)}
-                    />
-                  </View>
-                  <AntDesign name="right" size={15} color="grey" />
-                </View>
-              </View>
-            </View>
+        <View style={styles.comment}>
+          <View style={styles.gramandvalue}>
+            <Text style={styles.title}>Calories</Text>
           </View>
           <Text style={styles.function}>{calorieComment(product)}</Text>
         </View>
+        <View style={styles.unitgramcontainaer}>
+          <View View style={styles.unitgram}>
+            <Text style={styles.text}>
+              {product.nutriments['energy-kcal_value'] === undefined
+                ? ''
+                : product.nutriments['energy-kcal_value']}
+            </Text>
+            <Text style={styles.text}>
+              {product.nutriments['energy-kcal_unit'] === undefined
+                ? ''
+                : product.nutriments['energy-kcal_unit']}
+            </Text>
+          </View>
+
+          <View style={styles.circlecalorie}>
+            <FontAwesome
+              name="circle"
+              size={15}
+              style={styles.circle}
+              color={calorieCirclecolor(product, colors)}
+            />
+          </View>
+          <View style={styles.entypoDown}>
+            <AntDesign name="right" size={15} color="grey" />
+          </View>
+        </View>
       </View>
-      <View style={styles.dividedcontainer}></View>
+      <View style={styles.dividedcontainer} />
     </>
   );
 };
 const styles = StyleSheet.create({
-  caloriecontainer: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 5,
   },
-  titlecalorie: {
+  title: {
     fontWeight: '800',
     fontSize: 17,
     fontFamily: 'Roboto-Light',
@@ -124,31 +117,35 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 12,
   },
-  caloriegramandvalue: {
+  gramandvalue: {
     flexDirection: 'row',
-    width: 260,
+    width: 100,
     justifyContent: 'space-between',
   },
-  commentcalories: {
-    marginLeft: 10,
+  comment: {
+    width: 170,
   },
-  diagramcalorie: {
+
+  unitgramcontainaer: {
     flexDirection: 'row',
-    marginTop: 10,
-    paddingBottom: 10,
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    alignItems: 'center',
+    width: 80,
   },
-  unitgramcaloriecontainaer: {
-    flexDirection: 'row',
-  },
-  textcalorie: {
+  text: {
     color: 'grey',
+    fontFamily: 'Roboto-Light',
+    fontSize: 13,
   },
-  unitgramcalorie: {
+
+  unitgram: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    width: 40,
+    justifyContent: 'flex-end',
   },
   circlecalorie: {
-    marginRight: 15,
+    marginRight: 5,
   },
   dividedcontainer: {
     borderColor: '#F7F7F7',

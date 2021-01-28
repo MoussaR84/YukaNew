@@ -38,7 +38,7 @@ const SugarComment = (nutrient_levels) => {
   } else if (nutrient_levels === 'high') {
     return 'Forte quantité';
   } else {
-    return 'Données inaccessibles ou inexistantes';
+    return 'Très faible quantité';
   }
 };
 const SugarCircle = (nutrient_levels) => {
@@ -60,45 +60,43 @@ const ProductSugar = ({nutriments, nutrient_levels}) => {
             name="candycane"
             size={30}
             style={styles.circle}
-            color="lightgrey"
+            color="grey"
           />
         </View>
         <View style={styles.comment}>
-          <View>
-            <View style={styles.gramandvalue}>
-              <Text style={styles.title}>Sucres</Text>
-              <View style={styles.unitgramcontainaer}>
-                <View View style={styles.unitgram}>
-                  <Text style={styles.text}>
-                    {nutriments.sugars_value === undefined
-                      ? ''
-                      : nutriments.sugars_value}
-                  </Text>
-                  <Text style={styles.text}>
-                    {nutriments.sugars_unit === undefined
-                      ? ''
-                      : nutriments.sugars_unit}
-                  </Text>
-                </View>
-
-                <View style={styles.circlecalorie}>
-                  <FontAwesome
-                    name="circle"
-                    size={15}
-                    style={styles.circle}
-                    color={SugarCircle(nutrient_levels, colors)}
-                  />
-                </View>
-                <View style={styles.entypoDown}>
-                  <AntDesign name="right" size={15} color="grey" />
-                </View>
-              </View>
-            </View>
+          <View style={styles.gramandvalue}>
+            <Text style={styles.title}>Sucres</Text>
           </View>
           <Text style={styles.function}>{SugarComment(nutrient_levels)}</Text>
         </View>
+        <View style={styles.unitgramcontainaer}>
+          <View View style={styles.unitgram}>
+            <Text style={styles.text}>
+              {nutriments.sugars_value === undefined
+                ? ''
+                : nutriments.sugars_value}
+            </Text>
+            <Text style={styles.text}>
+              {nutriments.sugars_unit === undefined
+                ? ''
+                : nutriments.sugars_unit}
+            </Text>
+          </View>
+
+          <View style={styles.circlecalorie}>
+            <FontAwesome
+              name="circle"
+              size={15}
+              style={styles.circle}
+              color={SugarCircle(nutrient_levels, colors)}
+            />
+          </View>
+          <View style={styles.entypoDown}>
+            <AntDesign name="right" size={15} color="grey" />
+          </View>
+        </View>
       </View>
-      <View style={styles.dividedcontainer}></View>
+      <View style={styles.dividedcontainer} />
     </>
   );
 };
@@ -106,7 +104,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 5,
   },
   title: {
     fontWeight: '800',
@@ -120,26 +121,33 @@ const styles = StyleSheet.create({
   },
   gramandvalue: {
     flexDirection: 'row',
-    width: 260,
+    width: 150,
     justifyContent: 'space-between',
   },
   comment: {
-    marginLeft: 10,
+    width: 170,
   },
 
   unitgramcontainaer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    alignItems: 'center',
+    width: 80,
   },
   text: {
     color: 'grey',
+    fontFamily: 'Roboto-Light',
+    fontSize: 13,
   },
+
   unitgram: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginRight: 13,
+    width: 40,
+    justifyContent: 'flex-end',
   },
   circlecalorie: {
-    marginRight: 15,
+    marginRight: 5,
   },
   dividedcontainer: {
     borderColor: '#F7F7F7',
@@ -148,4 +156,5 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
 });
+
 export default ProductSugar;

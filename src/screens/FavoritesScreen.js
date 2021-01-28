@@ -8,12 +8,24 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import HistoryList from '../components/History/HistoryList';
+import HistoryItem from '../components/History/HistoryItem';
 
-const FavoritesScreen = (handlefavorite) => {
-  console.log(listData);
+const FavoritesScreen = ({favorite}) => {
+  console.log(favorite, 'favorite');
+
   return (
+    // favorite&&
+    // favorite.map((HistoryItem,index)=>({
+    //   return(
+    //        key: `${index}`,
+    //         product_name: HistoryItem.product_name,
+    //         brands: HistoryItem.brands,
+    //         image_url: HistoryItem.image_url,
+    //         nutrition_grade_fr: HistoryItem.nutrition_grade_fr,
+    //   )}))
     <View style={styles.container}>
-      <Text>FavoritesScreen</Text>
+      <Text>favoritescreentttt</Text>
     </View>
   );
 };

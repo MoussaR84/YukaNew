@@ -32,17 +32,22 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {color} from 'react-native-reanimated';
 
-export default ProductFatSat = ({product}) => {
+const ProductFatSat = ({product}) => {
   const FatSatComment = (product) => {
     if (product.nutriments['saturated-fat'] >= 1) {
       return 'Peu de graisses saturées';
     } else if (product.nutriments['saturated-fat'] >= 10) {
       return 'Graisses saturées en quantité';
     } else if (product.nutriments['saturated-fat'] >= 20) {
-      return 'Graisses saturées en quantité';
+      return 'Faible quantité';
+    } else if (product.nutriments['saturated-fat'] >= 0) {
+      return 'Très faible quantité ';
+    } else if ((product.nutriments['saturated-fat'] = 0)) {
+      return 'Non Présente ';
     } else {
-      return 'Graisses saturées non présentes';
+      return ' non enregistré';
     }
   };
   const FatSatCircle = (product) => {
@@ -52,6 +57,10 @@ export default ProductFatSat = ({product}) => {
       return colors.orange;
     } else if (product.nutriments['saturated-fat'] >= 20) {
       return colors.red;
+    } else if (product.nutriments['saturated-fat'] >= 0) {
+      return colors.bown;
+    } else if ((product.nutriments['saturated-fat'] = 0)) {
+      return colors.black;
     } else {
       return colors.grey;
     }
@@ -69,41 +78,39 @@ export default ProductFatSat = ({product}) => {
           />
         </View>
         <View style={styles.comment}>
-          <View>
-            <View style={styles.gramandvalue}>
-              <Text style={styles.title}>Graisses Saturées</Text>
-              <View style={styles.unitgramcontainaer}>
-                <View View style={styles.unitgram}>
-                  <Text style={styles.text}>
-                    {product.nutriments['saturated-fat'] === undefined
-                      ? ''
-                      : product.nutriments['saturated-fat']}
-                  </Text>
-                  <Text style={styles.text}>
-                    {product.nutriments['saturated-fat_unit'] === undefined
-                      ? ''
-                      : product.nutriments['saturated-fat_unit']}
-                  </Text>
-                </View>
-
-                <View style={styles.circlecalorie}>
-                  <FontAwesome
-                    name="circle"
-                    size={15}
-                    style={styles.circle}
-                    color={FatSatCircle(product, colors)}
-                  />
-                </View>
-                <View style={styles.entypoDown}>
-                  <AntDesign name="right" size={15} color="grey" />
-                </View>
-              </View>
-            </View>
+          <View style={styles.gramandvalue}>
+            <Text style={styles.title}>Graisses Saturées</Text>
           </View>
           <Text style={styles.function}>{FatSatComment(product)}</Text>
         </View>
+        <View style={styles.unitgramcontainaer}>
+          <View View style={styles.unitgram}>
+            <Text style={styles.text}>
+              {product.nutriments['saturated-fat'] === undefined
+                ? ''
+                : product.nutriments['saturated-fat']}
+            </Text>
+            <Text style={styles.text}>
+              {product.nutriments['saturated-fat_unit'] === undefined
+                ? ''
+                : product.nutriments['saturated-fat_unit']}
+            </Text>
+          </View>
+
+          <View style={styles.circlecalorie}>
+            <FontAwesome
+              name="circle"
+              size={15}
+              style={styles.circle}
+              color={FatSatCircle(product, colors)}
+            />
+          </View>
+          <View style={styles.entypoDown}>
+            <AntDesign name="right" size={15} color="grey" />
+          </View>
+        </View>
       </View>
-      <View style={styles.dividedcontainer}></View>
+      <View style={styles.dividedcontainer} />
     </>
   );
 };
@@ -111,7 +118,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 5,
   },
   title: {
     fontWeight: '800',
@@ -125,26 +135,33 @@ const styles = StyleSheet.create({
   },
   gramandvalue: {
     flexDirection: 'row',
-    width: 260,
+    width: 150,
     justifyContent: 'space-between',
   },
   comment: {
-    marginLeft: 10,
+    width: 170,
   },
 
   unitgramcontainaer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    alignItems: 'center',
+    width: 80,
   },
   text: {
     color: 'grey',
+    fontFamily: 'Roboto-Light',
+    fontSize: 13,
   },
+
   unitgram: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginRight: 13,
+    width: 40,
+    justifyContent: 'flex-end',
   },
   circlecalorie: {
-    marginRight: 15,
+    marginRight: 5,
   },
   dividedcontainer: {
     borderColor: '#F7F7F7',
@@ -152,3 +169,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 });
+
+export default ProductFatSat;
