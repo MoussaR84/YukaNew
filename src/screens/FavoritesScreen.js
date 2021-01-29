@@ -11,19 +11,10 @@ import {
 import HistoryList from '../components/History/HistoryList';
 import HistoryItem from '../components/History/HistoryItem';
 
-const FavoritesScreen = ({favorite}) => {
-  console.log(favorite, 'favorite');
+const FavoritesScreen = ({listData}) => {
+  console.log(listData, 'liffffstData');
 
   return (
-    // favorite&&
-    // favorite.map((HistoryItem,index)=>({
-    //   return(
-    //        key: `${index}`,
-    //         product_name: HistoryItem.product_name,
-    //         brands: HistoryItem.brands,
-    //         image_url: HistoryItem.image_url,
-    //         nutrition_grade_fr: HistoryItem.nutrition_grade_fr,
-    //   )}))
     <View style={styles.container}>
       <Text>favoritescreentttt</Text>
     </View>

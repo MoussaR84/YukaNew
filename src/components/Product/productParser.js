@@ -147,9 +147,9 @@ export const ratingIconColor = (nutrition_grade_fr) => {
     case 'b':
       return colors.orange;
     case 'c':
-      return colors.red;
-    case 'd':
       return colors.brown;
+    case 'd':
+      return colors.red;
     case 'e':
       return colors.black;
     default:
@@ -162,9 +162,9 @@ export const ratingProductComment = (nutrition_grade_fr) => {
     case 'a':
       return 'Excellent';
     case 'b':
-      return 'Satisfaisant';
-    case 'c':
       return 'Bon';
+    case 'c':
+      return 'Moyen';
     case 'd':
       return 'Mauvais';
     case 'e':

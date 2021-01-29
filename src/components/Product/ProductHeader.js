@@ -9,9 +9,9 @@ const ProductHeader = ({product}) => {
     if (product.nutrition_grade_fr === 'a') {
       return 'Excellent';
     } else if (product.nutrition_grade_fr === 'b') {
-      return 'Satisfaisant';
-    } else if (product.nutrition_grade_fr === 'c') {
       return 'Bon';
+    } else if (product.nutrition_grade_fr === 'c') {
+      return 'Moyen';
     } else if (product.nutrition_grade_fr === 'd') {
       return 'Mauvais';
     } else if (product.nutrition_grade_fr === 'e') {

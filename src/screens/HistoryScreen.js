@@ -29,6 +29,7 @@ const HistoryScreen = () => {
     const getHistoryFromStorage = async () => {
       let formattedHistoryfromStorage = [];
       const rawSavedHistory = await AsyncStorage.getItem('productHistory');
+      const rawDeleteHistory = await AsyncStorage.getItem('productHistory');
       if (rawSavedHistory !== null) {
         formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
       }

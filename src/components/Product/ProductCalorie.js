@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   gramandvalue: {
     flexDirection: 'row',
-    width: 100,
+    width: 150,
     justifyContent: 'space-between',
   },
   comment: {
