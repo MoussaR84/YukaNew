@@ -45,7 +45,7 @@ const ScanScreen = () => {
       {isProductScanned ? (
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[500, 300, 0]}
+          snapPoints={[300, 300, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
           renderContent={renderContent}>
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     position: 'absolute',
-    bottom: 0,
-    right: 0,
     backgroundColor: 'lightgreen',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
-    shadowColor: 'orange',
+    borderRadius: 50,
+    top: 30,
+    marginHorizontal: 140,
+    shadowColor: 'grey',
     shadowOpacity: 0.7,
     shadowOffset: {
       height: 4,

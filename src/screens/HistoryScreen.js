@@ -21,7 +21,7 @@ import {
   ratingProductComment,
 } from '../components/Product/productParser';
 
-const HistoryScreen = () => {
+const HistoryScreen = ({listData}) => {
   const [savedHistory, setSavedHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,7 +29,6 @@ const HistoryScreen = () => {
     const getHistoryFromStorage = async () => {
       let formattedHistoryfromStorage = [];
       const rawSavedHistory = await AsyncStorage.getItem('productHistory');
-      const rawDeleteHistory = await AsyncStorage.getItem('productHistory');
       if (rawSavedHistory !== null) {
         formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
       }

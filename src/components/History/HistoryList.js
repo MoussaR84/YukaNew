@@ -19,16 +19,10 @@ const HistoryList = ({history}) => {
   const [listData, setListData] = useState([]);
 
   const handlefavorite = (product) => {
-    console.log(product, 'product');
+    // console.log(product, 'product');
     listData.push(product);
     alert('added to favorite');
     console.log(listData, 'listData');
-  };
-
-  const handledelete = async (product) => {
-    const newData = AsyncStorage.removeItem('producHistory');
-    return setNewArray(newData);
-    alert("delete item")
   };
 
   return (

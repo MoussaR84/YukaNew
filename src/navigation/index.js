@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
@@ -16,6 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
+  const [listData, setListData] = useState([]);
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -26,6 +27,7 @@ const TabNavigator = ({tintColor}) => {
       <Tab.Screen
         name="HistoryScreen"
         component={HistoryScreen}
+        listData={listData}
         options={{
           style: styles.icons,
           tabBarLabel: '',
@@ -68,6 +70,7 @@ const TabNavigator = ({tintColor}) => {
       <Tab.Screen
         name="FavoritesScreen"
         component={FavoritesScreen}
+        listData={listData}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {

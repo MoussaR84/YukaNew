@@ -12,7 +12,7 @@ import HistoryList from '../components/History/HistoryList';
 import HistoryItem from '../components/History/HistoryItem';
 
 const FavoritesScreen = ({listData}) => {
-  console.log(listData, 'liffffstData');
+  console.log(listData, 'liffffshdhzhzudhtData');
 
   return (
     <View style={styles.container}>

@@ -14,36 +14,36 @@ import {SwipeListView} from 'react-native-swipe-list-view';
 // import {deleteRow} from './HistoryList';
 // import {SwipeListView} from 'react-native-swipe-list-view';
 
-const HistoryItem = ({product, onPress}) => {
+const HistoryItem = ({product, onPress, listData}) => {
   return (
     product && (
-        <SafeAreaView>
-          <TouchableOpacity style={styles.card} onPress={onPress}>
-            <ImageCard image_url={product.image_url} />
-            {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
-            <View style={styles.cardRightBlock}>
-              <View style={styles.titleAndBrand}>
-                <Text numberOfLines={1} style={styles.productTitle}>
-                  {product.product_name}
-                </Text>
-                <Text style={styles.productItem}>{product.brands}</Text>
-              </View>
-              <View style={styles.whatandwhen}>
-                <Ratings nutrition_grade_fr={product.nutrition_grade_fr} />
-                <View style={styles.horizontalLine}>
-                  <FontAwesome
-                    name="clock-o"
-                    size={14}
-                    style={styles.productIcon}
-                    color={colors.greyText}
-                  />
+      <SafeAreaView>
+        <TouchableOpacity style={styles.card} onPress={onPress}>
+          <ImageCard image_url={product.image_url} />
+          {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
+          <View style={styles.cardRightBlock}>
+            <View style={styles.titleAndBrand}>
+              <Text numberOfLines={1} style={styles.productTitle}>
+                {product.product_name}
+              </Text>
+              <Text style={styles.productItem}>{product.brands}</Text>
+            </View>
+            <View style={styles.whatandwhen}>
+              <Ratings nutrition_grade_fr={product.nutrition_grade_fr} />
+              <View style={styles.horizontalLine}>
+                <FontAwesome
+                  name="clock-o"
+                  size={14}
+                  style={styles.productIcon}
+                  color={colors.greyText}
+                />
 
-                  <Text style={styles.productItem}>Il y a quelques jours</Text>
-                </View>
+                <Text style={styles.productItem}>Il y a quelques jours</Text>
               </View>
             </View>
-          </TouchableOpacity>
-        </SafeAreaView>
+          </View>
+        </TouchableOpacity>
+      </SafeAreaView>
     )
   );
 };
