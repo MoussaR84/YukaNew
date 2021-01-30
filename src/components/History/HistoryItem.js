@@ -37,7 +37,6 @@ const HistoryItem = ({product, onPress, listData}) => {
                   style={styles.productIcon}
                   color={colors.greyText}
                 />
-
                 <Text style={styles.productItem}>Il y a quelques jours</Text>
               </View>
             </View>

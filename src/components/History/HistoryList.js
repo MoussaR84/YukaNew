@@ -18,13 +18,16 @@ import AsyncStorage from '@react-native-community/async-storage';
 const HistoryList = ({history}) => {
   const [listData, setListData] = useState([]);
 
-  const handlefavorite = (product) => {
+  const handlefavorite = async (product) => {
     // console.log(product, 'product');
-    listData.push(product);
-    alert('added to favorite');
-    console.log(listData, 'listData');
-  };
+    const HandlefavoriteProduct = await AsyncStorage.getItem('favoriteproduct');
+    const TransformHandleFavoriteProduct = JSON.parse(HandlefavoriteProduct);
+    const newData = [...TransformHandleFavoriteProduct];
+    newData.push(product);
+    setListData(newData);
 
+    AsyncStorage.setItem('favoriteproduct', JSON.stringify(listData));
+  };
   return (
     history &&
     history.map((product) => {
