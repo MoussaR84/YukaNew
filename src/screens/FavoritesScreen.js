@@ -13,19 +13,11 @@ import HistoryItem from '../components/History/HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useEffect} from 'react';
 
-const FavoritesScreen = ({listData}) => {
-  const [favorite, setFavorite] = useState([]);
+const FavoritesScreen = ({newFavorite, listData}) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const FavoriteProductHistory = async () => {
-    const FavoriteHistory = await AsyncStorage.getItem('favoriteproduct');
-    console.log(FavoriteHistory, 'liffffshdhzhzudhtData');
-    setFavorite(JSON.parse(FavoriteHistory));
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    FavoriteProductHistory();
-  }, []);
+  console.log(newFavorite, 'newFavorite');
+  console.log(listData, 'listData');
 
   return isLoading ? (
     <>
@@ -36,8 +28,9 @@ const FavoritesScreen = ({listData}) => {
   ) : (
     <>
       <View style={styles.container}>
-        {favorite.map((element, index) => (
-          <Text>{element.product_name}</Text>
+        <Text>salut</Text>
+        {newFavorite.map((product, index) => (
+          <Text>{product.product_name}</Text>
         ))}
       </View>
     </>

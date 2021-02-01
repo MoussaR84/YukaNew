@@ -45,7 +45,7 @@ const ScanScreen = () => {
       {isProductScanned ? (
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[300, 300, 0]}
+          snapPoints={[400, 500, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
           renderContent={renderContent}>

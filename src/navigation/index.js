@@ -16,7 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
-  const [listData, setListData] = useState([]);
+  const [listData, setlistData] = useState([]);
   return (
     <Tab.Navigator
       tabBarOptions={{

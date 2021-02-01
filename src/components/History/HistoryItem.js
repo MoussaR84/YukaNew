@@ -14,7 +14,7 @@ import {SwipeListView} from 'react-native-swipe-list-view';
 // import {deleteRow} from './HistoryList';
 // import {SwipeListView} from 'react-native-swipe-list-view';
 
-const HistoryItem = ({product, onPress, listData}) => {
+const HistoryItem = ({product, onPress}) => {
   return (
     product && (
       <SafeAreaView>

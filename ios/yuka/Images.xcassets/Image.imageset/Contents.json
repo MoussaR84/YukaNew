@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "yukasplashreen 100.png",
+      "filename" : "100_100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "yukasplashreen 200.png",
+      "filename" : "200_200.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "yukasplashreen 300.png",
+      "filename" : "300_300.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

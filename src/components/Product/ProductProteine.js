@@ -22,7 +22,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default ProductProteine = ({product}) => {
+const ProductProteine = ({product}) => {
   const TextProteine = (product) => {
     if (product.nutriscore_data.proteins_value >= 10) {
       return 'Excellente quantité';
@@ -150,3 +150,4 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
 });
+export default ProductProteine;
