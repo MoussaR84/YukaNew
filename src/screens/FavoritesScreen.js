@@ -6,12 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import colors from '../assets/colors';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ratings from '../components/Product/Rating';
-import ImageCard from '../components/Product/ImageCard';
-import HistoryList from '../components/History/HistoryList';
-import HistoryItem from '../components/History/HistoryItem';
+import FavoriteList from '../components/Favorite/FavoriteList';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -31,106 +26,57 @@ const FavoritesScreen = ({newFavorite, listData}) => {
     };
     getFavoriteFromStorage();
   }, []);
-  // console.log(listData, 'listData');
-  // let newTabFavorite = [];
-  // newTabFavorite = await AsyncStorage.getItem('productFavorite');
-  // console.log(newTabFavorite, 'newTabFavorite');
-
-  // const newTabFavoriteParse = JSON.parse(newTabFavorite);
-  // console.log(newTabFavoriteParse, 'newTabFavoriteParse');
   console.log(savedFavorite, 'savedFavorite');
 
   return isLoading ? (
-    <>
-      <View style={styles.container}>
-        <Text>favoritescreengg</Text>
-      </View>
-    </>
+    <Text>encours de chargement</Text>
   ) : (
-    <>
-      <View style={styles.container}>
-        {savedFavorite.map((item, i) => (
-          <>
-            <SafeAreaView>
-              <ScrollView>
-                <TouchableOpacity style={styles.card}>
-                  <ImageCard image_url={item.image_url} />
-                  {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
-                  <View style={styles.cardRightBlock}>
-                    <View style={styles.titleAndBrand}>
-                      <Text numberOfLines={1} style={styles.productTitle}>
-                        {item.product_name}
-                      </Text>
-                      <Text style={styles.productItem}>{item.brands}</Text>
-                    </View>
-                    <View style={styles.whatandwhen}>
-                      <Ratings nutrition_grade_fr={item.nutrition_grade_fr} />
-                      <View style={styles.horizontalLine}>
-                        <FontAwesome
-                          name="clock-o"
-                          size={14}
-                          style={styles.productIcon}
-                          color={colors.greyText}
-                        />
-                        <Text style={styles.productItem}>
-                          Il y a quelques jours
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              </ScrollView>
-            </SafeAreaView>
-          </>
-        ))}
-      </View>
-    </>
+    <ScrollView>
+      <SafeAreaView style={styles.containersafe}>
+        <FavoriteList favorite={savedFavorite} listData={listData} />
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: 100,
-    borderBottomColor: colors.greyLightLine,
-    borderBottomWidth: 1,
-    // fontFamily: 'Roboto-Light',
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    // backgroundColor: 'green',
-  },
-  cardRightBlock: {
-    justifyContent: 'space-between',
+  container: {
     flex: 1,
-    marginLeft: 15,
-    height: 80,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 20,
   },
-  horizontalLine: {
+  card: {
+    alignItems: 'flex-start',
+    paddingLeft: 10,
+    justifyContent: 'space-between',
+    height: 120,
     flexDirection: 'row',
+    marginBottom: 10,
+  },
+
+  nameProduct: {
+    fontWeight: '600',
     alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 16,
   },
 
-  productTitle: {
-    fontFamily: 'Roboto-Light',
-    color: colors.greyProductTitle,
-    fontWeight: '900',
-    fontSize: 15,
+  brands: {
+    color: 'grey',
   },
-
-  productItem: {
-    fontFamily: 'Roboto-Light',
-    color: colors.greyText,
-    fontWeight: '900',
-    fontSize: 12,
+  nameandbrand: {
+    height: '100%',
+    width: 220,
   },
-  productIcon: {
-    paddingRight: 5,
+  nameandbrandcontainer: {
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    marginLeft: 5,
   },
-  whatandwhen: {
-    paddingBottom: 3,
-    height: 40,
+  ratingproduct: {
+    backgroundColor: 'red',
   },
 });
+
 export default FavoritesScreen;

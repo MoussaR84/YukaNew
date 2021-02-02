@@ -1,22 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import HistoryItem from './HistoryItem';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Modal,
-} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const HistoryList = ({history}) => {
   const [listData, setlistData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [updateHistory, setUpdateHistory] = useState([]);
   const Handlefavorite = async (product) => {
     console.log(product, 'product');
 

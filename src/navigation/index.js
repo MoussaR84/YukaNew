@@ -39,7 +39,7 @@ const TabNavigator = ({tintColor}) => {
               />
             ) : (
               <Image
-                source={require('../assets/TabBar/inactive_history.png')}
+                source={require('../assets/TabBar/inactive_yuka.png')}
                 style={{width: 30, height: 30}}
               />
             );
@@ -75,9 +75,12 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <Entypo name="star" size={30} color="white" />
+              <Image
+                source={require('../assets/TabBar/active_yuka.png')}
+                style={{width: 25, height: 25}}
+              />
             ) : (
-              <Entypo name="star" size={25} color="white" />
+              <Entypo name="star" size={30} color="#F1F1F1" />
             );
           },
         }}
