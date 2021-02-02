@@ -38,13 +38,13 @@ const HistoryScreen = ({listData}) => {
     getHistoryFromStorage();
   }, []);
   console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
-  console.log('listDatauuuuuuuuu', listData);
+
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
-        <HistoryList history={savedHistory} favorite={listData} />
+        <HistoryList history={savedHistory} listData={listData} />
       </SafeAreaView>
     </ScrollView>
   );

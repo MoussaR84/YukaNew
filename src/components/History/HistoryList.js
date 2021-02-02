@@ -14,41 +14,24 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 
 const HistoryList = ({history}) => {
-  const [favorite, setFavorite] = useState([]);
+  const [listData, setlistData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [updateHistory, setUpdateHistory] = useState([]);
-
   const Handlefavorite = async (product) => {
     console.log(product, 'product');
-    let newFavorite = [];
 
     const NewHandleFavorite = await AsyncStorage.getItem('productHistory');
-
+    let newFavorite = [];
     newFavorite = JSON.parse(NewHandleFavorite);
-
     console.log(newFavorite, 'newFavorite');
 
     if (product !== null) {
-      favorite.push(newFavorite);
-      setFavorite(newFavorite);
+      listData.push(newFavorite);
+      console.log(newFavorite, 'newFavoritekkkkkkkk');
+      AsyncStorage.setItem('productFavorite', JSON.stringify(newFavorite));
+      console.log(newFavorite, 'newFavoritelllllllllll');
     }
-    console.log(newFavorite, 'newFavoritekkkkkkkk');
   };
-
-  // const UpdateHistory = async (product) => {
-  //   let newHistory = [];
-
-  //   let NewUpdateHistory = await AsyncStorage.getItem('productHistory');
-  //   NewUpdateHistory = JSON.parse(newHistory);
-  //   console.log('NewUpdateHistory', NewUpdateHistory);
-  //   // if (product === 1) {
-  //   //   updateHistory.filter(NewUpdateHistory);
-  //   //   setUpdateHistory(NewUpdateHistory);
-  //   // }
-  //   console.log(NewUpdateHistory, 'NewUpdateHistory');
-
-  //   console.log(favorite, 'favorite');
-  // };
 
   return (
     history &&

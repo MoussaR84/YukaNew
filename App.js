@@ -4,10 +4,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import TabNavigator from './src/navigation/index';
 import AsyncStorage from './src/asyncStorage/index';
 
-export default function App({favorite}) {
+export default function App({listData}) {
   return (
     <NavigationContainer>
-      <TabNavigator favorite={favorite} />
+      <TabNavigator listData={listData} />
     </NavigationContainer>
   );
 }
