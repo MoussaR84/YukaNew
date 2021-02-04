@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {StyleSheet, Text, SafeAreaView} from 'react-native';
 import FavoriteList from '../components/Favorite/FavoriteList';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ScrollView} from 'react-native-gesture-handler';

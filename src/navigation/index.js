@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {Image, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {StyleSheet, Text, SafeAreaView} from 'react-native';
 import colors from '../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -33,15 +34,19 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <Image
-                source={require('../assets/TabBar/active_history.png')}
-                style={{width: 25, height: 25}}
-              />
+              <View style={styles.tabBarIcon}>
+                <Image
+                  source={require('../assets/TabBar/active_history.png')}
+                  style={{width: 25, height: 25}}
+                />
+              </View>
             ) : (
-              <Image
-                source={require('../assets/TabBar/inactive_yuka.png')}
-                style={{width: 30, height: 30}}
-              />
+              <View style={styles.tabBarIcon}>
+                <Image
+                  source={require('../assets/TabBar/inactive_yuka.png')}
+                  style={{width: 30, height: 30}}
+                />
+              </View>
             );
           },
         }}
@@ -54,15 +59,19 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <Image
-                source={require('../assets/TabBar/active_yuka.png')}
-                style={{width: 25, height: 25}}
-              />
+              <View style={styles.tabBarIcon}>
+                <Image
+                  source={require('../assets/TabBar/active_yuka.png')}
+                  style={{width: 25, height: 25}}
+                />
+              </View>
             ) : (
-              <Image
-                source={require('../assets/TabBar/inactive_yuka.png')}
-                style={{width: 30, height: 30}}
-              />
+              <View style={styles.tabBarIcon}>
+                <Image
+                  source={require('../assets/TabBar/inactive_yuka.png')}
+                  style={{width: 30, height: 30}}
+                />
+              </View>
             );
           },
         }}
@@ -75,12 +84,16 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <Image
-                source={require('../assets/TabBar/active_yuka.png')}
-                style={{width: 25, height: 25}}
-              />
+              <View style={styles.tabBarIcon}>
+                <Image
+                  source={require('../assets/TabBar/active_yuka.png')}
+                  style={{width: 25, height: 25}}
+                />
+              </View>
             ) : (
-              <Entypo name="star" size={30} color="#F1F1F1" />
+              <View style={styles.tabBarIconstar}>
+                <Entypo name="star" size={30} color="#f0eff4" />
+              </View>
             );
           },
         }}
@@ -92,12 +105,20 @@ const TabNavigator = ({tintColor}) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#5DCC71',
-    paddingVertical: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    borderTopColor:'#F7F7F7',
   },
   icons: {
     justifyContent: 'center',
-    display: 'flex',
     alignItems: 'center',
+  },
+  tabBarIcon: {
+    paddingTop: 10,
+  },
+  tabBarIconstar:{
+    paddingTop:5,
   },
 });
 

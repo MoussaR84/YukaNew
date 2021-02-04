@@ -6,7 +6,7 @@ const FavoriteList = ({favorite}) => {
   const [savedFavoriteUpdate, setSavedFavoriteUpdate] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-//   console.log(favorite, 'favoritedddddd');
+  console.log(favorite, 'favoritedddddd');
   const DeleteFavorite = (item) => {
     // console.log(item, 'product');
 
@@ -16,7 +16,7 @@ const FavoriteList = ({favorite}) => {
       const index = UpdateFavorite.indexOf(item);
       //   console.log(index, 'index');
       if (index > -1) {
-        UpdateFavorite.splice(item, 1);
+        UpdateFavorite.splice(index, 1);
         setSavedFavoriteUpdate(UpdateFavorite);
       }
       //   console.log(UpdateFavorite, 'UpdateFavorijjjjjjte');
@@ -24,11 +24,8 @@ const FavoriteList = ({favorite}) => {
     }
   };
 
-  return (
-    savedFavoriteUpdate &&
-    savedFavoriteUpdate.map((item, index) => {
-      return <FavoriteItem item={item} onPress={() => DeleteFavorite(item)} />;
-    })
-  );
+  return savedFavoriteUpdate.map((item, index) => {
+    return <FavoriteItem item={item} onPress={() => DeleteFavorite(item)} />;
+  });
 };
 export default FavoriteList;

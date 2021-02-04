@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,9 +10,6 @@ import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ratings from '../Product/Rating';
 import ImageCard from '../Product/ImageCard';
-import {SwipeListView} from 'react-native-swipe-list-view';
-// import {deleteRow} from './HistoryList';
-// import {SwipeListView} from 'react-native-swipe-list-view';
 
 const HistoryItem = ({product, onPress}) => {
   return (
