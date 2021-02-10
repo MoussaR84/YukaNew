@@ -1,34 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
-import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
+import React from 'react';
+import {StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+
 import ProductHeader from './ProductHeader';
 import ProductQuality from './ProductQuality';
 import ProductBio from './ProductBio';
@@ -40,7 +12,6 @@ import ProductSugar from './ProductSugar';
 
 export default function Product({product}) {
   const {nutriments} = product;
-  // console.log('product.product_nam', product.product_name);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.container}>

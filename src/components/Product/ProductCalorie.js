@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default ProductCalorie = ({product}) => {
+const ProductCalorie = ({product}) => {
   return (
     <>
       <View style={styles.container}>
@@ -111,3 +111,5 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
 });
+
+export default ProductCalorie;

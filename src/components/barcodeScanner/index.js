@@ -1,12 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Alert,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import CameraHeader from './CameraHeader';
 import PendingView from './PendingView';
@@ -33,7 +26,6 @@ const BarcodeScanner = ({onBarCodeRead}) => {
             : RNCamera.Constants.FlashMode.off
         }
         onBarCodeRead={({data}) => onBarCodeRead(data)}
-        // onBarCodeRead={onBarCodeRead}
         ref={camRef}
         // aspect={RNCamera.Constants.Aspect.fill}
         androidCameraPermissionOptions={{

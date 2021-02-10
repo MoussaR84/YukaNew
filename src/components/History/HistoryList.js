@@ -3,31 +3,24 @@ import HistoryItem from './HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const HistoryList = ({history}) => {
-  const [listData, setlistData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const Handlefavorite = async (product) => {
+  const [listData, setListData] = useState([]);
+  const handlefavorite = (product) => {
     console.log(product, 'product');
-
-    const NewHandleFavorite = await AsyncStorage.getItem('productHistory');
-    let newFavorite = [];
-    newFavorite = JSON.parse(NewHandleFavorite);
-    console.log(newFavorite, 'newFavorite');
+    console.log(listData, 'listData');
 
     if (product !== null) {
-      listData.push(newFavorite);
-      console.log(newFavorite, 'newFavoritekkkkkkkk');
-      AsyncStorage.setItem('productFavorite', JSON.stringify(newFavorite));
-      console.log(newFavorite, 'newFavoritelllllllllll');
+      listData.push(product);
+      AsyncStorage.setItem('productFavorite', JSON.stringify(listData));
     }
   };
 
   return (
     history &&
-    history.map((product) => {
+    history.map((product, index) => {
       return (
         <HistoryItem
           product={product}
-          onPress={() => Handlefavorite(product)}
+          onPress={() => handlefavorite(product, index)}
         />
       );
     })

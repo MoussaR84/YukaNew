@@ -5,8 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-// brands_tags: [
-// "clope"
 const ProductBio = ({product}) => {
   const isBioorNot = () => {
     if (product.labels_tags[0] === 'en:organic') {

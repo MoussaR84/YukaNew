@@ -19,7 +19,7 @@ const HistoryScreen = ({listData}) => {
     };
     getHistoryFromStorage();
   }, []);
-  console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
+  // console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (

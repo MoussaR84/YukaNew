@@ -4,7 +4,7 @@ import FavoriteList from '../components/Favorite/FavoriteList';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ScrollView} from 'react-native-gesture-handler';
 
-const FavoritesScreen = ({newFavorite, listData}) => {
+const FavoritesScreen = ({listData}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [savedFavorite, setSavedFavorite] = useState([]);
 

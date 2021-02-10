@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../../assets/colors';
 
 const CameraHeader = ({handleFlash, flashOn}) => {
+  console.log(handleFlash, 'handleFlash');
   return (
     <View style={styles.bottomOverlay}>
       <TouchableOpacity onPress={() => handleFlash}>

@@ -1,16 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from '../../assets/colors';
 import {FatSatComment, FatSatCircle} from './productParser';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ProductFatSat = ({product}) => {
-  console.log(
-    product.nutriments['saturated-fat_unit'],
-    "product.nutriments['saturated-fat_unit']",
-  );
   return (
     <>
       <View style={styles.container}>

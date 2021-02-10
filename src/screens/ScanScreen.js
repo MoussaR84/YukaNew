@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import BarcodeScanner from '../components/barcodeScanner';
 import {fetchProductData} from '../api/index';
@@ -34,21 +40,18 @@ const ScanScreen = () => {
   const renderContent = () => {
     return <Product product={product} />;
   };
-  // console.log('sheetRef', sheetRef);
 
   const renderHeader = () => {
     <ProductHeader product={product} />;
   };
 
   return (
-    <SafeAreaView style={styles.containerScanScreen}>
+    <View style={styles.containerScanScreen}>
       <BarcodeScanner onBarCodeRead={onBarCodeRead} />
       {isProductScanned ? (
         <BottomSheet
-          // closeOnDragDown={true}
-          // closeOnPressMask={false}
           ref={sheetRef}
-          snapPoints={[450, 300, 0]}
+          snapPoints={[400, 200, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
           renderContent={renderContent}>
@@ -76,7 +79,7 @@ const ScanScreen = () => {
           </Text>
         </TouchableOpacity>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
