@@ -10,11 +10,6 @@ import {StyleSheet, Text, SafeAreaView} from 'react-native';
 import colors from '../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// import active_history from '../assets/TabBar/active_history.png';
-// import active_yuka from '../assets/TabBar/active_yuka.png';
-// import inactive_history from '../assets/TabBar/inactive_history.png';
-// import inactive_yuka from '../assets/TabBar/inactive_yuka.png';
-
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
   const [listData, setlistData] = useState([]);
@@ -108,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
-    borderTopColor:'#F7F7F7',
+    borderTopColor: '#F7F7F7',
   },
   icons: {
     justifyContent: 'center',
@@ -117,8 +112,8 @@ const styles = StyleSheet.create({
   tabBarIcon: {
     paddingTop: 10,
   },
-  tabBarIconstar:{
-    paddingTop:5,
+  tabBarIconstar: {
+    paddingTop: 5,
   },
 });
 

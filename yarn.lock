@@ -5830,10 +5830,10 @@ react-native-camera@^3.42.0:
   dependencies:
     prop-types "^15.6.2"
 
-react-native-gesture-bottom-sheet@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-bottom-sheet/-/react-native-gesture-bottom-sheet-1.0.1.tgz#e7bb52c4adb835dea2b90470e2ad45544e51d2f9"
-  integrity sha512-WwWsui6lA6S1YkWj6ZNymTi6wnrQRXg2p9RAtJmu3x0uvS4MTEl2kFHvLnS093U4+6tAWP+IXtBq3tZa7ImB6g==
+react-native-gesture-bottom-sheet@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-bottom-sheet/-/react-native-gesture-bottom-sheet-1.0.2.tgz#0e6a066e6f3308032e56bcbd0be29ee91e487956"
+  integrity sha512-vYsjG0Ww7jocF++Na3z7vtFcvqwkBRvxyoPAPK6DQisGW4KTBrVACqjjhPa/dOX188nTX24Lx2tL+rCDUZGGKw==
 
 react-native-gesture-handler@^1.9.0:
   version "1.9.0"

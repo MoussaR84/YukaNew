@@ -1,71 +1,16 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
+import {FatSatComment, FatSatCircle} from './productParser';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {color} from 'react-native-reanimated';
 
 const ProductFatSat = ({product}) => {
-  const FatSatComment = (product) => {
-    if (product.nutriments['saturated-fat'] >= 1) {
-      return 'Peu de graisses saturées';
-    } else if (product.nutriments['saturated-fat'] >= 10) {
-      return 'Graisses saturées en quantité';
-    } else if (product.nutriments['saturated-fat'] >= 20) {
-      return 'Faible quantité';
-    } else if (product.nutriments['saturated-fat'] >= 0) {
-      return 'Très faible quantité ';
-    } else if ((product.nutriments['saturated-fat'] = 0)) {
-      return 'Non Présente ';
-    } else {
-      return ' non enregistré';
-    }
-  };
-  const FatSatCircle = (product) => {
-    if (product.nutriments['saturated-fat'] >= 1) {
-      return colors.green;
-    } else if (product.nutriments['saturated-fat'] >= 10) {
-      return colors.orange;
-    } else if (product.nutriments['saturated-fat'] >= 20) {
-      return colors.red;
-    } else if (product.nutriments['saturated-fat'] >= 0) {
-      return colors.bown;
-    } else if ((product.nutriments['saturated-fat'] = 0)) {
-      return colors.black;
-    } else {
-      return colors.grey;
-    }
-  };
-
+  console.log(
+    product.nutriments['saturated-fat_unit'],
+    "product.nutriments['saturated-fat_unit']",
+  );
   return (
     <>
       <View style={styles.container}>
@@ -92,8 +37,8 @@ const ProductFatSat = ({product}) => {
             </Text>
             <Text style={styles.text}>
               {product.nutriments['saturated-fat_unit'] === undefined
-                ? ''
-                : product.nutriments['saturated-fat_unit']}
+                ? 'g'
+                : 'g'}
             </Text>
           </View>
 
@@ -102,7 +47,7 @@ const ProductFatSat = ({product}) => {
               name="circle"
               size={15}
               style={styles.circle}
-              color={FatSatCircle(product, colors)}
+              color={FatSatCircle(product)}
             />
           </View>
           <View style={styles.entypoDown}>

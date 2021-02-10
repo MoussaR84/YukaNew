@@ -16,7 +16,7 @@ export const isBioorNotColor = (product) => {
   }
 };
 
-export const textProteine = (product) => {
+export const TextProteine = (product) => {
   if (product.nutriscore_data.proteins_value >= 10) {
     return 'Excellente quantité';
   } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -27,48 +27,44 @@ export const textProteine = (product) => {
     return 'Non renseigné';
   }
 };
-
-export const ratingProteineCircle = (product) => {
+export const RatingProteineCircle = (product) => {
   if (product.nutriscore_data.proteins_value >= 10) {
     return colors.green;
   } else if (product.nutriscore_data.proteins_value >= 5) {
     return colors.orange;
   } else if (product.nutriscore_data.proteins_value <= 3) {
-    return colors.red;
+    return colors.grey;
   } else {
     return colors.grey;
   }
 };
 
-export const ratingFibreCircle = (product) => {
-  if (product.fiber_value >= 1) {
-    return colors.green;
-  } else if (product.fiber_value >= 0.5) {
-    return colors.orange;
-  } else if (product.proteins_value <= 0.5) {
-    return colors.red;
-  } else {
-    return colors.grey;
-  }
-};
-
-export const fiberComment = (product) => {
-  if (product.nutriments.fiber >= 5) {
+export const FiberComment = (product) => {
+  if (product.nutriments.fiber >= 4) {
     return 'Riche en fibres';
   } else if (product.nutriments.fiber >= 3) {
-    return 'quantités de fibres satisfaisante';
+    return 'Quantités de fibres satisfaisante';
   } else if (product.nutriments.fiber >= 1) {
     return 'Quelques fibres';
   } else {
-    return 'fibres non présentes';
+    return 'Fibres non présentes';
+  }
+};
+export const RatingFiberCircle = (product) => {
+  if (product.nutriments.fiber >= 4) {
+    return colors.green;
+  } else if (product.nutriments.fiber >= 3) {
+    return colors.orange;
+  } else if (product.nutriments.fiber >= 1) {
+    return colors.red;
+  } else {
+    return colors.grey;
   }
 };
 
 export const calorieComment = (product) => {
-  // O 160 360 560 800
-
   if (product.nutriments['energy-kcal_value'] <= 800) {
-    return 'Extremement Calorique';
+    return 'Extrêmement Calorique';
   } else if (product.nutriments['energy-kcal_value'] <= 560) {
     return 'Très calorique';
   } else if (product.nutriments['energy-kcal_value'] <= 360) {
@@ -76,13 +72,10 @@ export const calorieComment = (product) => {
   } else if (product.nutriments['energy-kcal_value'] <= 160) {
     return 'Peu calorique';
   } else {
-    return 'Produit non enrregistré';
+    return 'Produit non enregistré';
   }
 };
-
-export const caloriecirclecolor = (product) => {
-  // O 160 360 560 800
-
+export const calorieCirclecolor = (product) => {
   if (product.nutriments['energy-kcal_value'] <= 800) {
     return colors.red;
   } else if (product.nutriments['energy-kcal_value'] <= 560) {
@@ -92,51 +85,57 @@ export const caloriecirclecolor = (product) => {
   } else if (product.nutriments['energy-kcal_value'] <= 160) {
     return colors.green;
   } else {
-    return 'Produit non enrregistré', colors.grey;
+    return colors.grey;
   }
 };
 
-export const satfatCircle = (product) => {
+export const FatSatComment = (product) => {
+  if (product.nutriments['saturated-fat'] >= 1) {
+    return 'Peu de graisses saturées';
+  } else if (product.nutriments['saturated-fat'] >= 10) {
+    return 'Graisses saturées en quantité';
+  } else if (product.nutriments['saturated-fat'] >= 20) {
+    return 'Faible quantité';
+  } else if (product.nutriments['saturated-fat'] >= 0) {
+    return 'Très faible quantité ';
+  } else if ((product.nutriments['saturated-fat'] = 0)) {
+    return 'Non Présente ';
+  } else {
+    return ' non enregistré';
+  }
+};
+export const FatSatCircle = (product) => {
   if (product.nutriments['saturated-fat'] >= 1) {
     return colors.green;
   } else if (product.nutriments['saturated-fat'] >= 10) {
     return colors.orange;
   } else if (product.nutriments['saturated-fat'] >= 20) {
     return colors.red;
+  } else if (product.nutriments['saturated-fat'] >= 0) {
+    return colors.bown;
+  } else if ((product.nutriments['saturated-fat'] = 0)) {
+    return colors.grey;
   } else {
     return colors.grey;
   }
 };
 
-export const satfatComment = (product) => {
-  if (product.nutriments['saturated-fat'] >= 1) {
-    return 'Peu de graisses saturées';
-  } else if (product.nutriments['saturated-fat'] >= 10) {
-    return 'Graisses saturées en quantité';
-  } else if (product.nutriments['saturated-fat'] >= 20) {
-    return 'Graisses saturées en quantité';
+export const sugarComment = (nutrient_levels) => {
+  if (nutrient_levels === 'low') {
+    return 'Faible quantité';
+  } else if (nutrient_levels === 'high') {
+    return 'Forte quantité';
   } else {
-    return 'Graisses saturées non présentes';
+    return 'Très faible quantité';
   }
 };
-
-export const sugarCircle = (product) => {
-  if (product.nutrient_levels === 'low') {
+export const sugarCircle = (nutrient_levels) => {
+  if (nutrient_levels === 'low') {
     return colors.green;
-  } else if (product.nutrient_levels === 'high') {
+  } else if (nutrient_levels === 'high') {
     return colors.red;
   } else {
     return colors.grey;
-  }
-};
-
-export const sugarComment = (product) => {
-  if (product.nutrient_levels === 'low') {
-    return 'Faible quantité';
-  } else if (product.nutrient_levels === 'high') {
-    return 'forte quantité';
-  } else {
-    return 'données inaccessibles';
   }
 };
 
@@ -175,18 +174,18 @@ export const ratingProductComment = (nutrition_grade_fr) => {
 };
 
 export const ratingScoreText = (product) => {
-  if (product.nutrition_grade_fr === 'a') {
-    return '100';
-  } else if (product.nutrition_grade_fr === 'b') {
-    return '80';
-  } else if (product.nutrition_grade_fr === 'c') {
-    return '70';
-  } else if (product.nutrition_grade_fr === 'd') {
-    return '30';
-  } else {
-    return '10';
-    // } else {
-    //   ("Données non disponible");
-    //   // alert("not registred");
+  switch (product.nutrition_grade_fr) {
+    case 'a':
+      return '100';
+    case 'b':
+      return '80';
+    case 'c':
+      return '70';
+    case 'd':
+      return '30';
+    case 'e':
+      return '10';
+    default:
+      return 'Non noté';
   }
 };

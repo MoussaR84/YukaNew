@@ -10,7 +10,7 @@ const HistoryList = ({history}) => {
 
     const NewHandleFavorite = await AsyncStorage.getItem('productHistory');
     let newFavorite = [];
-    newFavorite = JSON.parse(listData);
+    newFavorite = JSON.parse(NewHandleFavorite);
     console.log(newFavorite, 'newFavorite');
 
     if (product !== null) {

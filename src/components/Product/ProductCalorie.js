@@ -1,55 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
+import {calorieCirclecolor, calorieComment} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ProductCalorie = ({product}) => {
-  const calorieComment = (product) => {
-    if (product.nutriments['energy-kcal_value'] <= 800) {
-      return 'Extrêmement Calorique';
-    } else if (product.nutriments['energy-kcal_value'] <= 560) {
-      return 'Très calorique';
-    } else if (product.nutriments['energy-kcal_value'] <= 360) {
-      return 'Riche en calorie';
-    } else if (product.nutriments['energy-kcal_value'] <= 160) {
-      return 'Peu calorique';
-    } else {
-      return 'Produit non enregistré';
-    }
-  };
-  const calorieCirclecolor = (product) => {
-    if (product.nutriments['energy-kcal_value'] <= 800) {
-      return colors.red;
-    } else if (product.nutriments['energy-kcal_value'] <= 560) {
-      return colors.orange;
-    } else if (product.nutriments['energy-kcal_value'] <= 360) {
-      return colors.greenLight;
-    } else if (product.nutriments['energy-kcal_value'] <= 160) {
-      return colors.green;
-    } else {
-      return colors.grey;
-    }
-  };
-
   return (
     <>
       <View style={styles.container}>
@@ -77,7 +34,7 @@ export default ProductCalorie = ({product}) => {
             <Text style={styles.text}>
               {product.nutriments['energy-kcal_unit'] === undefined
                 ? ''
-                : product.nutriments['energy-kcal_unit']}
+                : 'kcal'}
             </Text>
           </View>
 

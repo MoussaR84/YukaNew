@@ -17,7 +17,6 @@ const FavoriteItem = ({item, onPress}) => {
       <SafeAreaView>
         <TouchableOpacity style={styles.card} onPress={onPress}>
           <ImageCard image_url={item.image_url} />
-          {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
           <View style={styles.cardRightBlock}>
             <View style={styles.titleAndBrand}>
               <Text numberOfLines={1} style={styles.productTitle}>
@@ -52,10 +51,8 @@ const styles = StyleSheet.create({
     height: 100,
     borderBottomColor: colors.greyLightLine,
     borderBottomWidth: 1,
-    // fontFamily: 'Roboto-Light',
     paddingVertical: 20,
     paddingHorizontal: 15,
-    // backgroundColor: 'green',
   },
   cardRightBlock: {
     justifyContent: 'space-between',
@@ -90,7 +87,3 @@ const styles = StyleSheet.create({
   },
 });
 export default FavoriteItem;
-
-// //  <Text style={styles.ratingScore}>
-// {ratingScoreText(product)}/100
-// </Text>

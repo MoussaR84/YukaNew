@@ -34,6 +34,7 @@ const ScanScreen = () => {
   const renderContent = () => {
     return <Product product={product} />;
   };
+  // console.log('sheetRef', sheetRef);
 
   const renderHeader = () => {
     <ProductHeader product={product} />;
@@ -44,8 +45,10 @@ const ScanScreen = () => {
       <BarcodeScanner onBarCodeRead={onBarCodeRead} />
       {isProductScanned ? (
         <BottomSheet
+          // closeOnDragDown={true}
+          // closeOnPressMask={false}
           ref={sheetRef}
-          snapPoints={[400, 500, 0]}
+          snapPoints={[450, 300, 0]}
           borderRadius={10}
           renderHeader={renderHeader}
           renderContent={renderContent}>

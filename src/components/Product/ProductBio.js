@@ -1,52 +1,32 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
-import {color} from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-export default ProductBio = ({product}) => {
+// brands_tags: [
+// "clope"
+const ProductBio = ({product}) => {
   const isBioorNot = () => {
     if (product.labels_tags[0] === 'en:organic') {
       return 'Produit Biologique';
     } else if (product.nutrient_levels === undefined) {
       return 'Pas de données ';
+    } else if (product.brands_tags === 'clope') {
+      return 'Fumer est très mauvais';
     } else {
       return 'Produit non Biologique';
     }
   };
+
   const isBioorNotColor = () => {
     if (product.labels_tags[0] === 'en:organic') {
       return colors.green;
+    } else if (product.labels_tags[0] === undefined) {
+      return colors.red;
+    } else if (product.brands_tags === 'clope') {
+      return;
     } else {
       return colors.grey;
     }
@@ -70,7 +50,7 @@ export default ProductBio = ({product}) => {
           <Text style={styles.function}>{isBioorNot(product)}</Text>
         </View>
         <View style={styles.unitgramcontainaer}>
-          <View View style={styles.unitgram}></View>
+          <View View style={styles.unitgram} />
           <View style={styles.circlecalorie}>
             <Entypo name="check" size={15} color={isBioorNotColor()} />
           </View>
@@ -138,3 +118,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 });
+
+export default ProductBio;

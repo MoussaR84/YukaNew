@@ -1,51 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
+import {RatingFiberCircle, FiberComment} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export default ProductFibre = ({product}) => {
-  const FiberComment = (product) => {
-    if (product.nutriments.fiber >= 4) {
-      return 'Riche en fibres';
-    } else if (product.nutriments.fiber >= 3) {
-      return 'Quantités de fibres satisfaisante';
-    } else if (product.nutriments.fiber >= 1) {
-      return 'Quelques fibres';
-    } else {
-      return 'Fibres non présentes';
-    }
-  };
-  const RatingFiberCircle = (product) => {
-    if (product.nutriments.fiber >= 4) {
-      return colors.green;
-    } else if (product.nutriments.fiber >= 3) {
-      return colors.orange;
-    } else if (product.nutriments.fiber >= 1) {
-      return colors.red;
-    } else {
-      return colors.grey;
-    }
-  };
-
+const ProductFibre = ({product}) => {
   return (
     <>
       <View style={styles.container}>
@@ -71,9 +31,7 @@ export default ProductFibre = ({product}) => {
                 : product.nutriments.fiber}
             </Text>
             <Text style={styles.text}>
-              {product.nutriments.fiber_unit === undefined
-                ? ''
-                : product.nutriments.fiber_unit}
+              {product.nutriments.fiber_unit === undefined ? '' : 'g'}
             </Text>
           </View>
 
@@ -150,3 +108,5 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
 });
+
+export default ProductFibre;

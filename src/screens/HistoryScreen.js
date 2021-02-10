@@ -1,25 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ProgressBarAndroidBase,
-  Dimensions,
-  ScrollView,
-  SafeAreaView,
-  Animated,
-  TouchableHighlight,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
-import Product from '../components/Product';
-import {
-  ratingProduct,
-  ratingProductComment,
-} from '../components/Product/productParser';
 
 const HistoryScreen = ({listData}) => {
   const [savedHistory, setSavedHistory] = useState([]);

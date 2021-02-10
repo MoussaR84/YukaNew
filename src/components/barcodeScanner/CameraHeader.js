@@ -17,7 +17,7 @@ const CameraHeader = ({handleFlash, flashOn}) => {
           </View>
         </View>
       </TouchableOpacity>
-      <View style={styles.square}></View>
+      <View style={styles.square} />
     </View>
   );
 };

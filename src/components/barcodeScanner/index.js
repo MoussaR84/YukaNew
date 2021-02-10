@@ -42,7 +42,8 @@ const BarcodeScanner = ({onBarCodeRead}) => {
             'Yuka souhaite accéder à votre caméra pour scanner un produit',
           buttonPositive: 'Ok',
           buttonNegative: 'Annuler',
-        }}></RNCamera>
+        }}
+      />
 
       {permissionStatusReady ? (
         <CameraHeader handleFlash={handleFlash} flashOn={flashOn} />

@@ -1,51 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from '../../assets/colors';
-import {
-  sugarComment,
-  sugarCircle,
-  satfatComment,
-  satfatCircle,
-  caloriecirclecolor,
-  isBioorNot,
-  isBioorNotColor,
-  textProteine,
-  ratingProteineCircle,
-  ratingFibreCircle,
-  fiberComment,
-  calorieComment,
-  ratingScoreText,
-  ratingProduct,
-  ratingProductComment,
-} from './productParser';
+import {RatingProteineCircle, TextProteine} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ProductProteine = ({product}) => {
-  const TextProteine = (product) => {
-    if (product.nutriscore_data.proteins_value >= 10) {
-      return 'Excellente quantité';
-    } else if (product.nutriscore_data.proteins_value >= 5) {
-      return 'Quantité moyenne';
-    } else if (product.nutriscore_data.proteins_value < 3) {
-      return 'Faible quantité';
-    } else {
-      return 'Non renseigné';
-    }
-  };
-  const RatingProteineCircle = (product) => {
-    if (product.nutriscore_data.proteins_value >= 10) {
-      return colors.green;
-    } else if (product.nutriscore_data.proteins_value >= 5) {
-      return colors.orange;
-    } else if (product.nutriscore_data.proteins_value <= 3) {
-      return colors.grey;
-    } else {
-      return colors.grey;
-    }
-  };
-
   return (
     <>
       <View style={styles.container}>
@@ -71,9 +31,7 @@ const ProductProteine = ({product}) => {
                 : product.nutriscore_data.proteins_value}
             </Text>
             <Text style={styles.text}>
-              {product.nutriments.proteins_unit === undefined
-                ? 'g'
-                : product.nutriments.proteins_unit}
+              {product.nutriments.proteins_unit === undefined ? '' : 'g'}
             </Text>
           </View>
 
@@ -82,7 +40,7 @@ const ProductProteine = ({product}) => {
               name="circle"
               size={15}
               style={styles.circle}
-              color={RatingProteineCircle(product, colors)}
+              color={RatingProteineCircle(product)}
             />
           </View>
           <View style={styles.entypoDown}>
