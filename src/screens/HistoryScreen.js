@@ -2,35 +2,46 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
-import Product from '../components/Product';
-import {
-  ratingProduct,
-  ratingProductComment,
-} from '../components/Product/productParser';
 
-const HistoryScreen = ({listData}) => {
+const HistoryScreen = (props) => {
   const [savedHistory, setSavedHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const getHistoryFromStorage = async () => {
-      let formattedHistoryfromStorage = [];
-      const rawSavedHistory = await AsyncStorage.getItem('productHistory');
-      if (rawSavedHistory !== null) {
-        formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
-      }
-      setSavedHistory(formattedHistoryfromStorage);
-      setIsLoading(false);
-    };
-    getHistoryFromStorage();
-  }, []);
+  const getFavoritesFromStorage = async () => {
+    let formattedFavoritesfromStorage = [];
+    const rawSavedFavorites = await AsyncStorage.getItem('productFavorites');
+    if (rawSavedFavorites !== null) {
+      formattedFavoritesfromStorage = JSON.parse(rawSavedFavorites);
+    }
+    setFavorites(formattedFavoritesfromStorage);
+  };
+
+  const getHistoryFromStorage = async () => {
+    let formattedHistoryfromStorage = [];
+    const rawSavedHistory = await AsyncStorage.getItem('productHistory');
+    if (rawSavedHistory !== null) {
+      formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
+    }
+    setSavedHistory(formattedHistoryfromStorage);
+    setIsLoading(false);
+  };
+  // useEffect(() => {
+  //   getHistoryFromStorage();
+  //   getFavoritesFromStorage();
+  // }, [savedHistory]);
+
   console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
-        <HistoryList history={savedHistory} listData={listData} />
+        <HistoryList
+          history={savedHistory}
+          favorites={favorites}
+          setFavorites={setFavorites}
+        />
       </SafeAreaView>
     </ScrollView>
   );

@@ -1,21 +1,26 @@
 import React, {useState} from 'react';
 import HistoryItem from './HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
+import ProductSugar from '../Product/ProductSugar';
 
-const HistoryList = ({history}) => {
-  const [favorite, setFavorite] = useState([]);
-  const handlefavorite = (product) => {
-    // console.log(product, 'product');
-    // console.log(favorite, 'favorite');
-    // console.log(history, 'history');
-    if (favorite.indexOf(product) === -1) {
-      favorite.push(product);
-    } else if (history.indexOf(product) > -1) {
-      console.log(product + ' existe déjà dans le tableau.');
+const HistoryList = ({history, setFavorites, favorites}) => {
+  const addToFavorites = async (product) => {
+    const ProductAlreadyAddedInFav = history.find(({id}) => {
+      console.log('id', id, 'id product', product.id);
+      return id === product.id;
+    });
+
+    if (ProductAlreadyAddedInFav !== undefined) {
+      return;
+    } else {
+      const newFavorites = [product, ...favorites];
+      await AsyncStorage.setItem(
+        'productFavorites',
+        JSON.stringify(newFavorites),
+      );
+      setFavorites(newFavorites);
     }
-    console.log(favorite, 'favoriteproduct');
   };
-
   return (
     history &&
     history.map((product, index) => {
@@ -23,7 +28,7 @@ const HistoryList = ({history}) => {
         <HistoryItem
           key={index}
           product={product}
-          onPress={() => handlefavorite(product)}
+          onPress={() => addToFavorites(product)}
         />
       );
     })

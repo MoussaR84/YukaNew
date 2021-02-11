@@ -10,14 +10,14 @@ import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ratings from '../Product/Rating';
 import ImageCard from '../Product/ImageCard';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const HistoryItem = ({product, onPress}) => {
   return (
     product && (
       <SafeAreaView>
-        <TouchableOpacity style={styles.card} onPress={onPress}>
+        <View style={styles.card}>
           <ImageCard image_url={product.image_url} />
-          {/* <Image style={styles.cardImage} source={{uri: product.image_url}} /> */}
           <View style={styles.cardRightBlock}>
             <View style={styles.titleAndBrand}>
               <Text numberOfLines={1} style={styles.productTitle}>
@@ -38,7 +38,10 @@ const HistoryItem = ({product, onPress}) => {
               </View>
             </View>
           </View>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
+            <Entypo name="star" size={12} color="black" />
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     )
   );

@@ -11,13 +11,14 @@ const updateProductHistoryinStorage = async (newProduct) => {
     savedHistoryinStorage = [];
   }
   const newHistory = [
-    ...savedHistoryinStorage,
     {
       product_name: newProduct.product_name,
       brands: newProduct.brands,
       image_url: newProduct.image_url,
       nutrition_grade_fr: newProduct.nutrition_grade_fr,
+      id: newProduct.id,
     },
+    ...savedHistoryinStorage,
   ];
   AsyncStorage.setItem('productHistory', JSON.stringify(newHistory));
 };

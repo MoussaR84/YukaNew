@@ -13,6 +13,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
   const [listData, setlistData] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -74,7 +75,7 @@ const TabNavigator = ({tintColor}) => {
       <Tab.Screen
         name="FavoritesScreen"
         component={FavoritesScreen}
-        listData={listData}
+        favorite={favorite}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {

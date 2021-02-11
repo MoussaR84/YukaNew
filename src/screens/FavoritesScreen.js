@@ -4,30 +4,42 @@ import FavoriteList from '../components/Favorite/FavoriteList';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ScrollView} from 'react-native-gesture-handler';
 
-const FavoritesScreen = ({listData}) => {
+const FavoritesScreen = ({favorite}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [savedFavorite, setSavedFavorite] = useState([]);
+  const [savedFavorites, setSavedFavorites] = useState([]);
 
-  useEffect(() => {
-    const getFavoriteFromStorage = async () => {
-      let newTabFavorite = [];
-      const newFavoriteData = await AsyncStorage.getItem('productFavorite');
-      if (newFavoriteData !== null) {
-        newTabFavorite = JSON.parse(newFavoriteData);
-      }
-      setSavedFavorite(newTabFavorite);
-      setIsLoading(false);
-    };
+  const deleteFavorite = async (id) => {
+    const newFavoriteList = savedFavorites.filter((favorite) => {
+      return favorite.id !== id;
+    });
+
+    await AsyncStorage.setItem(JSON.parse(newFavoriteList));
+    setSavedFavorites(newFavoriteList);
+  };
+
+  const getFavoriteFromStorage = async () => {
+    let formattedFavoritefromStorage = [];
+    const rawSavedFavorite = await AsyncStorage.getItem('productFavorites');
+    if (rawSavedFavorite !== null) {
+      formattedFavoritefromStorage = JSON.parse(rawSavedFavorite);
+    }
+    setSavedFavorites(formattedFavoritefromStorage);
+    setIsLoading(false);
+  };
+  // useEffect(() => {
     getFavoriteFromStorage();
-  }, []);
-  console.log(savedFavorite, 'savedFavorite');
+  }, 
+  // [savedFavorites]);
 
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
-        <FavoriteList favorite={savedFavorite} listData={listData} />
+        <FavoriteList
+          favorites={savedFavorites}
+          deleteFavorite={deleteFavorite}
+        />
       </SafeAreaView>
     </ScrollView>
   );
