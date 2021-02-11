@@ -3,15 +3,17 @@ import HistoryItem from './HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const HistoryList = ({history}) => {
-  const [listData, setListData] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   const handlefavorite = (product) => {
-    console.log(product, 'product');
-    console.log(listData, 'listData');
-
-    if (product !== null) {
-      listData.push(product);
-      AsyncStorage.setItem('productFavorite', JSON.stringify(listData));
+    // console.log(product, 'product');
+    // console.log(favorite, 'favorite');
+    // console.log(history, 'history');
+    if (favorite.indexOf(product) === -1) {
+      favorite.push(product);
+    } else if (history.indexOf(product) > -1) {
+      console.log(product + ' existe déjà dans le tableau.');
     }
+    console.log(favorite, 'favoriteproduct');
   };
 
   return (
@@ -19,8 +21,9 @@ const HistoryList = ({history}) => {
     history.map((product, index) => {
       return (
         <HistoryItem
+          key={index}
           product={product}
-          onPress={() => handlefavorite(product, index)}
+          onPress={() => handlefavorite(product)}
         />
       );
     })

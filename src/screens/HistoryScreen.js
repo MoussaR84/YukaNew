@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
+import Product from '../components/Product';
+import {
+  ratingProduct,
+  ratingProductComment,
+} from '../components/Product/productParser';
 
 const HistoryScreen = ({listData}) => {
   const [savedHistory, setSavedHistory] = useState([]);
@@ -19,7 +24,7 @@ const HistoryScreen = ({listData}) => {
     };
     getHistoryFromStorage();
   }, []);
-  // console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
+  console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (
