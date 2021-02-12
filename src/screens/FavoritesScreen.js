@@ -4,7 +4,7 @@ import FavoriteList from '../components/Favorite/FavoriteList';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ScrollView} from 'react-native-gesture-handler';
 
-const FavoritesScreen = ({favorite}) => {
+const FavoritesScreen = ({favorites}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [savedFavorites, setSavedFavorites] = useState([]);
 
@@ -27,10 +27,11 @@ const FavoritesScreen = ({favorite}) => {
     setIsLoading(false);
   };
   // useEffect(() => {
-    getFavoriteFromStorage();
-  }, 
-  // [savedFavorites]);
-
+  //   console.log('boucle');
+  //   getFavoriteFromStorage();
+  // }, [savedFavorites]);
+  // regarder quand le tableau change
+  // avoir acces a l ancien state et le comparer
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (

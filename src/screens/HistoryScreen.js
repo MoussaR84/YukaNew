@@ -26,14 +26,14 @@ const HistoryScreen = (props) => {
     setSavedHistory(formattedHistoryfromStorage);
     setIsLoading(false);
   };
-  // useEffect(() => {
-  //   getHistoryFromStorage();
-  //   getFavoritesFromStorage();
-  // }, [savedHistory]);
+  useEffect(() => {
+    getHistoryFromStorage();
+    getFavoritesFromStorage();
+  }, []);
 
   console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
   return isLoading ? (
-    <Text>encours de chargement</Text>
+    <Text style={styles.load}>encours de chargement</Text>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
@@ -84,6 +84,11 @@ const styles = StyleSheet.create({
   },
   ratingproduct: {
     backgroundColor: 'red',
+  },
+  load: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
 });
 
