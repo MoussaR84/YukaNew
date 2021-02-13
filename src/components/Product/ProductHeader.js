@@ -32,9 +32,6 @@ const ProductHeader = ({product}) => {
       return '30';
     } else {
       return '10';
-      // } else {
-      //   ("Données non disponible");
-      //   // alert("not registred");
     }
   };
   const ratingProduct = (product, colors) => {
@@ -98,7 +95,6 @@ const styles = StyleSheet.create({
     height: 150,
     paddingVertical: 20,
     paddingHorizontal: 15,
-    paddingVertical: 15,
     paddingTop: 30,
   },
   lineHeader: {

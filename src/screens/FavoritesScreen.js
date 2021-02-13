@@ -13,25 +13,23 @@ const FavoritesScreen = ({favorites}) => {
       return favorite.id !== id;
     });
 
-    await AsyncStorage.setItem(JSON.parse(newFavoriteList));
+    await AsyncStorage.setItem('productFavorites', JSON.parse(newFavoriteList));
     setSavedFavorites(newFavoriteList);
   };
 
   const getFavoriteFromStorage = async () => {
-    let formattedFavoritefromStorage = [];
-    const rawSavedFavorite = await AsyncStorage.getItem('productFavorites');
-    if (rawSavedFavorite !== null) {
-      formattedFavoritefromStorage = JSON.parse(rawSavedFavorite);
+    let formattedFavoritesfromStorage = [];
+    const rawSavedFavorites = await AsyncStorage.getItem('productFavorites');
+    if (rawSavedFavorites !== null) {
+      formattedFavoritesfromStorage = JSON.parse(rawSavedFavorites);
     }
-    setSavedFavorites(formattedFavoritefromStorage);
+    setSavedFavorites(formattedFavoritesfromStorage);
     setIsLoading(false);
   };
-  // useEffect(() => {
-  //   console.log('boucle');
-  //   getFavoriteFromStorage();
-  // }, [savedFavorites]);
-  // regarder quand le tableau change
-  // avoir acces a l ancien state et le comparer
+  useEffect(() => {
+    getFavoriteFromStorage();
+  }, []);
+
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (

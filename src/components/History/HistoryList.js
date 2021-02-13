@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import HistoryItem from './HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
-import ProductSugar from '../Product/ProductSugar';
 
 const HistoryList = ({history, setFavorites, favorites}) => {
   const addToFavorites = async (product) => {
-    const ProductAlreadyAddedInFav = history.find(({id}) => {
+    const productAlreadyAddedInFav = history.find(({id}) => {
       console.log('id', id, 'id product', product.id);
       return id === product.id;
     });
 
-    if (ProductAlreadyAddedInFav !== undefined) {
+    if (productAlreadyAddedInFav !== undefined) {
       return;
     } else {
       const newFavorites = [product, ...favorites];
@@ -21,6 +20,7 @@ const HistoryList = ({history, setFavorites, favorites}) => {
       setFavorites(newFavorites);
     }
   };
+
   return (
     history &&
     history.map((product, index) => {
@@ -28,7 +28,7 @@ const HistoryList = ({history, setFavorites, favorites}) => {
         <HistoryItem
           key={index}
           product={product}
-          onPress={() => addToFavorites(product)}
+          onPress={(product) => addToFavorites(product)}
         />
       );
     })

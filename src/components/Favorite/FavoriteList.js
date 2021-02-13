@@ -2,20 +2,15 @@ import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import FavoriteItem from '../Favorite/FavoriteItem';
 
-const FavoriteList = ({favorites, deleteFavorite}) => {
-  // const [savedFavoriteUpdate, setSavedFavoriteUpdate] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-
-  console.log(favorites, 'favorites');
-
+const FavoriteList = ({favorites, deleteFavorite, history}) => {
   return (
     favorites &&
-    favorites.map((product, index) => {
+    favorites.map((item, index) => {
       return (
         <FavoriteItem
           key={index}
-          product={product}
-          onPress={() => deleteFavorite(product.id)}
+          item={item}
+          onPress={() => deleteFavorite(item.id)}
         />
       );
     })

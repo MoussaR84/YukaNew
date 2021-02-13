@@ -1,8 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from '../../assets/colors';
 
-export default ProductQuality = ({product}) => {
+const ProductQuality = ({product}) => {
   return (
     <View style={styles.qualityTitle}>
       <Text style={styles.qualite}>Qualités</Text>
@@ -22,10 +21,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 15,
     fontFamily: 'Roboto-Light',
-    fontWeight: '900',
   },
   portion: {
     color: '#B7B7B9',
     fontFamily: 'Roboto-Light',
   },
 });
+
+export default ProductQuality;

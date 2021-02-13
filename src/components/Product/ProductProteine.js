@@ -18,13 +18,13 @@ const ProductProteine = ({product}) => {
           />
         </View>
         <View style={styles.comment}>
-          <View style={styles.gramandvalue}>
+          <View style={styles.gramAndValue}>
             <Text style={styles.title}>Protéines</Text>
           </View>
           <Text style={styles.function}>{TextProteine(product)}</Text>
         </View>
-        <View style={styles.unitgramcontainaer}>
-          <View View style={styles.unitgram}>
+        <View style={styles.unitGramContainaer}>
+          <View View style={styles.unitGram}>
             <Text style={styles.text}>
               {product.nutriscore_data.proteins_value === undefined
                 ? ''
@@ -35,7 +35,7 @@ const ProductProteine = ({product}) => {
             </Text>
           </View>
 
-          <View style={styles.circlecalorie}>
+          <View style={styles.circleProtein}>
             <FontAwesome
               name="circle"
               size={15}
@@ -48,7 +48,7 @@ const ProductProteine = ({product}) => {
           </View>
         </View>
       </View>
-      <View style={styles.dividedcontainer} />
+      <View style={styles.dividedContainer} />
     </>
   );
 };
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 12,
   },
-  gramandvalue: {
+  gramAndValue: {
     flexDirection: 'row',
     width: 150,
     justifyContent: 'space-between',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     width: 170,
   },
 
-  unitgramcontainaer: {
+  unitGramContainaer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignContent: 'center',
@@ -93,15 +93,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 
-  unitgram: {
+  unitGram: {
     flexDirection: 'row',
     width: 40,
     justifyContent: 'flex-end',
   },
-  circlecalorie: {
+  circleProtein: {
     marginRight: 5,
   },
-  dividedcontainer: {
+  dividedContainer: {
     borderColor: '#F7F7F7',
     backgroundColor: '#F7F7F7',
     borderWidth: 1,
