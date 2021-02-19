@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../assets/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {ratingIconColor, ratingProductComment} from '../Product/productParser';

@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 35,
-    marginTop: 150,
+    marginTop: '50%',
   },
 });
 export default CameraHeader;

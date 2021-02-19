@@ -14,7 +14,6 @@ const BarcodeScanner = ({onBarCodeRead}) => {
   console.log(handleFlash, 'handleFlash');
 
   const permissionStatusReady = RNCamera.Constants.CameraStatus.READY;
-  console.log('permissionStatus', permissionStatusReady);
 
   return (
     <View style={styles.container}>

@@ -33,13 +33,13 @@ const TabNavigator = ({tintColor}) => {
               <View style={styles.tabBarIcon}>
                 <Image
                   source={require('../assets/TabBar/active_history.png')}
-                  style={{width: 25, height: 25}}
+                  style={{width: 30, height: 30}}
                 />
               </View>
             ) : (
               <View style={styles.tabBarIcon}>
                 <Image
-                  source={require('../assets/TabBar/inactive_yuka.png')}
+                  source={require('../assets/TabBar/inactive_history.png')}
                   style={{width: 30, height: 30}}
                 />
               </View>
@@ -58,14 +58,14 @@ const TabNavigator = ({tintColor}) => {
               <View style={styles.tabBarIcon}>
                 <Image
                   source={require('../assets/TabBar/active_yuka.png')}
-                  style={{width: 25, height: 25}}
+                  style={styles.iconSize}
                 />
               </View>
             ) : (
               <View style={styles.tabBarIcon}>
                 <Image
                   source={require('../assets/TabBar/inactive_yuka.png')}
-                  style={{width: 30, height: 30}}
+                  style={styles.iconSize}
                 />
               </View>
             );
@@ -80,15 +80,12 @@ const TabNavigator = ({tintColor}) => {
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
             return focused ? (
-              <View style={styles.tabBarIcon}>
-                <Image
-                  source={require('../assets/TabBar/active_yuka.png')}
-                  style={{width: 25, height: 25}}
-                />
+              <View style={styles.tabBarIconstar}>
+                <Entypo name="star" size={30} color="white" />
               </View>
             ) : (
               <View style={styles.tabBarIconstar}>
-                <Entypo name="star" size={30} color="#f0eff4" />
+                <Entypo name="star" size={30} color={colors.greenLight} />
               </View>
             );
           },
@@ -109,6 +106,10 @@ const styles = StyleSheet.create({
   icons: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  iconSize: {
+    width: 30,
+    height: 30,
   },
   tabBarIcon: {
     paddingTop: 10,

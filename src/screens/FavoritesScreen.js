@@ -7,13 +7,18 @@ import {ScrollView} from 'react-native-gesture-handler';
 const FavoritesScreen = ({favorites}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [savedFavorites, setSavedFavorites] = useState([]);
-
   const deleteFavorite = async (id) => {
     const newFavoriteList = savedFavorites.filter((favorite) => {
       return favorite.id !== id;
     });
-
-    await AsyncStorage.setItem('productFavorites', JSON.parse(newFavoriteList));
+    if (newFavoriteList.length === 0) {
+      await AsyncStorage.removeItem('productFavorites');
+    } else {
+      await AsyncStorage.setItem(
+        'productFavorites',
+        JSON.stringify(newFavoriteList),
+      );
+    }
     setSavedFavorites(newFavoriteList);
   };
 
@@ -30,15 +35,19 @@ const FavoritesScreen = ({favorites}) => {
     getFavoriteFromStorage();
   }, []);
 
+  console.log(savedFavorites, 'savedFavoritesllllll');
+
   return isLoading ? (
     <Text>encours de chargement</Text>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
-        <FavoriteList
-          favorites={savedFavorites}
-          deleteFavorite={deleteFavorite}
-        />
+        {savedFavorites.length > 0 ? (
+          <FavoriteList
+            favorites={savedFavorites}
+            deleteFavorite={deleteFavorite}
+          />
+        ) : null}
       </SafeAreaView>
     </ScrollView>
   );

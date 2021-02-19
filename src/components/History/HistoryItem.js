@@ -39,7 +39,7 @@ const HistoryItem = ({product, onPress}) => {
             </View>
           </View>
           <TouchableOpacity onPress={onPress}>
-            <Entypo name="star" size={12} color="black" />
+            <Entypo name="star" size={15} color="grey" />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -55,10 +55,8 @@ const styles = StyleSheet.create({
     height: 100,
     borderBottomColor: colors.greyLightLine,
     borderBottomWidth: 1,
-    // fontFamily: 'Roboto-Light',
     paddingVertical: 20,
     paddingHorizontal: 15,
-    // backgroundColor: 'green',
   },
   cardRightBlock: {
     justifyContent: 'space-between',

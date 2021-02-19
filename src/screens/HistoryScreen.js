@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
+// import fakeData from '../data/fakeData.json';
 
 const HistoryScreen = (props) => {
   const [savedHistory, setSavedHistory] = useState([]);
@@ -21,6 +22,7 @@ const HistoryScreen = (props) => {
     let formattedHistoryfromStorage = [];
     const rawSavedHistory = await AsyncStorage.getItem('productHistory');
     if (rawSavedHistory !== null) {
+      console.log(rawSavedHistory, 'rawSavedHistory');
       formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
     }
     setSavedHistory(formattedHistoryfromStorage);
@@ -31,7 +33,14 @@ const HistoryScreen = (props) => {
     getFavoritesFromStorage();
   }, []);
 
-  console.log('savedHisttttttfffftdygzygadggdaygttttory', savedHistory);
+  // const getFakeData = () => {
+  //   setSavedHistory(fakeData);
+  //   setIsLoading(false);
+  // };
+
+  // useEffect(() => {
+  //   getFakeData();
+  // }, []);
   return isLoading ? (
     <Text style={styles.load}>encours de chargement</Text>
   ) : (
