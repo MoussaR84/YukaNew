@@ -1,41 +1,42 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../../assets/colors';
+const {width, height} = Dimensions.get('screen');
 
 const CameraHeader = ({handleFlash, flashOn}) => {
-  console.log(handleFlash, 'handleFlash');
   return (
-    <View style={styles.bottomOverlay}>
-      <TouchableOpacity onPress={() => handleFlash}>
-        <View style={styles.iconSet}>
+    <View style={styles.container}>
+      <View style={styles.iconSet}>
+        <TouchableOpacity onPress={handleFlash}>
           <View style={styles.icons}>
             <Entypo name="flashlight" size={18} color={colors.greyText} />
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={flashOn}>
           <View style={styles.icons}>
             <AntDesign name="sound" size={18} color={colors.greyText} />
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
       <View style={styles.square} />
     </View>
   );
 };
 const styles = StyleSheet.create({
-  bottomOverlay: {
+  container: {
     position: 'absolute',
-    width: '100%',
+    width: width,
+    justifyContent: 'center',
+    padding: 40,
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   iconSet: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
-    width: '25%',
-    marginRight: 1200,
+    marginBottom: 100,
   },
 
   icons: {
@@ -48,16 +49,11 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   square: {
-    height: 180,
-    width: 250,
+    height: height / 3,
+    margin: 'auto',
     borderColor: '#FFFFFF',
     borderRadius: 10,
     borderWidth: 2,
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 35,
-    marginTop: '50%',
   },
 });
 export default CameraHeader;

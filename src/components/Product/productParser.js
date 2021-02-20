@@ -3,6 +3,10 @@ import colors from '../../assets/colors';
 export const isBioorNot = (product) => {
   if (product.labels_tags[0] === 'en:organic') {
     return 'Produit Biologique';
+  } else if (product.nutrient_levels === undefined) {
+    return 'Pas de données ';
+  } else if (product.brands_tags === 'clope') {
+    return 'Fumer est très mauvais';
   } else {
     return 'Produit non Biologique';
   }
@@ -11,12 +15,21 @@ export const isBioorNot = (product) => {
 export const isBioorNotColor = (product) => {
   if (product.labels_tags[0] === 'en:organic') {
     return colors.green;
+  } else if (product.labels_tags[0] === undefined) {
+    return colors.red;
+  } else if (product.brands_tags === 'clope') {
+    return;
   } else {
     return colors.grey;
   }
 };
 
 export const TextProteine = (product) => {
+  if (!product.nutriscore_data || !product) {
+    console.log('nutriscore_data null', product.nutriscore_data);
+
+    return null;
+  }
   if (product.nutriscore_data.proteins_value >= 10) {
     return 'Excellente quantité';
   } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -27,7 +40,27 @@ export const TextProteine = (product) => {
     return 'Non renseigné';
   }
 };
+export const displayProteine = (product) => {
+  if (
+    !product.nutriscore_data ||
+    !product ||
+    !product.nutriscore_data.proteins_value
+  ) {
+    console.log('nutriscore_data null', product.nutriscore_data);
+
+    return '';
+  }
+  return product.nutriscore_data.proteins_value;
+};
+
 export const RatingProteineCircle = (product) => {
+  if (
+    !product.nutriscore_data ||
+    !product ||
+    !product.nutriscore_data.proteins_value
+  ) {
+    return null;
+  }
   if (product.nutriscore_data.proteins_value >= 10) {
     return colors.green;
   } else if (product.nutriscore_data.proteins_value >= 5) {
@@ -51,6 +84,9 @@ export const FiberComment = (product) => {
   }
 };
 export const RatingFiberCircle = (product) => {
+  if (!product.nutriments || !product || !product.nutriments.fiber) {
+    return null;
+  }
   if (product.nutriments.fiber >= 4) {
     return colors.green;
   } else if (product.nutriments.fiber >= 3) {
@@ -63,6 +99,13 @@ export const RatingFiberCircle = (product) => {
 };
 
 export const calorieComment = (product) => {
+  if (
+    !product.nutriments ||
+    !product ||
+    !product.nutriments['energy-kcal_value']
+  ) {
+    return null;
+  }
   if (product.nutriments['energy-kcal_value'] <= 800) {
     return 'Extrêmement Calorique';
   } else if (product.nutriments['energy-kcal_value'] <= 560) {
@@ -76,6 +119,13 @@ export const calorieComment = (product) => {
   }
 };
 export const calorieCirclecolor = (product) => {
+  if (
+    !product.nutriments ||
+    !product ||
+    !product.nutriments['energy-kcal_value']
+  ) {
+    return null;
+  }
   if (product.nutriments['energy-kcal_value'] <= 800) {
     return colors.red;
   } else if (product.nutriments['energy-kcal_value'] <= 560) {
@@ -90,6 +140,9 @@ export const calorieCirclecolor = (product) => {
 };
 
 export const FatSatComment = (product) => {
+  if (!product.nutriments || !product || !product.nutriments['saturated-fat']) {
+    return null;
+  }
   if (product.nutriments['saturated-fat'] >= 1) {
     return 'Peu de graisses saturées';
   } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -105,6 +158,9 @@ export const FatSatComment = (product) => {
   }
 };
 export const FatSatCircle = (product) => {
+  if (!product.nutriments || !product || !product.nutriments['saturated-fat']) {
+    return null;
+  }
   if (product.nutriments['saturated-fat'] >= 1) {
     return colors.green;
   } else if (product.nutriments['saturated-fat'] >= 10) {
@@ -121,6 +177,9 @@ export const FatSatCircle = (product) => {
 };
 
 export const sugarComment = (nutrient_levels) => {
+  if (!nutrient_levels) {
+    return null;
+  }
   if (nutrient_levels === 'low') {
     return 'Faible quantité';
   } else if (nutrient_levels === 'high') {
@@ -130,6 +189,9 @@ export const sugarComment = (nutrient_levels) => {
   }
 };
 export const sugarCircle = (nutrient_levels) => {
+  if (!nutrient_levels) {
+    return null;
+  }
   if (nutrient_levels === 'low') {
     return colors.green;
   } else if (nutrient_levels === 'high') {
@@ -140,6 +202,9 @@ export const sugarCircle = (nutrient_levels) => {
 };
 
 export const ratingIconColor = (nutrition_grade_fr) => {
+  if (!nutrition_grade_fr) {
+    return null;
+  }
   switch (nutrition_grade_fr) {
     case 'a':
       return colors.green;

@@ -1,35 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from '../../assets/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-
+import {isBioorNot, isBioorNotColor} from '../Product/productParser';
 const ProductBio = ({product}) => {
-  const isBioorNot = () => {
-    if (product.labels_tags[0] === 'en:organic') {
-      return 'Produit Biologique';
-    } else if (product.nutrient_levels === undefined) {
-      return 'Pas de données ';
-    } else if (product.brands_tags === 'clope') {
-      return 'Fumer est très mauvais';
-    } else {
-      return 'Produit non Biologique';
-    }
-  };
-
-  const isBioorNotColor = () => {
-    if (product.labels_tags[0] === 'en:organic') {
-      return colors.green;
-    } else if (product.labels_tags[0] === undefined) {
-      return colors.red;
-    } else if (product.brands_tags === 'clope') {
-      return;
-    } else {
-      return colors.grey;
-    }
-  };
-
   return (
     <>
       <View style={styles.container}>
@@ -50,7 +25,7 @@ const ProductBio = ({product}) => {
         <View style={styles.unitgramcontainaer}>
           <View View style={styles.unitgram} />
           <View style={styles.circlecalorie}>
-            <Entypo name="check" size={15} color={isBioorNotColor()} />
+            <Entypo name="check" size={15} color={isBioorNotColor(product)} />
           </View>
           <View style={styles.entypoDown}>
             <AntDesign name="right" size={15} color="grey" />

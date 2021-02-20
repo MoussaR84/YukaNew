@@ -1,19 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HistoryScreen from '../screens/HistoryScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ScanScreen from '../screens/ScanScreen';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {StyleSheet, Text, SafeAreaView} from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '../assets/colors';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({tintColor}) => {
-  const [listData, setlistData] = useState([]);
-  const [favorite, setFavorite] = useState([]);
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -24,7 +20,6 @@ const TabNavigator = ({tintColor}) => {
       <Tab.Screen
         name="HistoryScreen"
         component={HistoryScreen}
-        listData={listData}
         options={{
           style: styles.icons,
           tabBarLabel: '',
@@ -33,14 +28,14 @@ const TabNavigator = ({tintColor}) => {
               <View style={styles.tabBarIcon}>
                 <Image
                   source={require('../assets/TabBar/active_history.png')}
-                  style={{width: 30, height: 30}}
+                  style={styles.iconSize}
                 />
               </View>
             ) : (
               <View style={styles.tabBarIcon}>
                 <Image
                   source={require('../assets/TabBar/inactive_history.png')}
-                  style={{width: 30, height: 30}}
+                  style={styles.iconSize}
                 />
               </View>
             );
@@ -75,7 +70,6 @@ const TabNavigator = ({tintColor}) => {
       <Tab.Screen
         name="FavoritesScreen"
         component={FavoritesScreen}
-        favorite={favorite}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {

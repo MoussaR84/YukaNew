@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+import React from 'react';
 import FavoriteItem from '../Favorite/FavoriteItem';
 
 const FavoriteList = ({favorites, deleteFavorite}) => {

@@ -1,15 +1,9 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import BarcodeScanner from '../components/barcodeScanner';
 import {fetchProductData} from '../api/index';
-import updateProductHistoryinStorage from '../asyncStorage/index';
+import {updateProductHistoryinStorage} from '../asyncStorage/index';
 import Product from '../components/Product/index';
 import ProductHeader from '../components/Product/ProductHeader';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

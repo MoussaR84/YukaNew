@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import HistoryList from '../components/History/HistoryList';
+import {
+  getHistoryFromStorage,
+  getFavoritesFromStorage,
+} from '../asyncStorage/index';
+
 // import fakeData from '../data/fakeData.json';
 
 const HistoryScreen = (props) => {
@@ -9,28 +13,19 @@ const HistoryScreen = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
 
-  const getFavoritesFromStorage = async () => {
-    let formattedFavoritesfromStorage = [];
-    const rawSavedFavorites = await AsyncStorage.getItem('productFavorites');
-    if (rawSavedFavorites !== null) {
-      formattedFavoritesfromStorage = JSON.parse(rawSavedFavorites);
-    }
+  const loadFavoritesFromStorage = async () => {
+    const formattedFavoritesfromStorage = await getFavoritesFromStorage();
     setFavorites(formattedFavoritesfromStorage);
   };
 
-  const getHistoryFromStorage = async () => {
-    let formattedHistoryfromStorage = [];
-    const rawSavedHistory = await AsyncStorage.getItem('productHistory');
-    if (rawSavedHistory !== null) {
-      console.log(rawSavedHistory, 'rawSavedHistory');
-      formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
-    }
+  const loadHistoryFromStorage = async () => {
+    const formattedHistoryfromStorage = await getHistoryFromStorage();
     setSavedHistory(formattedHistoryfromStorage);
     setIsLoading(false);
   };
   useEffect(() => {
-    getHistoryFromStorage();
-    getFavoritesFromStorage();
+    loadHistoryFromStorage();
+    loadFavoritesFromStorage();
   }, []);
 
   // const getFakeData = () => {

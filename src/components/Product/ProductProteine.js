@@ -1,6 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {RatingProteineCircle, TextProteine} from './productParser';
+import {
+  RatingProteineCircle,
+  TextProteine,
+  displayProteine,
+} from './productParser';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -25,11 +29,7 @@ const ProductProteine = ({product}) => {
         </View>
         <View style={styles.unitGramContainaer}>
           <View View style={styles.unitGram}>
-            <Text style={styles.text}>
-              {product.nutriscore_data.proteins_value === undefined
-                ? ''
-                : product.nutriscore_data.proteins_value}
-            </Text>
+            <Text style={styles.text}>{displayProteine(product)}</Text>
             <Text style={styles.text}>
               {product.nutriments.proteins_unit === undefined ? '' : 'g'}
             </Text>
