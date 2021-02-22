@@ -12,7 +12,6 @@ import Ratings from '../Product/Rating';
 import ImageCard from '../Product/ImageCard';
 
 const FavoriteItem = ({favorite, onPress}) => {
-  console.log('product', FavoriteItem);
   return (
     <SafeAreaView>
       <View style={styles.card}>
