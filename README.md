@@ -6,8 +6,9 @@
 Clone this repository :
 
 ```
-git clone https://github.com/MoussaR84/Airbnb-expo-RN
-cd Airbnb-expo-RN
+git clone https://github.com/MoussaR84/YukaNew
+
+cd YukaNew
 
 ```
 
@@ -28,7 +29,8 @@ yarn start
 
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
 
-1. Fork it (<https://github.com/MoussaR84/Airbnb-expo-RN>)
+1. Fork it (<https://github.com/MoussaR84/YukaNew
+>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
