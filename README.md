@@ -1,9 +1,9 @@
 # YukaNew
-<img src="assets/imagesReadMe/img1.png" width="100">
-  <img src="assets/imagesReadMe/img2.png" width="100">
-    <img src="assets/imagesReadMe/img3.png" width="100">
-      <img src="assets/imagesReadMe/img4.png" width="100">
-        <img src="assets/imagesReadMe/img5.png" width="100">
+<img src="assets/imagesReadMe/img1.png" width="200">
+  <img src="assets/imagesReadMe/img2.png" width="200">
+    <img src="assets/imagesReadMe/img3.png" width="200">
+      <img src="assets/imagesReadMe/img4.png" width="200">
+        <img src="assets/imagesReadMe/img5.png" width="200">
 
 
 ## Install the project
