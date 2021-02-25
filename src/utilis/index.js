@@ -7,7 +7,7 @@ export const getDifferenceBetweenDateAndNow = (date) => {
   const hours = Math.floor(duration.asHours());
   const days = Math.floor(duration.asDays());
   const months = Math.floor(duration.asMonths());
-
+  const seconds = Math.floor(duration.asSeconds());
   if (months > 1) {
     return months + ' mois';
   } else if (months === 1) {
@@ -28,5 +28,10 @@ export const getDifferenceBetweenDateAndNow = (date) => {
     return minutes + ' minutes';
   } else if (minutes <= 1) {
     return minutes + ' minute';
+  }
+  if (seconds > 1) {
+    return seconds + ' seconds';
+  } else if (seconds === 1) {
+    return seconds + ' second';
   }
 };
