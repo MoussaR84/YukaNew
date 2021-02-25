@@ -6,36 +6,41 @@ import {
   getFavoritesFromStorage,
 } from '../asyncStorage/index';
 
-// import fakeData from '../data/fakeData.json';
-
 const HistoryScreen = (props) => {
   const [savedHistory, setSavedHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
 
-  const loadFavoritesFromStorage = async () => {
-    const formattedFavoritesfromStorage = await getFavoritesFromStorage();
-    setFavorites(formattedFavoritesfromStorage);
-  };
+  const loadAllData = async () => {
+    const loadedFavoritesFromStroage = await getFavoritesFromStorage();
+    const loadedHistoryfromStorage = await getHistoryFromStorage();
 
-  const loadHistoryFromStorage = async () => {
-    const formattedHistoryfromStorage = await getHistoryFromStorage();
-    setSavedHistory(formattedHistoryfromStorage);
+    isProductAlreadyinFavorites(
+      loadedHistoryfromStorage,
+      loadedFavoritesFromStroage,
+    );
+  };
+  const isProductAlreadyinFavorites = (loadedHistory, loadedFavorites) => {
+    const formattedHistory = loadedHistory.map((product) => {
+      const productAlreadyAddedInFav = loadedFavorites.find(({id}) => {
+        return id === product.id;
+      });
+
+      if (productAlreadyAddedInFav !== undefined) {
+        return {...product, isFavorite: true};
+      } else {
+        return {...product, isFavorite: false};
+      }
+    });
+    setSavedHistory(formattedHistory);
     setIsLoading(false);
   };
+
   useEffect(() => {
-    loadHistoryFromStorage();
-    loadFavoritesFromStorage();
+    loadAllData();
   }, []);
 
-  // const getFakeData = () => {
-  //   setSavedHistory(fakeData);
-  //   setIsLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   getFakeData();
-  // }, []);
+  console.log('savedHistory', savedHistory);
   return isLoading ? (
     <Text style={styles.load}>encours de chargement</Text>
   ) : (

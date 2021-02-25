@@ -4,7 +4,6 @@ export const getHistoryFromStorage = async () => {
   let formattedHistoryfromStorage = [];
   const rawSavedHistory = await AsyncStorage.getItem('productHistory');
   if (rawSavedHistory !== null) {
-    console.log(rawSavedHistory, 'rawSavedHistory');
     formattedHistoryfromStorage = JSON.parse(rawSavedHistory);
   }
   return formattedHistoryfromStorage;

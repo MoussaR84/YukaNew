@@ -41,9 +41,15 @@ const HistoryItem = ({product, onPress}) => {
               </View>
             </View>
           </View>
-          <TouchableOpacity onPress={onPress}>
-            <Entypo name="star" size={15} color="grey" />
-          </TouchableOpacity>
+          {product.isFavorite ? (
+            <TouchableOpacity>
+              <Entypo name="star" size={15} color={colors.green} />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={onPress}>
+              <Entypo name="star" size={15} color={colors.grey} />
+            </TouchableOpacity>
+          )}
         </View>
       </SafeAreaView>
     )

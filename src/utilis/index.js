@@ -1,7 +1,7 @@
 import moment from 'moment';
 export const getDifferenceBetweenDateAndNow = (date) => {
-  const now = moment(new Date()); //todays date
-  const scanDate = moment(date); // another date
+  const now = moment(new Date());
+  const scanDate = moment(date);
   const duration = moment.duration(now.diff(scanDate));
   const minutes = Math.floor(duration.asMinutes());
   const hours = Math.floor(duration.asHours());
