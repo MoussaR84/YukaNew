@@ -27,7 +27,7 @@ const ProductFibre = ({product}) => {
           <View View style={styles.unitgram}>
             <Text style={styles.text}>
               {product.nutriments.fiber === undefined
-                ? ''
+                ? '0g'
                 : product.nutriments.fiber}
             </Text>
             <Text style={styles.text}>

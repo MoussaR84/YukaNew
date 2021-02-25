@@ -31,7 +31,7 @@ const ProductProteine = ({product}) => {
           <View View style={styles.unitGram}>
             <Text style={styles.text}>{displayProteine(product)}</Text>
             <Text style={styles.text}>
-              {product.nutriments.proteins_unit === undefined ? '' : 'g'}
+              {product.nutriments.proteins_unit === undefined ? '' : '0g'}
             </Text>
           </View>
 

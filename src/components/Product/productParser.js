@@ -16,7 +16,7 @@ export const isBioorNotColor = (product) => {
   if (product.labels_tags[0] === 'en:organic') {
     return colors.green;
   } else if (product.labels_tags[0] === undefined) {
-    return colors.red;
+    return colors.black;
   } else if (product.brands_tags === 'clope') {
     return;
   } else {
@@ -34,8 +34,10 @@ export const TextProteine = (product) => {
     return 'Excellente quantité';
   } else if (product.nutriscore_data.proteins_value >= 5) {
     return 'Quantité moyenne';
-  } else if (product.nutriscore_data.proteins_value < 3) {
+  } else if (product.nutriscore_data.proteins_value <= 3) {
     return 'Faible quantité';
+  } else if ((product.nutriscore_data.proteins_value = 0)) {
+    return 'Protéines non présentes';
   } else {
     return 'Non renseigné';
   }
