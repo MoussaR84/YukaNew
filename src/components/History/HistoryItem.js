@@ -11,6 +11,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ratings from '../Product/Rating';
 import ImageCard from '../Product/ImageCard';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {getDifferenceBetweenDateAndNow} from '../../utilis/index';
 
 const HistoryItem = ({product, onPress}) => {
   return (
@@ -34,7 +35,9 @@ const HistoryItem = ({product, onPress}) => {
                   style={styles.productIcon}
                   color={colors.greyText}
                 />
-                <Text style={styles.productItem}>Il y a quelques jours</Text>
+                <Text style={styles.productItem}>
+                  Il y a {getDifferenceBetweenDateAndNow(product.date)}
+                </Text>
               </View>
             </View>
           </View>

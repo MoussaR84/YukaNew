@@ -47,6 +47,7 @@ export const updateProductHistoryinStorage = async (newProduct) => {
       image_url: newProduct.image_url,
       nutrition_grade_fr: newProduct.nutrition_grade_fr,
       id: newProduct.id,
+      date: new Date(),
     },
     ...savedHistoryinStorage,
   ];
