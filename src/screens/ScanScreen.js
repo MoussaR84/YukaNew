@@ -7,6 +7,9 @@ import {updateProductHistoryinStorage} from '../asyncStorage/index';
 import Product from '../components/Product/index';
 import ProductHeader from '../components/Product/ProductHeader';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {updateHistory} from '../store/actions/history/actionCreators';
+import {useDispatch} from 'react-redux';
+import {isAFoodProduct} from '../utilis/index';
 
 const ScanScreen = () => {
   const [product, setProduct] = useState({});
@@ -21,8 +24,13 @@ const ScanScreen = () => {
     setIdCurrentProductScanned(id);
     try {
       const {data} = await fetchProductData(id);
-      setProduct(data.product);
-      updateProductHistoryinStorage(data.product);
+      const newProduct = {
+        ...data.product,
+        isAFoodProduct: isAFoodProduct(data.product),
+      };
+      setProduct(newProduct);
+      updateProductHistoryinStorage(newProduct);
+      dispatch(updateHistory(newProduct));
       setIsProductScanned(true);
       () => sheetRef.current.snapTo(0);
     } catch (error) {
@@ -30,6 +38,7 @@ const ScanScreen = () => {
     }
   };
 
+  const dispatch = useDispatch();
   const sheetRef = React.useRef(null);
   const renderContent = () => {
     return <Product product={product} />;

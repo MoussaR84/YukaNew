@@ -1,0 +1,5 @@
+const NAME = 'FAVORITES';
+export const LOAD_FAVORITES = `${NAME}/LOAD_FAVORITES`;
+export const ADD_TO_FAVORITES = `${NAME}/ADD_TO_FAVORITES`;
+export const DELETE_FAVORITES = `${NAME}/DELETE_FAVORITES`;
+export const IS_LOADING = `${NAME}/IS_LOADING`;

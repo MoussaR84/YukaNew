@@ -1,38 +1,50 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, SafeAreaView, ActivityIndicator} from 'react-native';
 import FavoriteList from '../components/Favorite/FavoriteList';
 import {ScrollView} from 'react-native-gesture-handler';
+
 import {
-  deleteFavoriteInStorage,
-  getFavoritesFromStorage,
-} from '../asyncStorage/index';
+  loadFavorites,
+  deleteFavorites as deleteFavoritesToRedux,
+  isFavoritesLoading,
+} from '../store/actions/favorites/actionCreators';
+import {useSelector, useDispatch} from 'react-redux';
 
 const FavoritesScreen = (props) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [savedFavorites, setSavedFavorites] = useState([]);
-  const deleteFavorite = async (id) => {
-    const newFavoriteList = await deleteFavoriteInStorage(id, savedFavorites);
-    setSavedFavorites(newFavoriteList);
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  // const [savedFavorites, setSavedFavorites] = useState([]);
+  // const deleteFavorites = async (id) => {
+  //   const newFavoriteList = await deleteFavoriteInStorage(id, favoriteList);
+  //   dispatch(deleteFavoritesToRedux(newFavoriteList));
+  //   // setSavedFavorites(newFavoriteList);
+  // };
 
-  const loadFavoritesFromStorage = async () => {
-    const formattedFavoritesfromStorage = await getFavoritesFromStorage();
-    setSavedFavorites(formattedFavoritesfromStorage);
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    loadFavoritesFromStorage();
-  }, []);
+  // const loadFavoritesFromStorage = async () => {
+  //   const formattedFavoritesfromStorage = await getFavoritesFromStorage();
+  //   setSavedFavorites(formattedFavoritesfromStorage);
+  //   setIsLoading(false);
+  // };
+  // useEffect(() => {
+  //   loadFavoritesFromStorage();
+  // }, []);
+
+  const favoriteList = useSelector((state) => state.favorite.list);
+  console.log('favoriteList screen,', favoriteList);
+  const dispatch = useDispatch();
 
   return isLoading ? (
-    <Text>encours de chargement</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.load}>en cours de chargement</Text>
+      <ActivityIndicator />
+    </SafeAreaView>
   ) : (
     <ScrollView>
       <SafeAreaView style={styles.containersafe}>
-        {savedFavorites.length > 0 ? (
+        {favoriteList.length > 0 ? (
           <FavoriteList
-            favorites={savedFavorites}
-            deleteFavorite={deleteFavorite}
+            favorites={favoriteList}
+            dispatch={dispatch}
+            deleteFavoritesToRedux={deleteFavoritesToRedux}
           />
         ) : null}
       </SafeAreaView>
@@ -44,39 +56,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginTop: 20,
-  },
-  card: {
-    alignItems: 'flex-start',
-    paddingLeft: 10,
-    justifyContent: 'space-between',
-    height: 120,
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-
-  nameProduct: {
-    fontWeight: '600',
     alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 16,
-  },
-
-  brands: {
-    color: 'grey',
-  },
-  nameandbrand: {
-    height: '100%',
-    width: 220,
-  },
-  nameandbrandcontainer: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    marginLeft: 5,
-  },
-  ratingproduct: {
-    backgroundColor: 'red',
+    marginTop: 20,
   },
 });
 

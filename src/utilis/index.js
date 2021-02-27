@@ -35,3 +35,38 @@ export const getDifferenceBetweenDateAndNow = (date) => {
     return seconds + ' second';
   }
 };
+
+export const isProductAlreadyinFavorites = (loadedHistory, loadedFavorites) => {
+  console.log(
+    'isProductAlreadyinFavorites',
+    'loadedHistory',
+    loadedHistory,
+    'loadedFavorites',
+    loadedFavorites,
+  );
+  const formattedHistory = loadedHistory.map((product) => {
+    const productAlreadyAddedInFav = loadedFavorites.find(({id}) => {
+      return id === product.id;
+    });
+
+    if (productAlreadyAddedInFav !== undefined) {
+      return {...product, isFavorite: true};
+    } else {
+      return {...product, isFavorite: false};
+    }
+  });
+  return formattedHistory;
+};
+
+export const isAFoodProduct = (product) => {
+  let result = false;
+  if (!product.categories_hierarchy) {
+    return result;
+  }
+  product.categories_hierarchy.forEach((item) => {
+    if (item.includes('food')) {
+      result = true;
+    }
+  });
+  return result;
+};

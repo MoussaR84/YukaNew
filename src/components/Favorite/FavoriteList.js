@@ -1,7 +1,12 @@
 import React from 'react';
 import FavoriteItem from '../Favorite/FavoriteItem';
+import {deleteFavoriteInStorage} from '../../asyncStorage/index';
 
-const FavoriteList = ({favorites, deleteFavorite}) => {
+const FavoriteList = ({favorites, dispatch, deleteFavoritesToRedux}) => {
+  const deleteFavorites = async (id) => {
+    const newFavoriteList = await deleteFavoriteInStorage(id, favorites);
+    dispatch(deleteFavoritesToRedux(newFavoriteList));
+  };
   console.log(favorites, 'favorites');
   return (
     favorites &&
@@ -10,7 +15,7 @@ const FavoriteList = ({favorites, deleteFavorite}) => {
         <FavoriteItem
           key={index}
           favorite={favorite}
-          onPress={() => deleteFavorite(favorite.id)}
+          onPress={() => deleteFavorites(favorite.id)}
         />
       );
     })

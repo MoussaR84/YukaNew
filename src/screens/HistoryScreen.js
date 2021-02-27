@@ -1,57 +1,67 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  ActivityIndicator,
+} from 'react-native';
 import HistoryList from '../components/History/HistoryList';
 import {
   getHistoryFromStorage,
   getFavoritesFromStorage,
 } from '../asyncStorage/index';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  loadHistory,
+  isHistoryLoading,
+} from '../store/actions/history/actionCreators';
+import {
+  loadFavorites,
+  addToFavorites as addToFavoritesToRedux,
+} from '../store/actions/favorites/actionCreators';
+
+import {isProductAlreadyinFavorites} from '../utilis/index';
 
 const HistoryScreen = (props) => {
-  const [savedHistory, setSavedHistory] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [favorites, setFavorites] = useState([]);
-
   const loadAllData = async () => {
-    const loadedFavoritesFromStroage = await getFavoritesFromStorage();
+    const loadedFavoritesFromStorage = await getFavoritesFromStorage();
     const loadedHistoryfromStorage = await getHistoryFromStorage();
 
-    isProductAlreadyinFavorites(
+    const formattedHistory = isProductAlreadyinFavorites(
       loadedHistoryfromStorage,
-      loadedFavoritesFromStroage,
+      loadedFavoritesFromStorage,
     );
-  };
-  const isProductAlreadyinFavorites = (loadedHistory, loadedFavorites) => {
-    const formattedHistory = loadedHistory.map((product) => {
-      const productAlreadyAddedInFav = loadedFavorites.find(({id}) => {
-        return id === product.id;
-      });
-
-      if (productAlreadyAddedInFav !== undefined) {
-        return {...product, isFavorite: true};
-      } else {
-        return {...product, isFavorite: false};
-      }
-    });
-    setSavedHistory(formattedHistory);
-    setIsLoading(false);
+    dispatch(loadHistory(formattedHistory));
+    dispatch(loadFavorites(loadedFavoritesFromStorage));
+    dispatch(isHistoryLoading(false));
   };
 
   useEffect(() => {
     loadAllData();
   }, []);
 
-  console.log('savedHistory', savedHistory);
+  const historyList = useSelector((state) => state.history.list);
+  const favoriteList = useSelector((state) => state.favorite.list);
+  const isLoading = useSelector((state) => state.history.isLoading);
+
+  const dispatch = useDispatch();
+  console.log('historyList', historyList);
+  console.log('favoriteList', favoriteList);
+
   return isLoading ? (
-    <Text style={styles.load}>encours de chargement</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.load}>en cours de chargement</Text>
+      <ActivityIndicator />
+    </SafeAreaView>
   ) : (
     <ScrollView>
-      <SafeAreaView style={styles.containersafe}>
-        <HistoryList
-          history={savedHistory}
-          favorites={favorites}
-          setFavorites={setFavorites}
-        />
-      </SafeAreaView>
+      <HistoryList
+        history={historyList}
+        favorites={favoriteList}
+        dispatch={dispatch}
+        addFavoritestoRedux={addToFavoritesToRedux}
+      />
     </ScrollView>
   );
 };
@@ -60,44 +70,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginTop: 20,
-  },
-  card: {
-    alignItems: 'flex-start',
-    paddingLeft: 10,
-    justifyContent: 'space-between',
-    height: 120,
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-
-  nameProduct: {
-    fontWeight: '600',
     alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 16,
-  },
-
-  brands: {
-    color: 'grey',
-  },
-  nameandbrand: {
-    height: '100%',
-    width: 220,
-  },
-  nameandbrandcontainer: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-    marginLeft: 5,
-  },
-  ratingproduct: {
-    backgroundColor: 'red',
-  },
-  load: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    marginTop: 20,
   },
 });
 

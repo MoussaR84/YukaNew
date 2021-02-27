@@ -9,20 +9,28 @@ import ProductFibre from './ProductFibre';
 import ProductCalorie from './ProductCalorie';
 import ProductFatSat from './ProductFatSat';
 import ProductSugar from './ProductSugar';
+import DefaultProduct from './DefaultProduct';
 
 export default function Product({product}) {
-  const {nutriments} = product;
+  const {nutriments, isAFoodProduct} = product;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.container}>
-        <ProductHeader product={product} />
-        <ProductQuality product={product} />
-        <ProductBio product={product} />
-        <ProductProteine product={product} />
-        <ProductFibre product={product} />
-        <ProductCalorie product={product} />
-        {!!nutriments && <ProductSugar nutriments={nutriments} />}
-        <ProductFatSat product={product} />
+        {isAFoodProduct ? (
+          <>
+            <ProductHeader product={product} />
+            <ProductQuality product={product} />
+            <ProductBio product={product} />
+            <ProductProteine product={product} />
+            <ProductFibre product={product} />
+            <ProductCalorie product={product} />
+            {!!nutriments && <ProductSugar nutriments={nutriments} />}
+            <ProductFatSat product={product} />
+          </>
+        ) : (
+          <DefaultProduct product={product} />
+        )}
       </ScrollView>
     </SafeAreaView>
   );
