@@ -14,7 +14,7 @@ const historyReducer = (state = initialState, action) => {
       console.log('LOAD_HISTORY', action.payload);
       return {...state, list: action.payload};
     case UPDATE_HISTORY:
-      return {...state, list: {...state.list, ...action.payload}};
+      return {...state, list: [...state.list, ...action.payload]};
 
     case IS_LOADING: {
       return {...state, isLoading: action.payload};
