@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -44,10 +44,7 @@ const HistoryScreen = (props) => {
   const historyList = useSelector((state) => state.history.list);
   const favoriteList = useSelector((state) => state.favorite.list);
   const isLoading = useSelector((state) => state.history.isLoading);
-
   const dispatch = useDispatch();
-  console.log('historyList', historyList);
-  console.log('favoriteList', favoriteList);
 
   return isLoading ? (
     <SafeAreaView style={styles.container}>

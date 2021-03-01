@@ -3,6 +3,7 @@ import HistoryItem from './HistoryItem';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const HistoryList = ({history, addFavoritestoRedux, dispatch, favorites}) => {
+  console.log(history, 'history');
   const addToFavorites = async (product) => {
     const productAlreadyAddedInFav = favorites.find(({id}) => {
       return id === product.id;
@@ -15,7 +16,6 @@ const HistoryList = ({history, addFavoritestoRedux, dispatch, favorites}) => {
         'productFavorites',
         JSON.stringify(newFavorites),
       );
-      // dispatch(addFavoritestoRedux(newFavorites));
       dispatch(addFavoritestoRedux(newFavorites));
     }
   };

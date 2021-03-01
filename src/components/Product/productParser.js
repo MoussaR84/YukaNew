@@ -26,8 +26,6 @@ export const isBioorNotColor = (product) => {
 
 export const TextProteine = (product) => {
   if (!product.nutriscore_data || !product) {
-    console.log('nutriscore_data null', product.nutriscore_data);
-
     return null;
   }
   if (product.nutriscore_data.proteins_value >= 10) {
@@ -48,8 +46,6 @@ export const displayProteine = (product) => {
     !product ||
     !product.nutriscore_data.proteins_value
   ) {
-    console.log('nutriscore_data null', product.nutriscore_data);
-
     return '';
   }
   return product.nutriscore_data.proteins_value;
